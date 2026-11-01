@@ -37,6 +37,15 @@ function matchedName(doc: SearchDocument, query: string): SearchResult['matchedN
 	return alias ? { name: alias, kind: 'alias' } : undefined;
 }
 
+/** Documents whose name, alias or old name is exactly what was typed. Those are what the visitor meant. */
+export function exactNameMatches(docs: SearchDocument[], query: string): string[] {
+	const q = norm(query).replace(/\s+/g, ' ');
+	if (!q) return [];
+	return docs
+		.filter((d) => [d.term, ...d.aliases, ...d.renames.map((r) => r.from)].some((name) => norm(name).replace(/\s+/g, ' ') === q))
+		.map((d) => d.id);
+}
+
 /** Keyword search over term names, aliases, old names, summaries and body text (BRD F4). */
 export async function createSearchEngine(docs: SearchDocument[]): Promise<SearchEngine> {
 	const byId = new Map(docs.map((d) => [d.id, d]));
@@ -74,10 +83,13 @@ export async function createSearchEngine(docs: SearchDocument[]): Promise<Search
 				tolerance: term.length > 4 ? 1 : 0,
 				limit,
 			});
-			return found.hits.flatMap((hit) => {
+			const results = found.hits.flatMap((hit) => {
 				const doc = byId.get(String(hit.document.id));
 				return doc ? [{ doc, score: hit.score, matchedName: matchedName(doc, query) }] : [];
 			});
+			// Relevance scoring can rank a chatty entry above the one whose name was typed exactly: name matches go first.
+			const exact = new Set(exactNameMatches(docs, query));
+			return [...results.filter((r) => exact.has(r.doc.id)), ...results.filter((r) => !exact.has(r.doc.id))];
 		},
 	};
 }

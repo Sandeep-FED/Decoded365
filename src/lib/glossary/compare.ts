@@ -9,8 +9,11 @@ export interface ComparisonRow {
 	right: string;
 }
 
-const appliesTo = (term: GlossaryTerm) =>
-	term.appliesTo && term.appliesTo.length > 0 ? term.appliesTo.map((a) => APPLIES_TO_LABELS[a]).join(', ') : 'SharePoint Online and Server';
+/** Where a term applies. Only SharePoint terms have a default (both editions); other products leave it blank. */
+const appliesTo = (term: GlossaryTerm) => {
+	if (term.appliesTo && term.appliesTo.length > 0) return term.appliesTo.map((a) => APPLIES_TO_LABELS[a]).join(', ');
+	return term.product === 'sharepoint' ? 'SharePoint Online and Server' : '';
+};
 
 /** Side-by-side facts for two terms people mix up (BRD F12). Rows with nothing to say for either term are left out. */
 export function comparisonRows(a: GlossaryTerm, b: GlossaryTerm, labelOf?: LabelOf): ComparisonRow[] {

@@ -17,7 +17,10 @@ export function graphStyle(dark: boolean): StylesheetJson {
 			style: {
 				label: 'data(label)',
 				color: text,
-				'font-size': 13,
+				// Hubs get bigger labels, and labels that would render too small are hidden until you zoom in
+				// or select a term (its neighbourhood is exempt, see `.neighbour`).
+				'font-size': 'mapData(degree, 0, 10, 12, 20)',
+				'min-zoomed-font-size': 9,
 				'text-valign': 'bottom',
 				'text-margin-y': 5,
 				'text-outline-width': 3,
@@ -54,6 +57,7 @@ export function graphStyle(dark: boolean): StylesheetJson {
 		{ selector: 'edge[?symmetric]', style: { 'target-arrow-shape': 'none', 'line-style': 'dashed' } },
 		{ selector: '.faded', style: { opacity: 0.12, 'text-opacity': 0.2 } },
 		{ selector: 'edge.active', style: { label: 'data(label)', width: 2.5, 'line-color': ACCENT, 'target-arrow-color': ACCENT } },
+		{ selector: 'node.neighbour', style: { 'min-zoomed-font-size': 0 } },
 		{ selector: 'node.selected', style: { 'border-width': 4, 'border-style': 'solid', 'border-color': ACCENT, opacity: 1 } },
 		{ selector: '.filtered-out', style: { display: 'none' } },
 	];

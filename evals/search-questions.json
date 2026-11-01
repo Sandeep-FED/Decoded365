@@ -305,5 +305,266 @@
   "expect": [
    "home-site"
   ]
+ },
+ {
+  "q": "Microsoft Flow",
+  "expect": [
+   "power-automate"
+  ]
+ },
+ {
+  "q": "Common Data Service",
+  "expect": [
+   "dataverse"
+  ]
+ },
+ {
+  "q": "Power Apps portals",
+  "expect": [
+   "power-pages"
+  ]
+ },
+ {
+  "q": "Power Virtual Agents",
+  "expect": [
+   "copilot-studio"
+  ]
+ },
+ {
+  "q": "Bing Chat Enterprise",
+  "expect": [
+   "microsoft-365-copilot-chat"
+  ]
+ },
+ {
+  "q": "Copilot for Microsoft 365",
+  "expect": [
+   "microsoft-365-copilot"
+  ]
+ },
+ {
+  "q": "Microsoft 365 Copilot Chat",
+  "expect": [
+   "microsoft-365-copilot-chat"
+  ]
+ },
+ {
+  "q": "Copilot Studio Lite",
+  "expect": [
+   "agent-builder"
+  ]
+ },
+ {
+  "q": "Project Manager Agent",
+  "expect": [
+   "planner-agent"
+  ]
+ },
+ {
+  "q": "Copilot for Finance",
+  "expect": [
+   "finance-agents"
+  ]
+ },
+ {
+  "q": "DLP policy",
+  "expect": [
+   "data-policy"
+  ]
+ },
+ {
+  "q": "entity versus table",
+  "expect": [
+   "dataverse-table"
+  ]
+ },
+ {
+  "q": "option set picklist drop-down",
+  "expect": [
+   "dataverse-choice"
+  ]
+ },
+ {
+  "q": "build a drag and drop app with full control over layout",
+  "expect": [
+   "canvas-app"
+  ]
+ },
+ {
+  "q": "app that is built around my data and tables",
+  "expect": [
+   "model-driven-app"
+  ]
+ },
+ {
+  "q": "website for customers outside our company",
+  "expect": [
+   "power-pages"
+  ]
+ },
+ {
+  "q": "automate an approval when a new email arrives",
+  "expect": [
+   "cloud-flow",
+   "power-automate"
+  ]
+ },
+ {
+  "q": "automate clicks on a Windows computer when there is no connector",
+  "expect": [
+   "desktop-flow"
+  ]
+ },
+ {
+  "q": "guided checklist across the top of a record",
+  "expect": [
+   "business-process-flow"
+  ]
+ },
+ {
+  "q": "Excel-like formula language for apps",
+  "expect": [
+   "power-fx"
+  ]
+ },
+ {
+  "q": "where Power Platform apps keep their data",
+  "expect": [
+   "dataverse"
+  ]
+ },
+ {
+  "q": "difference between a Dataverse table and a SharePoint list",
+  "expect": [
+   "dataverse-table",
+   "sharepoint-list"
+  ]
+ },
+ {
+  "q": "separate workspace for testing and production",
+  "expect": [
+   "environment"
+  ]
+ },
+ {
+  "q": "move an app from test to production",
+  "expect": [
+   "solution"
+  ]
+ },
+ {
+  "q": "ready-made plug to talk to another service",
+  "expect": [
+   "connector"
+  ]
+ },
+ {
+  "q": "stop makers combining company data with personal services",
+  "expect": [
+   "data-policy"
+  ]
+ },
+ {
+  "q": "what a person is allowed to do with rows of data",
+  "expect": [
+   "security-role"
+  ]
+ },
+ {
+  "q": "control room for Power Platform administrators",
+  "expect": [
+   "power-platform-admin-center"
+  ]
+ },
+ {
+  "q": "charts and reports from many data sources",
+  "expect": [
+   "power-bi"
+  ]
+ },
+ {
+  "q": "menu and navigation of a model-driven app",
+  "expect": [
+   "model-driven-site-map"
+  ]
+ },
+ {
+  "q": "AI assistant that can do a job for me and use tools",
+  "expect": [
+   "agent"
+  ]
+ },
+ {
+  "q": "set up Copilot for one purpose with instructions only",
+  "expect": [
+   "declarative-agent"
+  ]
+ },
+ {
+  "q": "bring my own orchestrator and model",
+  "expect": [
+   "custom-engine-agent"
+  ]
+ },
+ {
+  "q": "what the agent is allowed to read to answer",
+  "expect": [
+   "knowledge-source"
+  ]
+ },
+ {
+  "q": "something an agent can do such as send an email",
+  "expect": [
+   "agent-action",
+   "agent-action"
+  ]
+ },
+ {
+  "q": "decides which tools and information the agent uses",
+  "expect": [
+   "orchestrator"
+  ]
+ },
+ {
+  "q": "one conversation an agent knows how to have",
+  "expect": [
+   "topic"
+  ]
+ },
+ {
+  "q": "AI states something confident that is made up",
+  "expect": [
+   "hallucination"
+  ]
+ },
+ {
+  "q": "give the AI the right facts so it does not guess",
+  "expect": [
+   "grounding"
+  ]
+ },
+ {
+  "q": "what you type to tell an AI what you want",
+  "expect": [
+   "prompt"
+  ]
+ },
+ {
+  "q": "program trained on huge amounts of text to write language",
+  "expect": [
+   "large-language-model"
+  ]
+ },
+ {
+  "q": "how apps ask for my mail files and meetings",
+  "expect": [
+   "microsoft-graph"
+  ]
+ },
+ {
+  "q": "home screen for Microsoft 365 on the web",
+  "expect": [
+   "microsoft-365-copilot-app"
+  ]
  }
 ]

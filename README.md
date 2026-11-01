@@ -2,7 +2,7 @@
 
 A free, open-source glossary for **SharePoint, Power Platform and Microsoft 365 Copilot**. Every term is written at three depths (Beginner, Maker, Architect), linked to related terms, and searchable by name, old name or meaning.
 
-Version 1 covers **SharePoint**. Power Platform (v1.1) and Copilot (v1.2) follow as new content, without redesigning the site.
+The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with SharePoint the most complete. More terms are added by pull request, and the three products share one site, one search and one map.
 
 > Decoded365 is a community project and is not affiliated with or endorsed by Microsoft.
 

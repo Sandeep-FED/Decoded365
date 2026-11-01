@@ -74,3 +74,13 @@ describe('stop words', () => {
 		expect(meaningfulWords('what is a')).toBe('what is a');
 	});
 });
+
+describe('exact names', () => {
+	it('puts the term whose old name was typed exactly ahead of chattier entries', async () => {
+		const engine = await createSearchEngine([
+			doc({ id: 'agent', term: 'Agent', summary: 'An agent is an assistant. Agents use virtual power and many agents.', text: 'power virtual agents agents agents' }),
+			doc({ id: 'studio', term: 'Copilot Studio', aliases: ['Power Virtual Agents'], renames: [{ from: 'Power Virtual Agents', to: 'Copilot Studio', date: null }], summary: 'Build agents.' }),
+		]);
+		expect((await engine.search('Power Virtual Agents'))[0].doc.id).toBe('studio');
+	});
+});

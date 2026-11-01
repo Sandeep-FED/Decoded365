@@ -19,6 +19,9 @@ scope.onmessage = async (event) => {
 			env.allowRemoteModels = false;
 			env.allowLocalModels = true;
 			env.localModelPath = `${message.base}models/`;
+			// Transformers.js keeps its own persistent copy in the Cache API, so skip the browser's HTTP disk cache for
+			// these large files: it can fail to store a 23 MB response (ERR_CACHE_WRITE_FAILURE) and break the download.
+			env.fetch = (input: RequestInfo | URL, init?: RequestInit) => fetch(input, { ...init, cache: 'no-store' });
 			const wasm = env.backends.onnx.wasm;
 			if (wasm) {
 				wasm.wasmPaths = { mjs: `${message.base}ort/ort-wasm-simd-threaded.mjs`, wasm: `${message.base}ort/ort-wasm-simd-threaded.wasm` };

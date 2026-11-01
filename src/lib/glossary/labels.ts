@@ -7,8 +7,8 @@ export const PRODUCT_LABELS: Record<ProductName, string> = {
 	'cross-platform': 'Cross-platform',
 };
 
-/** Products with published content. Others show as "coming soon" (v1.1, v1.2). */
-export const AVAILABLE_PRODUCTS: ProductName[] = ['sharepoint'];
+/** Products with published content. A product not listed here shows as "coming soon" in filters. */
+export const AVAILABLE_PRODUCTS: ProductName[] = ['sharepoint', 'power-platform', 'copilot'];
 
 export const STATUS_LABELS: Record<StatusName, string> = {
 	ga: 'Generally available',

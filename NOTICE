@@ -17,6 +17,11 @@ credited in plain text only; addresses live in content/sources.yml for maintaine
   Microsoft 365 Glossary - Microsoft 365 & Power Platform Community (PnP).
     Licence to be confirmed. Term names and facts only until it is.
     pnp.github.io/community-docs/articles/glossary.html
+  Model-driven app glossary, Dataverse terminology, Power Platform, Power Pages and
+  Power Automate documentation, and the Microsoft 365 Copilot agent documentation -
+  Microsoft. CC BY 4.0 (powerapps-docs, power-platform, power-pages-docs,
+  power-automate-docs and m365copilot-docs repositories).
+  Microsoft Copilot Studio documentation - Microsoft. Licence to be confirmed. Facts only.
   Product Name Changes - Aaron Dinnage (m365maps.com).
     Licence not stated. Facts only; bulk import needs the author's permission.
     m365maps.com/renames.htm

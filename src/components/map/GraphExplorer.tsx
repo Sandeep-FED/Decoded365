@@ -13,17 +13,18 @@ interface Props {
 	products: { value: string; label: string; available: boolean }[];
 }
 
-// Strong repulsion and overlap avoidance keep labels readable; fit makes the graph fill the canvas.
+// Measured headlessly on the full glossary: strong gravity keeps the graph compact (roughly square), so the
+// fitted zoom stays high enough to read. Weak gravity made a tall chain that had to be zoomed far out.
 const LAYOUT = {
 	name: 'cose',
-	nodeRepulsion: () => 140000,
-	idealEdgeLength: () => 85,
-	nodeOverlap: 30,
-	componentSpacing: 50,
-	gravity: 1.2,
-	numIter: 1500,
+	nodeRepulsion: () => 60000,
+	idealEdgeLength: () => 50,
+	nodeOverlap: 20,
+	componentSpacing: 20,
+	gravity: 8,
+	numIter: 3000,
 	fit: true,
-	padding: 40,
+	padding: 30,
 } as const;
 const isDark = () => document.documentElement.classList.contains('dark');
 const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -88,13 +89,14 @@ export default function GraphExplorer({ nodes, edges, products }: Props) {
 		const cy = cyRef.current;
 		if (!cy) return;
 		cy.batch(() => {
-			cy.elements().removeClass('faded selected active');
+			cy.elements().removeClass('faded selected active neighbour');
 			if (!selectedId) return;
 			const node = cy.getElementById(selectedId);
 			if (node.empty()) return;
 			const around = node.closedNeighborhood();
 			cy.elements().not(around).addClass('faded');
 			node.addClass('selected');
+			around.nodes().addClass('neighbour');
 			node.connectedEdges().addClass('active');
 		});
 		const node = cy.getElementById(selectedId ?? '');
@@ -139,9 +141,9 @@ export default function GraphExplorer({ nodes, edges, products }: Props) {
 					ref={container}
 					role="img"
 					aria-label="Map of how glossary terms relate. Use the find box and the details panel to explore with a keyboard, or the list below the map."
-					className="h-[34rem] w-full rounded-xl border bg-card/70 backdrop-blur-sm"
+					className="h-[36rem] w-full rounded-xl border bg-card/70 backdrop-blur-sm"
 				/>
-				<aside aria-live="polite" aria-label="Selected term" className="min-h-48 rounded-xl border bg-card/70 backdrop-blur-sm lg:h-[34rem] lg:overflow-y-auto">
+				<aside aria-live="polite" aria-label="Selected term" className="min-h-48 rounded-xl border bg-card/70 backdrop-blur-sm lg:h-[36rem] lg:overflow-y-auto">
 					<NodeDetails node={selected} neighbours={neighbours} onSelect={setSelectedId} />
 				</aside>
 			</div>

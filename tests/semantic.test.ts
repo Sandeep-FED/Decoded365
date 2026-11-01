@@ -93,3 +93,18 @@ describe('selectSemanticHits', () => {
 		expect(selectSemanticHits([])).toEqual([]);
 	});
 });
+
+describe('exactNameMatches', () => {
+	it('finds terms by exact name, alias or old name, ignoring case and spacing', async () => {
+		const { exactNameMatches } = await import('@/lib/search/engine');
+		const doc = (id: string, term: string, aliases: string[] = [], from: string[] = []) => ({
+			id, term, aliases, renames: from.map((f) => ({ from: f, to: term, date: null })),
+			summary: '', text: '', product: 'sharepoint' as const, status: 'ga' as const, legacy: false,
+		});
+		const docs = [doc('dp', 'Document Processing', ['SharePoint Premium']), doc('flow', 'Power Automate', [], ['Microsoft Flow'])];
+		expect(exactNameMatches(docs, '  sharepoint   premium ')).toEqual(['dp']);
+		expect(exactNameMatches(docs, 'microsoft flow')).toEqual(['flow']);
+		expect(exactNameMatches(docs, 'premium')).toEqual([]);
+		expect(exactNameMatches(docs, '')).toEqual([]);
+	});
+});

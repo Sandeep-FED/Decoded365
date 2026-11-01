@@ -25,8 +25,11 @@ export default function BrowseExplorer({ terms, products }: Props) {
 
 	useEffect(() => {
 		setShowLegacy(readPref(PREF_KEYS.legacy) === 'show');
+		// A link such as /browse/?product=copilot opens the list already filtered.
+		const wanted = new URLSearchParams(location.search).get('product');
+		if (wanted && products.some((p) => p.value === wanted && p.available)) setProduct(wanted);
 		setHydrated(true);
-	}, []);
+	}, [products]);
 
 	const visible = useMemo(
 		() => (hydrated ? filterTerms(terms, { query, product, showLegacy }) : terms),

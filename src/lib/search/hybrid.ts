@@ -1,5 +1,5 @@
 import type { SearchDocument } from './documents';
-import { createSearchEngine, type SearchEngine, type SearchResult } from './engine';
+import { createSearchEngine, exactNameMatches, type SearchEngine, type SearchResult } from './engine';
 import { fuseRankings, rankBySimilarity, selectSemanticHits, type Embed, type VectorIndex } from './semantic';
 
 export interface HybridOptions {
@@ -13,7 +13,7 @@ export interface HybridEngine extends SearchEngine {
 	keyword: SearchEngine['search'];
 }
 
-/** Hybrid search: keyword and meaning rankings fused with reciprocal rank fusion (BRD F4). */
+/** Hybrid search: keyword and meaning rankings fused with reciprocal rank fusion (BRD F4), exact names first. */
 export async function createHybridEngine(docs: SearchDocument[], options: HybridOptions = {}): Promise<HybridEngine> {
 	const keywordEngine = await createSearchEngine(docs);
 	const byId = new Map(docs.map((d) => [d.id, d]));
@@ -29,7 +29,10 @@ export async function createHybridEngine(docs: SearchDocument[], options: Hybrid
 			const keywordById = new Map(keywordHits.map((r) => [r.doc.id, r]));
 			const scoreById = new Map(semanticHits.map((h) => [h.id, h.score]));
 
-			const fused = fuseRankings([keywordHits.map((r) => r.doc.id), semanticHits.map((h) => h.id)], limit);
+			// Fusion favours terms that appear in both rankings, which can bury an exact name match: put those first.
+			const exact = exactNameMatches(docs, query);
+			const fusedAll = fuseRankings([keywordHits.map((r) => r.doc.id), semanticHits.map((h) => h.id)], limit + exact.length);
+			const fused = [...new Set([...exact, ...fusedAll])].slice(0, limit);
 			return fused.flatMap((id): SearchResult[] => {
 				const existing = keywordById.get(id);
 				const doc = byId.get(id);

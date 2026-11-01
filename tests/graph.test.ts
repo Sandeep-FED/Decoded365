@@ -85,5 +85,9 @@ describe('comparisonRows', () => {
 		expect(rows[0]).toMatchObject({ left: 'For working together.', right: 'For broadcasting.' });
 		expect(rows[1].right).toBe('');
 		expect(rows[3]).toMatchObject({ left: 'SharePoint Online and Server', right: 'SharePoint Online' });
+
+		const c = make('cop', 'Copilot', { product: 'copilot' }, '## Beginner\nAn assistant.');
+		const d = make('cop2', 'Copilot Chat', { product: 'copilot' }, '## Beginner\nA chat.');
+		expect(comparisonRows(c, d).map((r) => r.label)).not.toContain('Applies to');
 	});
 });

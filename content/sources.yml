@@ -48,3 +48,23 @@
   licence: CC BY 4.0 (m365copilot-docs repository)
   release: v1.2
   use: Agent vocabulary; adapt definitions.
+- id: ms-power-platform-docs
+  title: Power Platform documentation (Power Platform, Power Pages and Power Automate)
+  owner: Microsoft
+  licence: CC BY 4.0 (power-platform, power-pages-docs and power-automate-docs repositories)
+  address: learn.microsoft.com/en-us/power-platform
+  release: v1.1
+  use: Environments, data policies, solutions, Power Pages and Power Automate concepts; adapt definitions.
+- id: ms-copilot-studio-docs
+  title: Microsoft Copilot Studio documentation
+  owner: Microsoft
+  licence: To be confirmed
+  address: learn.microsoft.com/en-us/microsoft-copilot-studio
+  release: v1.2
+  use: Copilot Studio concepts; facts only until the licence is confirmed.
+- id: decoded365-authors
+  title: Decoded365 authors
+  owner: Decoded365 contributors
+  licence: CC BY 4.0
+  release: v1
+  use: Original explanations written for this glossary, for general concepts that have no single source.

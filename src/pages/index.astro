@@ -6,13 +6,15 @@ import { buttonVariants } from '@/components/ui/button';
 import FlipTitle from '@/components/islands/FlipTitle';
 import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
 import { getGlossary } from '@/lib/glossary/repository';
-import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { PRODUCT_LABELS } from '@/lib/glossary/labels';
 import { browsePath, mapPath, termPath } from '@/lib/paths';
 import { PRODUCTS } from '@/schema/term';
 import { SITE } from '@/config/site';
+import { FEATURED_TERM_IDS } from '@/config/featured';
 
 const terms = await getGlossary();
-const starters = terms.filter((t) => !t.legacy).slice(0, 6);
+const byId = new Map(terms.map((t) => [t.id, t]));
+const starters = FEATURED_TERM_IDS.flatMap((id) => byId.get(id) ?? []).slice(0, 6);
 // Titles that take turns in the hero headline: real glossary terms.
 const flipTitles = starters.map((t) => t.term);
 
@@ -34,7 +36,7 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 			</span>
 		</p>
 		<p class="max-w-2xl text-lg text-muted-foreground">
-			Every term, written three ways. Find what a SharePoint word means at the depth you need, see what it was called before,
+			Every term, written three ways. Find what a SharePoint, Power Platform or Copilot word means at the depth you need, see what it was called before,
 			and follow how it connects to everything else.
 		</p>
 		<div class="flex flex-wrap gap-3">
@@ -88,15 +90,15 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 			{
 				roadmap.map((product) => (
 					<li>
-						<Card>
-							<CardHeader>
-								<CardTitle>{PRODUCT_LABELS[product]}</CardTitle>
-								<CardDescription>
-									{AVAILABLE_PRODUCTS.includes(product) ? 'Available now' : product === 'power-platform' ? 'Coming in v1.1' : 'Coming in v1.2'}
-								</CardDescription>
-							</CardHeader>
-							<CardContent />
-						</Card>
+						<a href={`${browsePath()}?product=${product}`} class="block h-full">
+							<Card className="h-full transition-colors hover:bg-accent">
+								<CardHeader>
+									<CardTitle>{PRODUCT_LABELS[product]}</CardTitle>
+									<CardDescription>{terms.filter((t) => t.product === product).length} terms</CardDescription>
+								</CardHeader>
+								<CardContent />
+							</Card>
+						</a>
 					</li>
 				))
 			}

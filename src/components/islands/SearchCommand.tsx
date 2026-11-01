@@ -54,6 +54,12 @@ export default function SearchCommand() {
 
 	const terms = results.filter((r) => r.matchedName?.kind !== 'old-name');
 	const oldNames = results.filter((r) => r.matchedName?.kind === 'old-name');
+	// When the best match is an old name (the visitor typed one), show that group first.
+	const oldNamesFirst = results[0]?.matchedName?.kind === 'old-name';
+	const groups = [
+		{ heading: 'Terms', items: terms },
+		{ heading: 'Old names', items: oldNames },
+	].sort((a, b) => (oldNamesFirst ? Number(a.heading !== 'Old names') - Number(b.heading !== 'Old names') : 0));
 	const percent = progress && progress.total > 0 ? Math.round((progress.loaded / progress.total) * 100) : 0;
 
 	const row = (r: SearchResult) => (
@@ -97,8 +103,7 @@ export default function SearchCommand() {
 							<div className="py-6 text-center text-sm text-muted-foreground">Try “recycle bin”, “app for SharePoint” or “where do deleted files go”.</div>
 						)}
 						{indexState === 'ready' && query.trim() && results.length === 0 && <CommandEmpty>No matching terms.</CommandEmpty>}
-						{terms.length > 0 && <CommandGroup heading="Terms">{terms.map(row)}</CommandGroup>}
-						{oldNames.length > 0 && <CommandGroup heading="Old names">{oldNames.map(row)}</CommandGroup>}
+						{groups.map((g) => g.items.length > 0 && <CommandGroup key={g.heading} heading={g.heading}>{g.items.map(row)}</CommandGroup>)}
 					</CommandList>
 					<div className="border-t px-3 py-2 text-xs text-muted-foreground" aria-live="polite">
 						{meaning === 'loading' && (
