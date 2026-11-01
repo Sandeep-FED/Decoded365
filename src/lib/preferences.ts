@@ -4,10 +4,7 @@ import type { Level } from '@/lib/content/levels';
 export const PREF_KEYS = {
 	level: 'decoded365:level',
 	legacy: 'decoded365:show-legacy',
-	theme: 'decoded365:theme',
 } as const;
-
-export type Theme = 'light' | 'dark' | 'system';
 
 export function readPref(key: string): string | null {
 	try {
@@ -31,9 +28,4 @@ export function applyLevel(level: Level): void {
 
 export function applyLegacy(show: boolean): void {
 	document.documentElement.dataset.legacy = show ? 'show' : 'hide';
-}
-
-export function applyTheme(theme: Theme): void {
-	const dark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
-	document.documentElement.classList.toggle('dark', dark);
 }
