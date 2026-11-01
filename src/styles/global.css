@@ -35,6 +35,15 @@
   --status-preview: oklch(0.5 0.14 80);
   --status-legacy: oklch(0.5 0.1 50);
   --status-retired: oklch(0.5 0.2 27);
+
+  /* Space taken by the floating nav pill (two rows on phones); sticky elements sit below it. */
+  --header-offset: 5rem;
+}
+
+@media (max-width: 639px) {
+  :root {
+    --header-offset: 8rem;
+  }
 }
 
 .dark {

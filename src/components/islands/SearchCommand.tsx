@@ -84,7 +84,7 @@ export default function SearchCommand() {
 
 	return (
 		<>
-			<Button variant="outline" size="sm" onClick={() => setOpen(true)} aria-label="Search the glossary" className="gap-2 text-muted-foreground">
+			<Button variant="outline" size="sm" onClick={() => setOpen(true)} aria-label="Search the glossary" className="gap-2 rounded-full text-muted-foreground">
 				<SearchIcon />
 				<span className="hidden sm:inline">Search</span>
 				<kbd className="hidden rounded border px-1.5 text-xs sm:inline">/</kbd>

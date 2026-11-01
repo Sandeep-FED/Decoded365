@@ -50,7 +50,7 @@ export default function BrowseExplorer({ terms, products }: Props) {
 		<div className="space-y-6">
 			<div
 				data-js-only
-				className="sticky top-0 z-20 -mx-4 space-y-3 border-b bg-background/80 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6"
+				className="sticky top-[var(--header-offset)] z-30 space-y-3 rounded-2xl border bg-background/80 px-4 py-3 shadow-sm backdrop-blur"
 			>
 				<BrowseToolbar
 					query={query}
@@ -74,7 +74,7 @@ export default function BrowseExplorer({ terms, products }: Props) {
 			) : (
 				<div className="space-y-8">
 					{groups.map((group) => (
-						<section key={group.letter} id={`letter-${group.letter}`} aria-labelledby={`heading-${group.letter}`} className="scroll-mt-40">
+						<section key={group.letter} id={`letter-${group.letter}`} aria-labelledby={`heading-${group.letter}`} className="scroll-mt-[calc(var(--header-offset)+9rem)]">
 							<h2 id={`heading-${group.letter}`} className="mb-3 flex items-center gap-3 text-xl font-semibold">
 								<span className="inline-flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
 									{group.letter}
