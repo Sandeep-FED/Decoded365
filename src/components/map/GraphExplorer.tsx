@@ -13,7 +13,18 @@ interface Props {
 	products: { value: string; label: string; available: boolean }[];
 }
 
-const LAYOUT = { name: 'cose', nodeRepulsion: () => 12000, idealEdgeLength: () => 100, padding: 40 } as const;
+// Strong repulsion and overlap avoidance keep labels readable; fit makes the graph fill the canvas.
+const LAYOUT = {
+	name: 'cose',
+	nodeRepulsion: () => 140000,
+	idealEdgeLength: () => 85,
+	nodeOverlap: 30,
+	componentSpacing: 50,
+	gravity: 1.2,
+	numIter: 1500,
+	fit: true,
+	padding: 40,
+} as const;
 const isDark = () => document.documentElement.classList.contains('dark');
 const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 

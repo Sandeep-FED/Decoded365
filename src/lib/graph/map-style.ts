@@ -17,7 +17,7 @@ export function graphStyle(dark: boolean): StylesheetJson {
 			style: {
 				label: 'data(label)',
 				color: text,
-				'font-size': 11,
+				'font-size': 13,
 				'text-valign': 'bottom',
 				'text-margin-y': 5,
 				'text-outline-width': 3,
@@ -43,7 +43,7 @@ export function graphStyle(dark: boolean): StylesheetJson {
 				'target-arrow-color': edge,
 				'target-arrow-shape': 'triangle',
 				'curve-style': 'bezier',
-				'font-size': 9,
+				'font-size': 11,
 				color: text,
 				'text-background-color': dark ? '#0a0a0a' : '#ffffff',
 				'text-background-opacity': 0.85,

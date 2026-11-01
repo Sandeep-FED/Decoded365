@@ -6,7 +6,7 @@ function ToggleGroup({ className, ...props }: React.ComponentProps<typeof Toggle
 	return (
 		<ToggleGroupPrimitive.Root
 			data-slot="toggle-group"
-			className={cn('inline-flex w-fit items-center rounded-md border bg-background shadow-xs', className)}
+			className={cn('inline-flex w-fit max-w-full items-center overflow-x-auto rounded-md border bg-background shadow-xs', className)}
 			{...props}
 		/>
 	);
@@ -17,7 +17,7 @@ function ToggleGroupItem({ className, ...props }: React.ComponentProps<typeof To
 		<ToggleGroupPrimitive.Item
 			data-slot="toggle-group-item"
 			className={cn(
-				'inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap px-3 text-sm font-medium outline-none transition-colors first:rounded-l-md last:rounded-r-md hover:bg-muted hover:text-muted-foreground focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&:not(:first-child)]:border-l',
+				'inline-flex h-9 shrink-0 items-center justify-center gap-2 whitespace-nowrap px-3 text-sm font-medium outline-none transition-colors first:rounded-l-md last:rounded-r-md hover:bg-muted hover:text-muted-foreground focus-visible:z-10 focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground [&:not(:first-child)]:border-l',
 				className,
 			)}
 			{...props}
