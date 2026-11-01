@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductBadge from '@/components/ProductBadge.astro';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
+import FlipTitle from '@/components/islands/FlipTitle';
 import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
 import { getGlossary } from '@/lib/glossary/repository';
 import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
@@ -12,6 +13,8 @@ import { SITE } from '@/config/site';
 
 const terms = await getGlossary();
 const starters = terms.filter((t) => !t.legacy).slice(0, 6);
+// Titles that take turns in the hero headline: real glossary terms.
+const flipTitles = starters.map((t) => t.term);
 
 const levelBlurbs = {
 	beginner: 'One plain sentence and an everyday analogy. No jargon.',
@@ -24,6 +27,12 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 <BaseLayout>
 	<section class="space-y-4 py-10">
 		<h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">{SITE.name}</h1>
+		<p class="text-2xl font-medium sm:text-4xl">
+			<span data-no-js>What does “{flipTitles[0]}” mean?</span>
+			<span data-js-only>
+				<FlipTitle client:load before="What does " words={flipTitles} after=" mean?" />
+			</span>
+		</p>
 		<p class="max-w-2xl text-lg text-muted-foreground">
 			Every term, written three ways. Find what a SharePoint word means at the depth you need, see what it was called before,
 			and follow how it connects to everything else.

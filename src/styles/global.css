@@ -197,3 +197,8 @@ html[data-legacy="hide"] [data-letter-group]:not(:has([data-term-item]:not([data
   padding: 0.1rem 0.3rem;
   font-size: 0.875em;
 }
+
+/* Static fallback that is replaced by its animated version once JavaScript runs. */
+html[data-js] [data-no-js] {
+  display: none;
+}
