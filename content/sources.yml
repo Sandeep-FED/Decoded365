@@ -1,0 +1,50 @@
+# Source registry (BRD 8.1 / 8.6). Used by the importer and the Credits page only.
+# Addresses are for maintainers and are never rendered inside entries.
+- id: ms-sharepoint-glossary
+  title: SharePoint glossary
+  owner: Microsoft
+  licence: CC BY 4.0 (sp-dev-docs repository)
+  address: learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-glossary
+  release: v1
+  use: Import all terms; adapt definitions; tag legacy and server-only terms.
+- id: pnp-m365-glossary
+  title: Microsoft 365 Glossary (PnP community docs)
+  owner: Microsoft 365 & Power Platform Community (PnP)
+  licence: To be confirmed
+  address: pnp.github.io/community-docs/articles/glossary.html
+  release: v1
+  use: SharePoint terms; adapt text only if the licence allows, otherwise terms and facts only.
+- id: m365maps-renames
+  title: Product Name Changes
+  owner: Aaron Dinnage (m365maps.com)
+  licence: Not stated
+  address: m365maps.com/renames.htm
+  release: v1
+  use: Rename history; facts only until permission to import is confirmed.
+- id: ms-model-driven-glossary
+  title: Model-driven app glossary of terms
+  owner: Microsoft
+  licence: CC BY 4.0 (powerapps-docs repository)
+  address: learn.microsoft.com/en-us/power-apps/maker/model-driven-apps/model-driven-app-glossary
+  release: v1.1
+  use: Import all terms; adapt definitions.
+- id: ms-dataverse-terminology
+  title: Developers - Understand terminology in Microsoft Dataverse
+  owner: Microsoft
+  licence: CC BY 4.0 (powerapps-docs repository)
+  address: learn.microsoft.com/en-us/power-apps/developer/data-platform/understand-terminology
+  release: v1.1
+  use: Screen-name versus developer-name mapping feeds aliases and the Architect level.
+- id: ms-copilot-glossary
+  title: Microsoft Copilot glossary
+  owner: Microsoft
+  licence: To be confirmed
+  address: learn.microsoft.com/copilot/glossary
+  release: v1.2
+  use: Import; several entries are dated and need updating.
+- id: ms-declarative-vs-custom-agents
+  title: Compare declarative and custom engine agents
+  owner: Microsoft
+  licence: CC BY 4.0 (m365copilot-docs repository)
+  release: v1.2
+  use: Agent vocabulary; adapt definitions.
