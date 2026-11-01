@@ -2,19 +2,37 @@ import { useEffect, useRef, useState } from 'react';
 import { SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import type { SearchEngine, SearchResult } from '@/lib/search/engine';
+import type { SearchDocument } from '@/lib/search/documents';
+import type { SearchResult } from '@/lib/search/engine';
+import { createHybridEngine, type HybridEngine, type HybridOptions } from '@/lib/search/hybrid';
+import { loadVectorIndex, type VectorFile } from '@/lib/search/semantic';
+import { createWorkerEmbedder, type DownloadProgress, type WorkerEmbedder } from '@/lib/search/worker-embedder';
 import { formatYearMonth } from '@/lib/format-date';
 import { STATUS_LABELS } from '@/lib/glossary/labels';
 import { termPath, withBase } from '@/lib/paths';
 
-/** Search bar (`/` or Ctrl/⌘ K). Keyword results are instant; the index loads on first open. */
+type IndexState = 'idle' | 'loading' | 'ready' | 'error';
+type Meaning = 'off' | 'loading' | 'ready' | 'unavailable';
+
+const megabytes = (bytes: number) => (bytes / 1_000_000).toFixed(0);
+
+/**
+ * Search bar (`/` or Ctrl/⌘ K). Name matches are instant. The first time someone types, a small
+ * embedding model downloads in a Web Worker so results can also match by meaning (BRD F4).
+ */
 export default function SearchCommand() {
 	const [open, setOpen] = useState(false);
 	const [query, setQuery] = useState('');
 	const [results, setResults] = useState<SearchResult[]>([]);
-	const [state, setState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle');
-	const engine = useRef<SearchEngine | null>(null);
+	const [indexState, setIndexState] = useState<IndexState>('idle');
+	const [meaning, setMeaning] = useState<Meaning>('off');
+	const [progress, setProgress] = useState<DownloadProgress | null>(null);
+
+	const engine = useRef<HybridEngine | null>(null);
+	const options = useRef<HybridOptions>({});
+	const embedder = useRef<WorkerEmbedder | null>(null);
 
 	useEffect(() => {
 		const onKey = (event: KeyboardEvent) => {
@@ -28,35 +46,60 @@ export default function SearchCommand() {
 		return () => document.removeEventListener('keydown', onKey);
 	}, []);
 
+	// Load the name index (and chunk vectors, if the build produced them) the first time the palette opens.
 	useEffect(() => {
-		if (!open || engine.current || state === 'loading') return;
-		setState('loading');
+		if (!open || indexState !== 'idle') return;
+		setIndexState('loading');
 		(async () => {
 			try {
-				const [{ createSearchEngine }, response] = await Promise.all([
-					import('@/lib/search/engine'),
-					fetch(withBase('search-index.json')),
-				]);
-				if (!response.ok) throw new Error(String(response.status));
-				engine.current = await createSearchEngine(await response.json());
-				setState('ready');
+				const [docsResponse, vectorsResponse] = await Promise.all([fetch(withBase('search-index.json')), fetch(withBase('vectors.json'))]);
+				if (!docsResponse.ok) throw new Error(String(docsResponse.status));
+				const docs: SearchDocument[] = await docsResponse.json();
+				if (vectorsResponse.ok) options.current.index = loadVectorIndex((await vectorsResponse.json()) as VectorFile);
+				engine.current = await createHybridEngine(docs, options.current);
+				setIndexState('ready');
 			} catch {
-				setState('error');
+				setIndexState('error');
 			}
 		})();
-	}, [open, state]);
+	}, [open, indexState]);
 
+	// Start the model only when someone actually searches.
 	useEffect(() => {
-		if (state !== 'ready' || !engine.current) return;
+		if (indexState !== 'ready' || meaning !== 'off' || !query.trim()) return;
+		if (!options.current.index || typeof WebAssembly === 'undefined') {
+			setMeaning('unavailable');
+			return;
+		}
+		setMeaning('loading');
+		const started = createWorkerEmbedder(setProgress);
+		embedder.current = started;
+		started.ready
+			.then(() => {
+				options.current.embed = started.embed;
+				setMeaning('ready');
+			})
+			.catch(() => setMeaning('unavailable'));
+	}, [indexState, meaning, query]);
+
+	useEffect(() => () => embedder.current?.dispose(), []);
+
+	// Run the search (debounced). Re-runs when the model finishes loading.
+	useEffect(() => {
+		if (indexState !== 'ready' || !engine.current) return;
 		let current = true;
-		engine.current.search(query).then((found) => current && setResults(found));
+		const timer = setTimeout(() => {
+			engine.current?.search(query).then((found) => current && setResults(found));
+		}, 120);
 		return () => {
 			current = false;
+			clearTimeout(timer);
 		};
-	}, [query, state]);
+	}, [query, indexState, meaning]);
 
 	const terms = results.filter((r) => r.matchedName?.kind !== 'old-name');
 	const oldNames = results.filter((r) => r.matchedName?.kind === 'old-name');
+	const percent = progress && progress.total > 0 ? Math.round((progress.loaded / progress.total) * 100) : 0;
 
 	const row = (r: SearchResult) => (
 		<CommandItem
@@ -93,17 +136,28 @@ export default function SearchCommand() {
 				<Command shouldFilter={false}>
 					<CommandInput value={query} onValueChange={setQuery} placeholder="Type a term, an old name, or what you mean…" />
 					<CommandList>
-						{state === 'loading' && <div className="py-6 text-center text-sm text-muted-foreground">Loading…</div>}
-						{state === 'error' && <div className="py-6 text-center text-sm">Search could not load. Try the A–Z list instead.</div>}
-						{state === 'ready' && !query.trim() && (
-							<div className="py-6 text-center text-sm text-muted-foreground">
-								Try “recycle bin”, “app for SharePoint” or “deleted files”.
-							</div>
+						{indexState === 'loading' && <div className="py-6 text-center text-sm text-muted-foreground">Loading…</div>}
+						{indexState === 'error' && <div className="py-6 text-center text-sm">Search could not load. Try the A–Z list instead.</div>}
+						{indexState === 'ready' && !query.trim() && (
+							<div className="py-6 text-center text-sm text-muted-foreground">Try “recycle bin”, “app for SharePoint” or “where do deleted files go”.</div>
 						)}
-						{state === 'ready' && query.trim() && results.length === 0 && <CommandEmpty>No matching terms.</CommandEmpty>}
+						{indexState === 'ready' && query.trim() && results.length === 0 && <CommandEmpty>No matching terms.</CommandEmpty>}
 						{terms.length > 0 && <CommandGroup heading="Terms">{terms.map(row)}</CommandGroup>}
 						{oldNames.length > 0 && <CommandGroup heading="Old names">{oldNames.map(row)}</CommandGroup>}
 					</CommandList>
+					<div className="border-t px-3 py-2 text-xs text-muted-foreground" aria-live="polite">
+						{meaning === 'loading' && (
+							<div className="space-y-1.5">
+								<p>
+									Preparing search by meaning (one-time download{progress && progress.total > 0 ? `, ${megabytes(progress.loaded)} of ${megabytes(progress.total)} MB` : ''}). Name matches work meanwhile.
+								</p>
+								<Progress value={percent} aria-label="Model download progress" />
+							</div>
+						)}
+						{meaning === 'ready' && <p>Searching by name and meaning, on your device.</p>}
+						{meaning === 'unavailable' && <p>Searching by name. Meaning search is not available on this device.</p>}
+						{meaning === 'off' && <p>Searches run on your device. Nothing is sent anywhere.</p>}
+					</div>
 				</Command>
 			</CommandDialog>
 		</>

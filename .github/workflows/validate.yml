@@ -68,6 +68,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Search quality with meaning search (top 5 >= 80%)
+        run: npm run eval:search:hybrid
       - run: npx playwright install --with-deps chromium
       - name: Browser and axe (WCAG 2.2 AA) tests
         run: npm run test:e2e
