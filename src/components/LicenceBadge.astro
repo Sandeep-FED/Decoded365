@@ -1,0 +1,14 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { licenceStatus } from '@/lib/credits/licence-status';
+
+interface Props {
+	licence: string;
+}
+const { licence } = Astro.props;
+const pending = licenceStatus(licence) === 'pending';
+---
+
+<Badge className={pending ? 'border-status-preview/40 text-status-preview' : 'border-status-ga/40 text-status-ga'}>
+	{pending ? 'Licence to be confirmed' : 'Open licence'}
+</Badge>
