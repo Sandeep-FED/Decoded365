@@ -144,3 +144,19 @@ describe('validateCorpus', () => {
 		expect(text).toMatch(/needs a "retired" block/);
 	});
 });
+
+describe('spelling helpers', () => {
+	it('skips front matter, code, links, acronyms and product names', async () => {
+		const { extractWords } = await import('@/lib/content/spelling');
+		const md = '---\nterm: Wrongg\n---\nSharePoint [[spfx]] `codee` GROUP#0 API hello wrold\n```\nfenced bad\n```';
+		expect(extractWords(md).map((w) => w.word)).toEqual(['hello', 'wrold']);
+	});
+
+	it('reports unknown words with line numbers', async () => {
+		const { findMisspellings } = await import('@/lib/content/spelling');
+		const known = new Set(['hello', 'world']);
+		const found = findMisspellings('hello\nwrold', (w) => known.has(w), new Set());
+		expect(found).toEqual([{ word: 'wrold', line: 2 }]);
+		expect(findMisspellings('wrold', (w) => known.has(w), new Set(['wrold']))).toEqual([]);
+	});
+});
