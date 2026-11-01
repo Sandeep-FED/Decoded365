@@ -3,8 +3,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ProductBadge from '@/components/ProductBadge.astro';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
-import SpotlightBackground from '@/components/SpotlightBackground';
-import { cn } from '@/lib/utils';
 import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
 import { getGlossary } from '@/lib/glossary/repository';
 import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
@@ -24,24 +22,18 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 ---
 
 <BaseLayout>
-	<SpotlightBackground client:load>
-		<div class="space-y-4">
-			<h1 class="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl">
-				{SITE.name}
-			</h1>
-			<p class="max-w-2xl text-lg text-neutral-300">
-				Every term, written three ways. Find what a SharePoint word means at the depth you need, see what it was called before,
-				and follow how it connects to everything else.
-			</p>
-			<div class="flex flex-wrap gap-3">
-				<a href={browsePath()} class={cn(buttonVariants(), 'bg-white text-black hover:bg-white/90')}>Browse A–Z</a>
-				<a href={mapPath()} class={cn(buttonVariants({ variant: 'outline' }), 'border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white')}>
-					Explore the map
-				</a>
-			</div>
-			<p class="text-sm text-neutral-400">Press <kbd class="rounded border border-white/30 px-1.5">/</kbd> anywhere to search.</p>
+	<section class="space-y-4 py-10">
+		<h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">{SITE.name}</h1>
+		<p class="max-w-2xl text-lg text-muted-foreground">
+			Every term, written three ways. Find what a SharePoint word means at the depth you need, see what it was called before,
+			and follow how it connects to everything else.
+		</p>
+		<div class="flex flex-wrap gap-3">
+			<a href={browsePath()} class={buttonVariants()}>Browse A–Z</a>
+			<a href={mapPath()} class={buttonVariants({ variant: 'outline' })}>Explore the map</a>
 		</div>
-	</SpotlightBackground>
+		<p class="text-sm text-muted-foreground">Press <kbd class="rounded border px-1.5">/</kbd> anywhere to search.</p>
+	</section>
 
 	<section aria-labelledby="levels" class="space-y-3 py-6">
 		<h2 id="levels" class="text-xl font-semibold">Three levels for every term</h2>
