@@ -68,6 +68,12 @@ describe('wiki links', () => {
 		);
 		expect(out).toBe('See [A B](/terms/a-b/) and [[zzz]].');
 	});
+
+	it('supports a custom label with [[id|label]]', () => {
+		expect(findWikiLinks('See [[a-b|the thing]].')).toEqual(['a-b']);
+		const out = replaceWikiLinks('See [[a-b|the thing]].', () => ({ label: 'A B', href: '/terms/a-b/' }));
+		expect(out).toBe('See [the thing](/terms/a-b/).');
+	});
 });
 
 describe('external link detection', () => {
@@ -89,6 +95,7 @@ describe('external link detection', () => {
 describe('summary', () => {
 	it('returns the first paragraph without Markdown', () => {
 		expect(firstParagraph('A **bold** [[x]] and [link](/y).\n\nSecond.')).toBe('A bold x and link.');
+		expect(firstParagraph('See [[x|the label]] here.')).toBe('See the label here.');
 	});
 });
 

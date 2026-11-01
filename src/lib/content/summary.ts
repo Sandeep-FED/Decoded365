@@ -8,6 +8,7 @@ export function firstParagraph(markdown: string | undefined): string {
 /** Remove the Markdown syntax decoded365 entries use, keeping the readable text. */
 export function stripMarkdown(markdown: string): string {
 	return markdown
+		.replace(/\[\[[^\]|]+\|([^\]]+)\]\]/g, '$1')
 		.replace(/\[\[([^\]]+)\]\]/g, '$1')
 		.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
 		.replace(/[*_`]/g, '')
