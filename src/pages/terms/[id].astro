@@ -1,0 +1,91 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ProductBadge from '@/components/ProductBadge.astro';
+import StatusBadge from '@/components/StatusBadge.astro';
+import LevelSections from '@/components/LevelSections.astro';
+import RetirementNotice from '@/components/RetirementNotice.astro';
+import RenameTimeline from '@/components/RenameTimeline.astro';
+import RelatedMap from '@/components/RelatedMap.astro';
+import Attribution from '@/components/Attribution.astro';
+import ContributeLinks from '@/components/ContributeLinks.astro';
+import LevelSwitch from '@/components/islands/LevelSwitch';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { formatDate } from '@/lib/format-date';
+import { attributionFor } from '@/lib/glossary/attribution';
+import { APPLIES_TO_LABELS, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { makeLinkResolver } from '@/lib/glossary/link-resolver';
+import { getGlossary, getGraph, getSources } from '@/lib/glossary/repository';
+import { neighbourhood } from '@/lib/graph/neighbourhood';
+import { browsePath } from '@/lib/paths';
+
+export async function getStaticPaths() {
+	const terms = await getGlossary();
+	return terms.map((term) => ({ params: { id: term.id }, props: { term } }));
+}
+
+const { term } = Astro.props;
+const [terms, graph, sources] = await Promise.all([getGlossary(), getGraph(), getSources()]);
+const resolve = makeLinkResolver(terms);
+const neighbours = neighbourhood(graph, term.id);
+const attribution = attributionFor(term.origins, sources);
+const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedBy)?.label : undefined;
+---
+
+<BaseLayout title={term.term} description={term.summary}>
+	<article class="space-y-6">
+		<Breadcrumbs items={[{ label: 'Browse', href: browsePath() }, { label: PRODUCT_LABELS[term.product] }, { label: term.term }]} />
+
+		<header class="space-y-3">
+			<h1 class="text-3xl font-semibold tracking-tight">{term.term}</h1>
+			<div class="flex flex-wrap items-center gap-2">
+				<ProductBadge product={term.product} />
+				<StatusBadge status={term.status} />
+				{term.appliesTo?.map((a) => <Badge variant="secondary">{APPLIES_TO_LABELS[a]}</Badge>)}
+				<Badge variant="secondary" className="capitalize">{term.category}</Badge>
+			</div>
+			{
+				term.aliases.length > 0 && (
+					<p class="text-sm text-muted-foreground">Also known as: {term.aliases.join(', ')}</p>
+				)
+			}
+		</header>
+
+		<RetirementNotice term={term} replacedByName={replacedByName} />
+
+		<div data-js-only class="items-center gap-3">
+			<LevelSwitch client:load />
+		</div>
+
+		<LevelSections term={term} resolve={resolve} />
+
+		<Separator />
+
+		<div class="grid gap-6 md:grid-cols-2">
+			{
+				neighbours.length > 0 && (
+					<Card className="md:col-span-1">
+						<CardHeader>
+							<CardTitle>Related terms</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<RelatedMap centre={{ id: term.id, label: term.term, product: term.product }} neighbours={neighbours} />
+						</CardContent>
+					</Card>
+				)
+			}
+			<div class="space-y-6">
+				<RenameTimeline renamed={term.renamed} />
+			</div>
+		</div>
+
+		<footer class="space-y-3">
+			<Separator />
+			<p class="text-xs text-muted-foreground">Last reviewed {formatDate(term.lastReviewed)}.</p>
+			<Attribution attribution={attribution} />
+			<ContributeLinks term={term} />
+		</footer>
+	</article>
+</BaseLayout>

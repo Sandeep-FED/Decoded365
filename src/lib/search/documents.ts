@@ -1,5 +1,5 @@
 import type { GlossaryTerm } from '@/lib/glossary/term-model';
-import { firstParagraph, stripMarkdown } from '@/lib/content/summary';
+import { stripMarkdown, type LabelOf } from '@/lib/content/summary';
 import { LEVELS } from '@/lib/content/levels';
 import type { ProductName, StatusName } from '@/schema/term';
 
@@ -17,14 +17,14 @@ export interface SearchDocument {
 	legacy: boolean;
 }
 
-export function toSearchDocument(term: GlossaryTerm): SearchDocument {
+export function toSearchDocument(term: GlossaryTerm, labelOf?: LabelOf): SearchDocument {
 	return {
 		id: term.id,
 		term: term.term,
 		aliases: term.aliases,
 		renames: term.renamed,
-		summary: firstParagraph(term.levelSections.beginner),
-		text: LEVELS.map((level) => stripMarkdown(term.levelSections[level] ?? '')).join(' '),
+		summary: term.summary,
+		text: LEVELS.map((level) => stripMarkdown(term.levelSections[level] ?? '', labelOf)).join(' '),
 		product: term.product,
 		status: term.status,
 		legacy: term.legacy,

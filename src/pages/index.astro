@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductBadge from '@/components/ProductBadge.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { buttonVariants } from '@/components/ui/button';
+import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
+import { getGlossary } from '@/lib/glossary/repository';
+import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { browsePath, mapPath, termPath } from '@/lib/paths';
+import { PRODUCTS } from '@/schema/term';
+import { SITE } from '@/config/site';
+
+const terms = await getGlossary();
+const starters = terms.filter((t) => !t.legacy).slice(0, 6);
+
+const levelBlurbs = {
+	beginner: 'One plain sentence and an everyday analogy. No jargon.',
+	maker: 'When to use it, its limits and how it fits with other tools.',
+	architect: 'APIs, security model, licensing implications and gotchas.',
+} as const;
+const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
+---
+
+<BaseLayout>
+	<section class="space-y-4 py-6">
+		<h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{SITE.name}</h1>
+		<p class="max-w-2xl text-lg text-muted-foreground">
+			Every term, written three ways. Find what a SharePoint word means at the depth you need, see what it was called before,
+			and follow how it connects to everything else.
+		</p>
+		<div class="flex flex-wrap gap-3">
+			<a href={browsePath()} class={buttonVariants()}>Browse A–Z</a>
+			<a href={mapPath()} class={buttonVariants({ variant: 'outline' })}>Explore the map</a>
+		</div>
+		<p class="text-sm text-muted-foreground">Press <kbd class="rounded border px-1.5">/</kbd> anywhere to search.</p>
+	</section>
+
+	<section aria-labelledby="levels" class="space-y-3 py-6">
+		<h2 id="levels" class="text-xl font-semibold">Three levels for every term</h2>
+		<div class="grid gap-4 sm:grid-cols-3">
+			{
+				LEVELS.map((level) => (
+					<Card>
+						<CardHeader>
+							<CardTitle>{LEVEL_LABELS[level]}</CardTitle>
+							<CardDescription>{levelBlurbs[level]}</CardDescription>
+						</CardHeader>
+					</Card>
+				))
+			}
+		</div>
+	</section>
+
+	<section aria-labelledby="start" class="space-y-3 py-6">
+		<h2 id="start" class="text-xl font-semibold">Start here</h2>
+		<ul class="grid gap-4 sm:grid-cols-2">
+			{
+				starters.map((term) => (
+					<li>
+						<a href={termPath(term.id)} class="block h-full">
+							<Card className="h-full transition-colors hover:bg-accent">
+								<CardHeader>
+									<CardTitle className="flex items-center gap-2">
+										{term.term} <ProductBadge product={term.product} />
+									</CardTitle>
+									<CardDescription className="line-clamp-2">{term.summary}</CardDescription>
+								</CardHeader>
+							</Card>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section aria-labelledby="products" class="space-y-3 py-6">
+		<h2 id="products" class="text-xl font-semibold">Coverage</h2>
+		<ul class="grid gap-4 sm:grid-cols-3">
+			{
+				roadmap.map((product) => (
+					<li>
+						<Card>
+							<CardHeader>
+								<CardTitle>{PRODUCT_LABELS[product]}</CardTitle>
+								<CardDescription>
+									{AVAILABLE_PRODUCTS.includes(product) ? 'Available now' : product === 'power-platform' ? 'Coming in v1.1' : 'Coming in v1.2'}
+								</CardDescription>
+							</CardHeader>
+							<CardContent />
+						</Card>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</BaseLayout>

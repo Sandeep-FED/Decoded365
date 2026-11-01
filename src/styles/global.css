@@ -141,3 +141,43 @@ html[data-product="copilot"] [data-term-item]:not([data-product="copilot"]) {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Controls that only work with JavaScript stay hidden until the page script runs. */
+[data-js-only] {
+  display: none;
+}
+html[data-js] [data-js-only] {
+  display: revert;
+}
+
+/* Hide a letter group in the A–Z list when every term in it is a hidden legacy term. */
+html[data-legacy="hide"] [data-letter-group]:not(:has([data-term-item]:not([data-legacy-term]))) {
+  display: none;
+}
+
+/* Entry content (rendered Markdown). */
+.entry-prose {
+  line-height: 1.75;
+}
+.entry-prose > * + * {
+  margin-top: 0.85rem;
+}
+.entry-prose a {
+  color: var(--color-sharepoint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.entry-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.entry-prose ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+.entry-prose code {
+  border-radius: 0.25rem;
+  background: var(--muted);
+  padding: 0.1rem 0.3rem;
+  font-size: 0.875em;
+}

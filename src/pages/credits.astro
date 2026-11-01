@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { getSources } from '@/lib/glossary/repository';
+import { SITE } from '@/config/site';
+
+const sources = [...(await getSources()).values()];
+const releases = [
+	{ id: 'v1', label: 'Used in version 1 (SharePoint)' },
+	{ id: 'v1.1', label: 'Planned for version 1.1 (Power Platform)' },
+	{ id: 'v1.2', label: 'Planned for version 1.2 (Copilot)' },
+] as const;
+---
+
+<BaseLayout title="Credits & licences" description="Where Decoded365 content comes from and how it is licensed.">
+	<div class="space-y-8">
+		<header class="space-y-3">
+			<h1 class="text-3xl font-semibold tracking-tight">Credits &amp; licences</h1>
+			<p class="text-muted-foreground">
+				Decoded365 gathers terms from existing glossaries and rewrites each entry at three levels. Where text is adapted from a
+				source that allows it, the entry says so. Other sources contribute term names and facts only.
+			</p>
+			<p>{SITE.disclaimer}</p>
+			<p>Code is licensed {SITE.codeLicence}. Content is licensed {SITE.contentLicence}.</p>
+		</header>
+
+		{
+			releases.map((release) => {
+				const inRelease = sources.filter((s) => s.release === release.id);
+				return (
+					inRelease.length > 0 && (
+						<section aria-labelledby={`release-${release.id}`} class="space-y-3">
+							<h2 id={`release-${release.id}`} class="text-xl font-semibold">{release.label}</h2>
+							<ul class="grid gap-4">
+								{inRelease.map((source) => (
+									<li>
+										<Card>
+											<CardHeader>
+												<CardTitle>{source.title}</CardTitle>
+												<CardDescription>{source.owner}</CardDescription>
+											</CardHeader>
+											<CardContent className="space-y-1 text-sm">
+												<p><span class="font-medium">Licence:</span> {source.licence}</p>
+												<p><span class="font-medium">How it is used:</span> {source.use}</p>
+											</CardContent>
+										</Card>
+									</li>
+								))}
+							</ul>
+						</section>
+					)
+				);
+			})
+		}
+	</div>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buttonVariants } from '@/components/ui/button';
+import { browsePath } from '@/lib/paths';
+---
+
+<BaseLayout title="Page not found">
+	<div class="space-y-4 py-12">
+		<h1 class="text-3xl font-semibold tracking-tight">We couldn’t find that page</h1>
+		<p class="text-muted-foreground">The term may have been renamed or merged. Try the search (press /) or browse the full list.</p>
+		<a href={browsePath()} class={buttonVariants()}>Browse A–Z</a>
+	</div>
+</BaseLayout>

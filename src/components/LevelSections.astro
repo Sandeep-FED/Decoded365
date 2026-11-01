@@ -1,0 +1,22 @@
+---
+import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
+import type { GlossaryTerm } from '@/lib/glossary/term-model';
+import { renderMarkdown, type LinkTarget } from '@/lib/render/markdown';
+
+interface Props {
+	term: GlossaryTerm;
+	resolve: (id: string) => LinkTarget | undefined;
+}
+const { term, resolve } = Astro.props;
+---
+
+<div class="space-y-6">
+	{
+		LEVELS.filter((level) => term.levelSections[level]).map((level) => (
+			<section data-level-section={level} aria-labelledby={`level-${level}`} class="space-y-2">
+				<h2 id={`level-${level}`} class="text-lg font-semibold">{LEVEL_LABELS[level]}</h2>
+				<div class="entry-prose" set:html={renderMarkdown(term.levelSections[level]!, resolve)} />
+			</section>
+		))
+	}
+</div>

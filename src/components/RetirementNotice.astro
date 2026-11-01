@@ -1,0 +1,27 @@
+---
+import { formatDate } from '@/lib/format-date';
+import { termPath } from '@/lib/paths';
+import type { GlossaryTerm } from '@/lib/glossary/term-model';
+
+interface Props {
+	term: GlossaryTerm;
+	replacedByName?: string;
+}
+const { term, replacedByName } = Astro.props;
+const retired = term.retired;
+---
+
+{
+	retired && (
+		<div role="note" class="rounded-lg border border-status-retired/40 bg-status-retired/10 p-4 text-sm">
+			<p class="font-medium">
+				Retired in {retired.where} on {formatDate(retired.date)}.
+			</p>
+			{retired.replacedBy && replacedByName && (
+				<p class="mt-1">
+					Replaced by <a class="underline underline-offset-4" href={termPath(retired.replacedBy)}>{replacedByName}</a>.
+				</p>
+			)}
+		</div>
+	)
+}

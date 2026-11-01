@@ -27,8 +27,9 @@ async function load(): Promise<GlossaryTerm[]> {
 		);
 	}
 
+	const names = new Map(corpus.map((c) => [c.data.id, c.data.term]));
 	return corpus
-		.map((c) => toGlossaryTerm(c.data, c.body))
+		.map((c) => toGlossaryTerm(c.data, c.body, (id) => names.get(id)))
 		.sort((a, b) => a.term.localeCompare(b.term, 'en', { sensitivity: 'base' }));
 }
 

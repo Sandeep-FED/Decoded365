@@ -96,6 +96,10 @@ describe('summary', () => {
 	it('returns the first paragraph without Markdown', () => {
 		expect(firstParagraph('A **bold** [[x]] and [link](/y).\n\nSecond.')).toBe('A bold x and link.');
 		expect(firstParagraph('See [[x|the label]] here.')).toBe('See the label here.');
+		expect(firstParagraph('Built with [[spfx]].', (id) => (id === 'spfx' ? 'SharePoint Framework' : undefined))).toBe(
+			'Built with SharePoint Framework.',
+		);
+		expect(firstParagraph('Built with [[spfx]].')).toBe('Built with spfx.');
 	});
 });
 

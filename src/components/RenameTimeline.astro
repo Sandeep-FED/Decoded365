@@ -1,0 +1,33 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { formatYearMonth } from '@/lib/format-date';
+import type { TermData } from '@/schema/term';
+
+interface Props {
+	renamed: TermData['renamed'];
+}
+const { renamed } = Astro.props;
+---
+
+{
+	renamed.length > 0 && (
+		<Card>
+			<CardHeader>
+				<CardTitle>Name history</CardTitle>
+			</CardHeader>
+			<CardContent>
+				<ol class="space-y-3 border-l pl-4">
+					{renamed.map((rename) => (
+						<li class="relative">
+							<span aria-hidden="true" class="absolute -left-[1.4rem] top-1.5 size-2 rounded-full bg-primary" />
+							<p class="text-sm font-medium">
+								{rename.from} <span aria-hidden="true">→</span><span class="sr-only">renamed to</span> {rename.to}
+							</p>
+							<p class="text-xs text-muted-foreground">{formatYearMonth(rename.date)}</p>
+						</li>
+					))}
+				</ol>
+			</CardContent>
+		</Card>
+	)
+}

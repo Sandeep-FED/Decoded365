@@ -1,0 +1,12 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { STATUS_CLASSES, STATUS_LABELS } from '@/lib/glossary/labels';
+import type { StatusName } from '@/schema/term';
+
+interface Props {
+	status: StatusName;
+}
+const { status } = Astro.props;
+---
+
+<Badge className={STATUS_CLASSES[status]}>{STATUS_LABELS[status]}</Badge>

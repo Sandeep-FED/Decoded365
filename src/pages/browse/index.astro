@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TermListItem from '@/components/TermListItem.astro';
+import LegacySwitch from '@/components/islands/LegacySwitch';
+import ProductFilter from '@/components/islands/ProductFilter';
+import { getGlossary } from '@/lib/glossary/repository';
+import { groupByLetter } from '@/lib/glossary/group-by-letter';
+import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { PRODUCTS } from '@/schema/term';
+
+const terms = await getGlossary();
+const groups = groupByLetter(terms, (t) => t.term);
+const products = PRODUCTS.filter((p) => p !== 'cross-platform').map((p) => ({
+	value: p,
+	label: PRODUCT_LABELS[p],
+	available: AVAILABLE_PRODUCTS.includes(p),
+}));
+---
+
+<BaseLayout title="Browse A–Z" description="Every Decoded365 term, A to Z.">
+	<div class="space-y-6">
+		<h1 class="text-3xl font-semibold tracking-tight">Browse A–Z</h1>
+
+		<div data-js-only class="flex flex-wrap items-center gap-4">
+			<ProductFilter client:load products={products} />
+			<LegacySwitch client:load />
+		</div>
+
+		<nav aria-label="Jump to letter" class="flex flex-wrap gap-2 text-sm">
+			{groups.map((g) => <a href={`#letter-${g.letter}`} class="rounded border px-2 py-0.5 hover:bg-accent">{g.letter}</a>)}
+		</nav>
+
+		<div class="space-y-6">
+			{
+				groups.map((g) => (
+					<section data-letter-group id={`letter-${g.letter}`} aria-labelledby={`heading-${g.letter}`}>
+						<h2 id={`heading-${g.letter}`} class="border-b pb-1 text-xl font-semibold">{g.letter}</h2>
+						<ul class="divide-y">
+							{g.items.map((term) => <TermListItem term={term} />)}
+						</ul>
+					</section>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>

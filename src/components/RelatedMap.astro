@@ -1,0 +1,56 @@
+---
+import { radialLayout } from '@/lib/graph/radial-layout';
+import { relationLabel } from '@/lib/graph/relation-labels';
+import type { Neighbour } from '@/lib/graph/neighbourhood';
+import { PRODUCT_GRAPH_COLOURS } from '@/lib/glossary/labels';
+import { termPath } from '@/lib/paths';
+
+interface Props {
+	centre: { id: string; label: string; product: keyof typeof PRODUCT_GRAPH_COLOURS };
+	neighbours: Neighbour[];
+}
+const { centre, neighbours } = Astro.props;
+
+const SIZE = 360;
+const middle = { x: SIZE / 2, y: SIZE / 2 };
+const points = radialLayout(neighbours.length, 125, middle);
+
+/** Keep long names readable inside the SVG by splitting onto two lines. */
+function lines(label: string): string[] {
+	if (label.length <= 16) return [label];
+	const words = label.split(' ');
+	let first = '';
+	while (words.length > 1 && (first + ' ' + words[0]).trim().length <= 16) first = (first + ' ' + words.shift()).trim();
+	return [first || words.shift()!, words.join(' ')];
+}
+---
+
+{
+	neighbours.length > 0 && (
+		<div class="space-y-4">
+			<svg viewBox={`0 0 ${SIZE} ${SIZE}`} role="group" aria-label={`Terms related to ${centre.label}`} class="mx-auto w-full max-w-md">
+				{neighbours.map((_, i) => (
+					<line x1={middle.x} y1={middle.y} x2={points[i].x} y2={points[i].y} stroke="currentColor" class="text-border" stroke-width="1.5" />
+				))}
+				{neighbours.map((n, i) => (
+					<a href={termPath(n.node.id)} aria-label={`${relationLabel(n.type, n.direction)} ${n.node.label}`}>
+						<circle cx={points[i].x} cy={points[i].y} r="9" fill={PRODUCT_GRAPH_COLOURS[n.node.product]} />
+						<text x={points[i].x} y={points[i].y + 22} text-anchor="middle" font-size="10" fill="currentColor">
+							{lines(n.node.label).map((line, row) => <tspan x={points[i].x} dy={row === 0 ? 0 : 11}>{line}</tspan>)}
+						</text>
+					</a>
+				))}
+				<circle cx={middle.x} cy={middle.y} r="14" fill={PRODUCT_GRAPH_COLOURS[centre.product]} stroke="currentColor" stroke-width="2" />
+				<text x={middle.x} y={middle.y + 30} text-anchor="middle" font-size="11" font-weight="600" fill="currentColor">{centre.label}</text>
+			</svg>
+			<ul class="space-y-1 text-sm">
+				{neighbours.map((n) => (
+					<li>
+						<span class="text-muted-foreground">{relationLabel(n.type, n.direction)}</span>{' '}
+						<a class="font-medium underline underline-offset-4" href={termPath(n.node.id)}>{n.node.label}</a>
+					</li>
+				))}
+			</ul>
+		</div>
+	)
+}

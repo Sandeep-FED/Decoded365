@@ -1,0 +1,19 @@
+---
+import type { Attribution } from '@/lib/glossary/attribution';
+
+interface Props {
+	attribution: Attribution;
+}
+const { attribution } = Astro.props;
+---
+
+<div class="space-y-1 text-xs text-muted-foreground">
+	{attribution.notice && <p>{attribution.notice}</p>}
+	{
+		attribution.sources.length > 0 && (
+			<p>
+				Sources: {attribution.sources.join('; ')}.
+			</p>
+		)
+	}
+</div>

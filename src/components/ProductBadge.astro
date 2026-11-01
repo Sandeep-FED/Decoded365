@@ -1,0 +1,12 @@
+---
+import { Badge } from '@/components/ui/badge';
+import { PRODUCT_CLASSES, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import type { ProductName } from '@/schema/term';
+
+interface Props {
+	product: ProductName;
+}
+const { product } = Astro.props;
+---
+
+<Badge className={PRODUCT_CLASSES[product]}>{PRODUCT_LABELS[product]}</Badge>

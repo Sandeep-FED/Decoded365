@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import GraphExplorer from '@/components/islands/GraphExplorer';
+import { getGraph } from '@/lib/glossary/repository';
+import { relationLabel } from '@/lib/graph/relation-labels';
+import { neighbourhood } from '@/lib/graph/neighbourhood';
+import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { PRODUCTS } from '@/schema/term';
+import { termPath } from '@/lib/paths';
+
+const graph = await getGraph();
+const nodes = graph.nodes.map((n) => ({ ...n, href: termPath(n.id) }));
+const products = PRODUCTS.filter((p) => p !== 'cross-platform').map((p) => ({
+	value: p,
+	label: PRODUCT_LABELS[p],
+	available: AVAILABLE_PRODUCTS.includes(p),
+}));
+---
+
+<BaseLayout title="Map" description="How Decoded365 terms connect to each other.">
+	<div class="space-y-6">
+		<h1 class="text-3xl font-semibold tracking-tight">How terms connect</h1>
+		<p class="text-muted-foreground">Select a term on the map to open it. Dashed outlines are legacy or retired terms.</p>
+
+		<div data-js-only>
+			<GraphExplorer client:only="react" nodes={nodes} edges={graph.edges} products={products} />
+		</div>
+
+		<section aria-labelledby="list-heading" class="space-y-3">
+			<h2 id="list-heading" class="text-xl font-semibold">All relationships as a list</h2>
+			<ul class="space-y-3">
+				{
+					graph.nodes.map((node) => {
+						const neighbours = neighbourhood(graph, node.id);
+						return (
+							<li>
+								<a href={termPath(node.id)} class="font-medium underline underline-offset-4">{node.label}</a>
+								{neighbours.length === 0 ? (
+									<span class="text-sm text-muted-foreground"> — no relations yet</span>
+								) : (
+									<ul class="ml-4 list-disc text-sm text-muted-foreground">
+										{neighbours.map((n) => (
+											<li>
+												{relationLabel(n.type, n.direction)}{' '}
+												<a href={termPath(n.node.id)} class="underline underline-offset-4">{n.node.label}</a>
+											</li>
+										))}
+									</ul>
+								)}
+							</li>
+						);
+					})
+				}
+			</ul>
+		</section>
+	</div>
+</BaseLayout>
