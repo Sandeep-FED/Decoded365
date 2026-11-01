@@ -141,14 +141,15 @@ html[data-level="architect"] [data-level-section]:not([data-level-section="archi
   display: none;
 }
 
-html[data-legacy="hide"] [data-legacy-term] {
+/* Before the A–Z list hydrates, keep legacy terms hidden for visitors who run JavaScript. */
+html[data-legacy="hide"] [data-legacy-term][data-preload] {
   display: none;
 }
 
-html[data-product="sharepoint"] [data-term-item]:not([data-product="sharepoint"]),
-html[data-product="power-platform"] [data-term-item]:not([data-product="power-platform"]),
-html[data-product="copilot"] [data-term-item]:not([data-product="copilot"]) {
-  display: none;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -159,15 +160,7 @@ html[data-product="copilot"] [data-term-item]:not([data-product="copilot"]) {
 }
 
 /* Controls that only work with JavaScript stay hidden until the page script runs. */
-[data-js-only] {
-  display: none;
-}
-html[data-js] [data-js-only] {
-  display: revert;
-}
-
-/* Hide a letter group in the A–Z list when every term in it is a hidden legacy term. */
-html[data-legacy="hide"] [data-letter-group]:not(:has([data-term-item]:not([data-legacy-term]))) {
+html:not([data-js]) [data-js-only] {
   display: none;
 }
 

@@ -33,11 +33,6 @@ export function applyLegacy(show: boolean): void {
 	document.documentElement.dataset.legacy = show ? 'show' : 'hide';
 }
 
-export function applyProduct(product: string): void {
-	if (product === 'all') delete document.documentElement.dataset.product;
-	else document.documentElement.dataset.product = product;
-}
-
 export function applyTheme(theme: Theme): void {
 	const dark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
 	document.documentElement.classList.toggle('dark', dark);
