@@ -27,6 +27,6 @@ export const STACK = [
 	{ name: 'Orama', purpose: 'Search', licence: 'Apache-2.0' },
 	{ name: 'Cytoscape.js', purpose: 'Related-terms map', licence: 'MIT' },
 	{ name: 'Motion', purpose: 'Animation', licence: 'MIT' },
-	{ name: 'Inter', purpose: 'Typeface (self-hosted)', licence: 'SIL Open Font License 1.1' },
+	{ name: 'DM Sans', purpose: 'Body typeface (self-hosted)', licence: 'SIL Open Font License 1.1' },
 	{ name: 'Aceternity UI', purpose: 'Spotlight and Flip Words effects', licence: 'To be confirmed' },
 ] as const;

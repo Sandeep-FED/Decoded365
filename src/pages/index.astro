@@ -27,7 +27,7 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 <BaseLayout>
 	<section class="space-y-4 py-10">
 		<h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">{SITE.name}</h1>
-		<p class="text-2xl font-medium sm:text-4xl">
+		<p class="font-heading text-2xl font-medium sm:text-4xl">
 			<span data-no-js>What does “{flipTitles[0]}” mean?</span>
 			<span data-js-only>
 				<FlipTitle client:only="react" before="What does " words={flipTitles} after=" mean?" />
