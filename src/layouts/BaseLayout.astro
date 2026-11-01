@@ -24,6 +24,12 @@ const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+		/>
 		<title>{pageTitle}</title>
 		<!-- Applies remembered preferences before first paint. Without JavaScript nothing is hidden. -->
 		<script is:inline define:vars={{ keys: PREF_KEYS }}>
