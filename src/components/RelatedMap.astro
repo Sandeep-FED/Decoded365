@@ -33,10 +33,10 @@ function lines(label: string): string[] {
 					<line x1={middle.x} y1={middle.y} x2={points[i].x} y2={points[i].y} stroke="currentColor" class="text-border" stroke-width="1.5" />
 				))}
 				{neighbours.map((n, i) => (
-					<a href={termPath(n.node.id)} aria-label={`${relationLabel(n.type, n.direction)} ${n.node.label}`}>
+					<a href={termPath(n.node.id)} aria-label={n.node.label}>
 						<circle cx={points[i].x} cy={points[i].y} r="9" fill={PRODUCT_GRAPH_COLOURS[n.node.product]} />
 						<text x={points[i].x} y={points[i].y + 22} text-anchor="middle" font-size="10" fill="currentColor">
-							{lines(n.node.label).map((line, row) => <tspan x={points[i].x} dy={row === 0 ? 0 : 11}>{line}</tspan>)}
+							{lines(n.node.label).map((line, row, all) => <tspan x={points[i].x} dy={row === 0 ? 0 : 11}>{row < all.length - 1 ? `${line} ` : line}</tspan>)}
 						</text>
 					</a>
 				))}

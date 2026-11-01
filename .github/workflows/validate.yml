@@ -1,0 +1,87 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  content:
+    name: Content, licences and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Schema, levels, links and duplicates
+        run: npm run validate
+      - name: Similarity to sources that may not be copied
+        run: npm run similarity
+      - name: Spelling
+        run: npm run spell
+      - name: Licence gate (dependencies and models)
+        run: npm run licenses
+      - name: Unit tests
+        run: npm test
+      - name: Type check
+        run: npm run check
+
+  dco:
+    name: DCO sign-off
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Every commit must be signed off (git commit -s)
+        run: |
+          missing=0
+          for sha in $(git rev-list "origin/${{ github.base_ref }}..HEAD" --no-merges); do
+            if ! git log -1 --format=%B "$sha" | grep -qi '^Signed-off-by: '; then
+              echo "::error::Commit $sha has no Signed-off-by line"
+              missing=1
+            fi
+          done
+          exit $missing
+
+  site:
+    name: Build, browser tests and accessibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Browser and axe (WCAG 2.2 AA) tests
+        run: npm run test:e2e
+
+  lighthouse:
+    name: Lighthouse (mobile budget)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true

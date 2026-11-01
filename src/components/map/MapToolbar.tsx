@@ -43,7 +43,7 @@ export default function MapToolbar({ nodes, product, onProductChange, products, 
 					}}
 					placeholder="Find a term on the map…"
 					aria-label="Find a term on the map"
-					aria-controls={listId}
+					aria-controls={matches.length > 0 ? listId : undefined}
 					className="pl-8 [&::-webkit-search-cancel-button]:hidden"
 				/>
 				{matches.length > 0 && (

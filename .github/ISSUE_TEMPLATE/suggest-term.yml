@@ -1,0 +1,32 @@
+name: Suggest a term
+description: Propose a term that is missing from the glossary
+labels: [new-term]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: Term
+      description: The current name.
+    validations: { required: true }
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      options: [SharePoint, Power Platform, Copilot, Cross-platform]
+    validations: { required: true }
+  - type: textarea
+    id: meaning
+    attributes:
+      label: What does it mean?
+      description: A sentence or two in your own words. Please do not paste text from other sites.
+    validations: { required: true }
+  - type: input
+    id: aliases
+    attributes:
+      label: Other names or old names
+      description: Comma separated, with the date of any rename if you know it.
+  - type: textarea
+    id: source
+    attributes:
+      label: Where did you learn this?
+      description: We record sources in plain text (never as links inside entries).

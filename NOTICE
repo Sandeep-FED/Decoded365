@@ -1,0 +1,32 @@
+Decoded365
+Copyright (c) 2026 Sandeep P S and Decoded365 contributors
+
+Decoded365 is a community project and is not affiliated with or endorsed by Microsoft.
+Microsoft, SharePoint, Power Platform, Copilot and OneDrive are trademarks of Microsoft.
+
+Licences
+  Code:    MIT (LICENSE)
+  Content: CC BY 4.0 (LICENSE-CONTENT.md)
+
+Sources
+Each glossary entry records its sources in its front matter (`origins`). Sources are
+credited in plain text only; addresses live in content/sources.yml for maintainers.
+
+  SharePoint glossary - Microsoft. CC BY 4.0 (sp-dev-docs repository).
+    learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-glossary
+  Microsoft 365 Glossary - Microsoft 365 & Power Platform Community (PnP).
+    Licence to be confirmed. Term names and facts only until it is.
+    pnp.github.io/community-docs/articles/glossary.html
+  Product Name Changes - Aaron Dinnage (m365maps.com).
+    Licence not stated. Facts only; bulk import needs the author's permission.
+    m365maps.com/renames.htm
+
+Where text is adapted from a CC BY 4.0 source, the entry carries the line
+"Adapted from Microsoft documentation, licensed CC BY 4.0. Changes made."
+
+Third-party software
+All dependencies and AI models are checked against OSI-approved licences in CI
+(npm run licenses). Reviewed exceptions are listed in config/licence-exceptions.json.
+Fonts (Inter, Montserrat) are licensed under the SIL Open Font License 1.1.
+
+Code of Conduct adapted from the Contributor Covenant 2.1 (CC BY 4.0).

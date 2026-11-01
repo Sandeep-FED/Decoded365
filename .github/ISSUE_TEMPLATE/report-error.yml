@@ -1,0 +1,24 @@
+name: Report an error
+description: Something in an entry is wrong, outdated or unclear
+labels: [error-report]
+body:
+  - type: input
+    id: term
+    attributes:
+      label: Term id
+      description: For example `hub-site` (the end of the page address).
+    validations: { required: true }
+  - type: dropdown
+    id: level
+    attributes:
+      label: Which level?
+      options: [Beginner, Maker, Architect, All of them, Name, aliases or status]
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+    validations: { required: true }
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should it say, and how do you know?

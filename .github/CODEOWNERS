@@ -1,0 +1,8 @@
+# Area reviewers approve content in their product folder. [confirm: add area reviewers]
+/content/terms/sharepoint/       @sandeepps
+/content/terms/power-platform/   @sandeepps
+/content/terms/copilot/          @sandeepps
+/content/terms/cross-platform/   @sandeepps
+
+# Everything else
+*                                @sandeepps

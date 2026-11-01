@@ -1,0 +1,40 @@
+name: Freshness
+
+# UC-7: every Monday, list terms not reviewed in 12 months in one open issue.
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  stale-terms:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Find stale terms
+        id: freshness
+        run: npm run --silent freshness > report.md
+      - name: Open, update or close the freshness issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          number=$(gh issue list --label freshness --state open --json number --jq '.[0].number')
+          if [ "${{ steps.freshness.outputs.stale_count }}" = "0" ]; then
+            [ -n "$number" ] && gh issue close "$number" --comment "All terms are up to date."
+            exit 0
+          fi
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body-file report.md
+          else
+            gh label create freshness --description "Terms due for review" --color fbca04 2>/dev/null || true
+            gh issue create --title "Terms due for review" --label freshness --body-file report.md
+          fi

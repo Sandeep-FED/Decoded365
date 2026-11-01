@@ -1,0 +1,9 @@
+{
+  "_note": "Packages whose licence is permissive but not on the OSI list. Each entry needs a reason and a review date. Keep this short; prefer replacing the dependency.",
+  "exceptions": {
+    "common-ancestor-path": "Blue Oak Model License 1.0.0 (permissive). Transitive build dependency of Astro. Reviewed 2026-11-01.",
+    "lru-cache": "Blue Oak Model License 1.0.0 (permissive). Transitive dependency of build tooling. Reviewed 2026-11-01.",
+    "sax": "Blue Oak Model License 1.0.0 (permissive). Transitive build dependency (XML parsing). Reviewed 2026-11-01.",
+    "mdn-data": "CC0-1.0 (public-domain dedication of data files). Transitive build dependency of CSS tooling. Reviewed 2026-11-01."
+  }
+}
