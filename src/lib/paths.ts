@@ -7,4 +7,3 @@ export function withBase(path: string): string {
 export const termPath = (id: string) => withBase(`terms/${id}/`);
 export const browsePath = () => withBase('browse/');
 export const mapPath = () => withBase('map/');
-export const creditsPath = () => withBase('credits/');
