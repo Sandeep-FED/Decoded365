@@ -17,6 +17,8 @@ export default defineConfig({
 			// the directory tree and fails if an unrelated tsconfig.json sits above the repository.
 			alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
 			tsconfigPaths: false,
+			// One copy of React for islands and libraries built on it (motion, radix-ui, cmdk).
+			dedupe: ['react', 'react-dom'],
 		},
 		// Pin the bundler to this repo's tsconfig for the same reason.
 		build: { rolldownOptions: { tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)) } },
