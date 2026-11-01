@@ -29,6 +29,8 @@ jobs:
         run: npm run similarity
       - name: Spelling
         run: npm run spell
+      - name: Search quality (50-question test set, top 5 >= 80%)
+        run: npm run eval:search
       - name: Licence gate (dependencies and models)
         run: npm run licenses
       - name: Unit tests

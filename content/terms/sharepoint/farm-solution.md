@@ -8,6 +8,7 @@ status: legacy
 appliesTo: [sharepoint-server]
 related:
   - { id: spfx, type: alternative-to }
+  - { id: sharepoint-server, type: requires }
 origins:
   - { source: ms-sharepoint-glossary, use: terms-only }
 lastReviewed: 2026-11-01

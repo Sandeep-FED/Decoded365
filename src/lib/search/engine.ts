@@ -14,6 +14,17 @@ export interface SearchEngine {
 
 const norm = (value: string) => value.trim().toLowerCase();
 
+const STOP_WORDS = new Set(
+	'a an and are as at be by can could do does for from how i in into is it its my of on or our so than that the their then there these this to up was we what when where which who why will with without you your'.split(' '),
+);
+
+/** Drop filler words so "a place for the deleted files" searches for what matters. Keeps the query if nothing is left. */
+export function meaningfulWords(query: string): string {
+	const words = query.trim().split(/\s+/).filter(Boolean);
+	const kept = words.filter((w) => !STOP_WORDS.has(w.toLowerCase().replace(/[^a-z0-9']/g, '')));
+	return (kept.length > 0 ? kept : words).join(' ');
+}
+
 /** Which alias or old name (if any) explains why this document matched the query. */
 function matchedName(doc: SearchDocument, query: string): SearchResult['matchedName'] {
 	const q = norm(query);
@@ -54,7 +65,7 @@ export async function createSearchEngine(docs: SearchDocument[]): Promise<Search
 
 	return {
 		async search(query, limit = 8) {
-			const term = query.trim();
+			const term = meaningfulWords(query);
 			if (!term) return [];
 			const found = await search(db, {
 				term,
@@ -65,7 +76,7 @@ export async function createSearchEngine(docs: SearchDocument[]): Promise<Search
 			});
 			return found.hits.flatMap((hit) => {
 				const doc = byId.get(String(hit.document.id));
-				return doc ? [{ doc, score: hit.score, matchedName: matchedName(doc, term) }] : [];
+				return doc ? [{ doc, score: hit.score, matchedName: matchedName(doc, query) }] : [];
 			});
 		},
 	};

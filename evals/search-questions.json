@@ -1,0 +1,309 @@
+[
+ {
+  "q": "where do deleted files go before they're gone for good",
+  "expect": [
+   "recycle-bin"
+  ]
+ },
+ {
+  "q": "restore a file I deleted last week",
+  "expect": [
+   "recycle-bin"
+  ]
+ },
+ {
+  "q": "app for SharePoint",
+  "expect": [
+   "sharepoint-add-in"
+  ]
+ },
+ {
+  "q": "Office Store",
+  "expect": [
+   "appsource"
+  ]
+ },
+ {
+  "q": "OneDrive for Business",
+  "expect": [
+   "onedrive"
+  ]
+ },
+ {
+  "q": "Syntex Backup",
+  "expect": [
+   "microsoft-365-backup"
+  ]
+ },
+ {
+  "q": "Syntex Archiving",
+  "expect": [
+   "microsoft-365-archiving"
+  ]
+ },
+ {
+  "q": "SharePoint Premium",
+  "expect": [
+   "document-processing"
+  ]
+ },
+ {
+  "q": "difference between a team site and a communication site",
+  "expect": [
+   "team-site",
+   "communication-site"
+  ]
+ },
+ {
+  "q": "a website for company announcements that everyone reads",
+  "expect": [
+   "communication-site"
+  ]
+ },
+ {
+  "q": "connect several sites so they share navigation",
+  "expect": [
+   "hub-site"
+  ]
+ },
+ {
+  "q": "the landing page of our intranet",
+  "expect": [
+   "home-site"
+  ]
+ },
+ {
+  "q": "group of sites that share one top-level site and settings",
+  "expect": [
+   "site-collection"
+  ]
+ },
+ {
+  "q": "place to store and share files with version history",
+  "expect": [
+   "document-library"
+  ]
+ },
+ {
+  "q": "table of items like tasks or issues",
+  "expect": [
+   "sharepoint-list"
+  ]
+ },
+ {
+  "q": "reusable template of columns for a kind of document",
+  "expect": [
+   "content-type"
+  ]
+ },
+ {
+  "q": "column I define once and reuse in many lists",
+  "expect": [
+   "site-column"
+  ]
+ },
+ {
+  "q": "building block I drop onto a page",
+  "expect": [
+   "web-part"
+  ]
+ },
+ {
+  "q": "modern way for developers to build extensions",
+  "expect": [
+   "spfx"
+  ]
+ },
+ {
+  "q": "where custom apps approved by the organisation are kept",
+  "expect": [
+   "app-catalog"
+  ]
+ },
+ {
+  "q": "add-ins stopped working in SharePoint Online",
+  "expect": [
+   "sharepoint-add-in"
+  ]
+ },
+ {
+  "q": "cloud version of SharePoint in Microsoft 365",
+  "expect": [
+   "sharepoint-online"
+  ]
+ },
+ {
+  "q": "SharePoint installed on our own servers",
+  "expect": [
+   "sharepoint-server"
+  ]
+ },
+ {
+  "q": "custom code installed on every server in the farm",
+  "expect": [
+   "farm-solution"
+  ]
+ },
+ {
+  "q": "web page inside a SharePoint site",
+  "expect": [
+   "site-page"
+  ]
+ },
+ {
+  "q": "share an announcement or story with people who follow a site",
+  "expect": [
+   "news-post"
+  ]
+ },
+ {
+  "q": "colour a status column with JSON",
+  "expect": [
+   "column-formatting"
+  ]
+ },
+ {
+  "q": "central list of agreed words for tagging files",
+  "expect": [
+   "term-store"
+  ]
+ },
+ {
+  "q": "who can edit and who can only read: owners members visitors",
+  "expect": [
+   "sharepoint-groups"
+  ]
+ },
+ {
+  "q": "link anyone can use to open a file",
+  "expect": [
+   "sharing-link"
+  ]
+ },
+ {
+  "q": "look at older copies of a document and restore one",
+  "expect": [
+   "version-history"
+  ]
+ },
+ {
+  "q": "why can't I open a list view with more than 5000 items",
+  "expect": [
+   "list-view-threshold"
+  ]
+ },
+ {
+  "q": "restore a whole site from a backup copy",
+  "expect": [
+   "microsoft-365-backup"
+  ]
+ },
+ {
+  "q": "move sites nobody uses to cheaper storage",
+  "expect": [
+   "microsoft-365-archiving"
+  ]
+ },
+ {
+  "q": "automatically extract data from invoices",
+  "expect": [
+   "document-processing"
+  ]
+ },
+ {
+  "q": "separate site that holds an add-in's own files",
+  "expect": [
+   "app-web"
+  ]
+ },
+ {
+  "q": "site that an add-in is installed on",
+  "expect": [
+   "host-web"
+  ]
+ },
+ {
+  "q": "my personal cloud storage for work files",
+  "expect": [
+   "onedrive"
+  ]
+ },
+ {
+  "q": "marketplace to find ready-made apps",
+  "expect": [
+   "appsource"
+  ]
+ },
+ {
+  "q": "managed metadata",
+  "expect": [
+   "term-store"
+  ]
+ },
+ {
+  "q": "second-stage recycle bin",
+  "expect": [
+   "recycle-bin"
+  ]
+ },
+ {
+  "q": "SPFx web part",
+  "expect": [
+   "spfx",
+   "web-part"
+  ]
+ },
+ {
+  "q": "site connected to a Microsoft 365 group",
+  "expect": [
+   "team-site"
+  ]
+ },
+ {
+  "q": "site collection administrator",
+  "expect": [
+   "site-collection"
+  ]
+ },
+ {
+  "q": "wiki page versus modern page",
+  "expect": [
+   "site-page"
+  ]
+ },
+ {
+  "q": "subsites versus hubs",
+  "expect": [
+   "hub-site",
+   "sharepoint-site",
+   "site-collection"
+  ]
+ },
+ {
+  "q": "30 million items in a list",
+  "expect": [
+   "list-view-threshold",
+   "sharepoint-list",
+   "document-library"
+  ]
+ },
+ {
+  "q": "breaking permission inheritance",
+  "expect": [
+   "sharepoint-groups"
+  ]
+ },
+ {
+  "q": "SharePoint Online versus on-premises",
+  "expect": [
+   "sharepoint-online",
+   "sharepoint-server"
+  ]
+ },
+ {
+  "q": "Viva Connections home",
+  "expect": [
+   "home-site"
+  ]
+ }
+]

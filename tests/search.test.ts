@@ -66,3 +66,11 @@ describe('search engine', () => {
 		expect((await engine.search('recyle bin'))[0]?.doc.id).toBe('recycle-bin');
 	});
 });
+
+describe('stop words', () => {
+	it('ignores filler words but keeps queries that are only filler', async () => {
+		const { meaningfulWords } = await import('@/lib/search/engine');
+		expect(meaningfulWords('where do the deleted files go')).toBe('deleted files go');
+		expect(meaningfulWords('what is a')).toBe('what is a');
+	});
+});

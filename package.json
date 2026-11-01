@@ -17,7 +17,8 @@
     "freshness": "tsx scripts/freshness.ts",
     "similarity": "tsx scripts/check-similarity.ts",
     "spell": "cspell --no-progress",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "eval:search": "tsx scripts/eval-search.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.0",
