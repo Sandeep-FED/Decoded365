@@ -1,15 +1,24 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import GraphExplorer from '@/components/islands/GraphExplorer';
-import { getGraph } from '@/lib/glossary/repository';
-import { relationLabel } from '@/lib/graph/relation-labels';
-import { neighbourhood } from '@/lib/graph/neighbourhood';
+import PageHeader from '@/components/PageHeader.astro';
+import MapLegend from '@/components/MapLegend.astro';
+import GraphExplorer from '@/components/map/GraphExplorer';
+import { getGlossary, getGraph } from '@/lib/glossary/repository';
 import { AVAILABLE_PRODUCTS, PRODUCT_LABELS } from '@/lib/glossary/labels';
-import { PRODUCTS } from '@/schema/term';
+import { neighbourhood } from '@/lib/graph/neighbourhood';
+import { relationLabel } from '@/lib/graph/relation-labels';
 import { termPath } from '@/lib/paths';
+import { PRODUCTS } from '@/schema/term';
 
-const graph = await getGraph();
-const nodes = graph.nodes.map((n) => ({ ...n, href: termPath(n.id) }));
+const [terms, graph] = await Promise.all([getGlossary(), getGraph()]);
+const byId = new Map(terms.map((t) => [t.id, t]));
+
+const nodes = graph.nodes.map((n) => ({
+	...n,
+	href: termPath(n.id),
+	summary: byId.get(n.id)?.summary ?? '',
+	legacy: byId.get(n.id)?.legacy ?? false,
+}));
 const products = PRODUCTS.filter((p) => p !== 'cross-platform').map((p) => ({
 	value: p,
 	label: PRODUCT_LABELS[p],
@@ -19,30 +28,38 @@ const products = PRODUCTS.filter((p) => p !== 'cross-platform').map((p) => ({
 
 <BaseLayout title="Map" description="How Decoded365 terms connect to each other.">
 	<div class="space-y-6">
-		<h1 class="text-3xl font-semibold tracking-tight">How terms connect</h1>
-		<p class="text-muted-foreground">Select a term on the map to open it. Dashed outlines are legacy or retired terms.</p>
+		<PageHeader
+			eyebrow="Explore"
+			title="How terms connect"
+			description="See which terms belong together, which one needs which, and which ones people mix up. Select a dot to light up its connections."
+		>
+			<p class="text-sm text-muted-foreground">{graph.nodes.length} terms · {graph.edges.length} relationships</p>
+		</PageHeader>
+
+		<MapLegend />
 
 		<div data-js-only>
 			<GraphExplorer client:only="react" nodes={nodes} edges={graph.edges} products={products} />
+			<p class="mt-2 text-xs text-muted-foreground">Double-click a dot to open the term. Scroll or pinch to zoom, drag to pan.</p>
 		</div>
 
-		<section aria-labelledby="list-heading" class="space-y-3">
-			<h2 id="list-heading" class="text-xl font-semibold">All relationships as a list</h2>
-			<ul class="space-y-3">
+		<details class="rounded-xl border bg-card/70 p-4 backdrop-blur-sm" open={false}>
+			<summary class="cursor-pointer text-lg font-semibold">All relationships as a list</summary>
+			<ul class="mt-4 grid gap-4 sm:grid-cols-2">
 				{
 					graph.nodes.map((node) => {
 						const neighbours = neighbourhood(graph, node.id);
 						return (
-							<li>
+							<li class="space-y-1">
 								<a href={termPath(node.id)} class="font-medium underline underline-offset-4">{node.label}</a>
 								{neighbours.length === 0 ? (
-									<span class="text-sm text-muted-foreground"> — no relations yet</span>
+									<p class="text-sm text-muted-foreground">No relations yet</p>
 								) : (
-									<ul class="ml-4 list-disc text-sm text-muted-foreground">
+									<ul class="space-y-0.5 text-sm text-muted-foreground">
 										{neighbours.map((n) => (
 											<li>
 												{relationLabel(n.type, n.direction)}{' '}
-												<a href={termPath(n.node.id)} class="underline underline-offset-4">{n.node.label}</a>
+												<a href={termPath(n.node.id)} class="text-foreground underline underline-offset-4">{n.node.label}</a>
 											</li>
 										))}
 									</ul>
@@ -52,6 +69,6 @@ const products = PRODUCTS.filter((p) => p !== 'cross-platform').map((p) => ({
 					})
 				}
 			</ul>
-		</section>
+		</details>
 	</div>
 </BaseLayout>
