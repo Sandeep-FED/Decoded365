@@ -66,3 +66,24 @@ describe('glossary helpers', () => {
 		expect(isLegacy({ status: 'ga', appliesTo: ['sharepoint-online', 'sharepoint-server'] })).toBe(false);
 	});
 });
+
+describe('comparisonRows', () => {
+	it('compares two terms side by side and leaves out empty rows', async () => {
+		const { comparisonRows } = await import('@/lib/glossary/compare');
+		const { toGlossaryTerm } = await import('@/lib/glossary/term-model');
+		const { Term } = await import('@/schema/term');
+		const make = (id: string, name: string, over: Record<string, unknown>, body: string) =>
+			toGlossaryTerm(
+				Term.parse({ id, term: name, product: 'sharepoint', category: 'sites', status: 'ga', origins: [{ source: 's', use: 'terms-only' }], lastReviewed: '2026-11-01', reviewers: ['r'], ...over }),
+				body,
+			);
+		const a = make('team', 'Team site', {}, '## Beginner\nFor working together.\n\n## Maker\nUsually group-connected.');
+		const b = make('comm', 'Communication site', { appliesTo: ['sharepoint-online'] }, '## Beginner\nFor broadcasting.');
+
+		const rows = comparisonRows(a, b);
+		expect(rows.map((r) => r.label)).toEqual(['In plain words', 'When to use it', 'Status', 'Applies to']);
+		expect(rows[0]).toMatchObject({ left: 'For working together.', right: 'For broadcasting.' });
+		expect(rows[1].right).toBe('');
+		expect(rows[3]).toMatchObject({ left: 'SharePoint Online and Server', right: 'SharePoint Online' });
+	});
+});

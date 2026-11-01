@@ -20,6 +20,25 @@ export default defineConfig({
 			// One copy of React for islands and libraries built on it (motion, radix-ui, cmdk).
 			dedupe: ['react', 'react-dom'],
 		},
+		// Pre-bundle everything the islands and workers import at start-up. Without this, Vite discovers
+		// them one by one while a page loads, re-optimises mid-session and reloads the page (losing input).
+		optimizeDeps: {
+			include: [
+				'react',
+				'react-dom',
+				'react-dom/client',
+				'react/jsx-runtime',
+				'radix-ui',
+				'cmdk',
+				'sonner',
+				'lucide-react',
+				'motion/react',
+				'cytoscape',
+				'@orama/orama',
+				'@huggingface/transformers',
+				'@mlc-ai/web-llm',
+			],
+		},
 		// Pin the bundler to this repo's tsconfig for the same reason.
 		build: { rolldownOptions: { tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)) } },
 	},

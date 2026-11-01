@@ -8,10 +8,20 @@
   },
   "chat": {
     "id": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
-    "licence": "Apache-2.0"
+    "licence": "Apache-2.0",
+    "downloadMB": 880,
+    "vramMB": 1630,
+    "host": "Hugging Face (weights) and GitHub (runtime library), fetched by WebLLM after the visitor consents",
+    "baseModelLicence": "Apache-2.0 (Qwen/Qwen2.5-1.5B-Instruct, verified on Hugging Face 2026-11-01). Confirm in spike S2."
   },
   "candidates": [
-    { "id": "SmolLM2-1.7B-Instruct-q4f16_1-MLC", "licence": "Apache-2.0" },
-    { "id": "Phi-3.5-mini-instruct-q4f16_1-MLC", "licence": "MIT" }
+    {
+      "id": "SmolLM2-1.7B-Instruct-q4f16_1-MLC",
+      "licence": "Apache-2.0"
+    },
+    {
+      "id": "Phi-3.5-mini-instruct-q4f16_1-MLC",
+      "licence": "MIT"
+    }
   ]
 }

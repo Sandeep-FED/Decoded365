@@ -1,0 +1,52 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { comparisonRows } from '@/lib/glossary/compare';
+import type { GlossaryTerm } from '@/lib/glossary/term-model';
+import { termPath } from '@/lib/paths';
+
+interface Props {
+	term: GlossaryTerm;
+	/** Terms that people often mix up with this one. */
+	others: GlossaryTerm[];
+	labelOf: (id: string) => string | undefined;
+}
+const { term, others, labelOf } = Astro.props;
+---
+
+{
+	others.length > 0 && (
+		<section aria-labelledby="confused-heading" class="space-y-4">
+			<h2 id="confused-heading" class="text-xl font-semibold">Often confused with</h2>
+			{others.map((other) => (
+				<Card className="bg-card/70 backdrop-blur-sm">
+					<CardHeader>
+						<CardTitle className="text-base">
+							{term.term} vs <a href={termPath(other.id)} class="underline underline-offset-4">{other.term}</a>
+						</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<Table>
+							<TableHeader>
+								<TableRow>
+									<TableHead><span class="sr-only">Aspect</span></TableHead>
+									<TableHead>{term.term}</TableHead>
+									<TableHead>{other.term}</TableHead>
+								</TableRow>
+							</TableHeader>
+							<TableBody>
+								{comparisonRows(term, other, labelOf).map((row) => (
+									<TableRow>
+										<TableHead scope="row" className="w-32 text-muted-foreground">{row.label}</TableHead>
+										<TableCell>{row.left}</TableCell>
+										<TableCell>{row.right}</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</CardContent>
+				</Card>
+			))}
+		</section>
+	)
+}

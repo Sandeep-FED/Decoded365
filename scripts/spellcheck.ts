@@ -7,8 +7,8 @@ import { findMisspellings } from '../src/lib/content/spelling';
 
 const root = process.cwd();
 // Accept British or American spelling; entries only need to be consistent within themselves.
-const gb = nspell(british);
-const us = nspell(american);
+const gb = nspell(Buffer.from(british.aff), Buffer.from(british.dic));
+const us = nspell(Buffer.from(american.aff), Buffer.from(american.dic));
 const isCorrect = (word: string) => gb.correct(word) || us.correct(word);
 
 const ignore = new Set(

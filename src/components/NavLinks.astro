@@ -1,9 +1,10 @@
 ---
-import { browsePath, mapPath } from '@/lib/paths';
+import { askPath, browsePath, mapPath } from '@/lib/paths';
 
 const links = [
 	{ href: browsePath(), label: 'Browse A–Z' },
 	{ href: mapPath(), label: 'Map' },
+	{ href: askPath(), label: 'Ask' },
 ];
 const current = Astro.url.pathname;
 ---

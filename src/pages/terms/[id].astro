@@ -7,6 +7,7 @@ import LevelSections from '@/components/LevelSections.astro';
 import RetirementNotice from '@/components/RetirementNotice.astro';
 import RenameTimeline from '@/components/RenameTimeline.astro';
 import RelatedMap from '@/components/RelatedMap.astro';
+import ConfusedWith from '@/components/ConfusedWith.astro';
 import Attribution from '@/components/Attribution.astro';
 import ContributeLinks from '@/components/ContributeLinks.astro';
 import LevelSwitch from '@/components/islands/LevelSwitch';
@@ -31,6 +32,11 @@ const [terms, graph, sources] = await Promise.all([getGlossary(), getGraph(), ge
 const resolve = makeLinkResolver(terms);
 const neighbours = neighbourhood(graph, term.id);
 const attribution = attributionFor(term.origins, sources);
+const byId = new Map(terms.map((t) => [t.id, t]));
+const confusedWith = neighbours
+	.filter((n) => n.type === 'often-confused-with')
+	.flatMap((n) => byId.get(n.node.id) ?? []);
+const labelOf = (id: string) => byId.get(id)?.term;
 const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedBy)?.label : undefined;
 ---
 
@@ -60,6 +66,8 @@ const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedB
 		</div>
 
 		<LevelSections term={term} resolve={resolve} />
+
+		<ConfusedWith term={term} others={confusedWith} labelOf={labelOf} />
 
 		<Separator />
 

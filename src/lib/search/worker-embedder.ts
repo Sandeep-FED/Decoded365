@@ -44,7 +44,9 @@ export function createWorkerEmbedder(onProgress: (progress: DownloadProgress) =>
 	};
 	worker.onerror = (event) => markFailed(new Error(event.message));
 
-	const base = new URL(withBase('/'), location.href).href;
+	// A path, not a full URL: Transformers.js only finds tokenizer files next to the model when the
+	// local model location is a relative path (a full URL makes its existence check say "missing").
+	const base = withBase('/');
 	worker.postMessage({ type: 'init', base, model: models.embedding.id, dtype: models.embedding.dtype });
 
 	return {

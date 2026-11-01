@@ -15,7 +15,7 @@ scope.onmessage = async (event) => {
 
 	if (message.type === 'init') {
 		try {
-			// Everything is served from our own origin: no CDN, no Hugging Face.
+			// Everything is served from our own origin: no CDN, no Hugging Face. `base` is a site path such as /decoded365/.
 			env.allowRemoteModels = false;
 			env.allowLocalModels = true;
 			env.localModelPath = `${message.base}models/`;

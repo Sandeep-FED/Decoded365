@@ -1,20 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { SearchIcon } from 'lucide-react';
+import { MessageCircleQuestionIcon, SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import type { SearchDocument } from '@/lib/search/documents';
+import { useHybridSearch } from '@/components/hooks/use-hybrid-search';
 import type { SearchResult } from '@/lib/search/engine';
-import { createHybridEngine, type HybridEngine, type HybridOptions } from '@/lib/search/hybrid';
-import { loadVectorIndex, type VectorFile } from '@/lib/search/semantic';
-import { createWorkerEmbedder, type DownloadProgress, type WorkerEmbedder } from '@/lib/search/worker-embedder';
 import { formatYearMonth } from '@/lib/format-date';
 import { STATUS_LABELS } from '@/lib/glossary/labels';
-import { termPath, withBase } from '@/lib/paths';
-
-type IndexState = 'idle' | 'loading' | 'ready' | 'error';
-type Meaning = 'off' | 'loading' | 'ready' | 'unavailable';
+import { askPath, termPath } from '@/lib/paths';
 
 const megabytes = (bytes: number) => (bytes / 1_000_000).toFixed(0);
 
@@ -26,13 +20,7 @@ export default function SearchCommand() {
 	const [open, setOpen] = useState(false);
 	const [query, setQuery] = useState('');
 	const [results, setResults] = useState<SearchResult[]>([]);
-	const [indexState, setIndexState] = useState<IndexState>('idle');
-	const [meaning, setMeaning] = useState<Meaning>('off');
-	const [progress, setProgress] = useState<DownloadProgress | null>(null);
-
-	const engine = useRef<HybridEngine | null>(null);
-	const options = useRef<HybridOptions>({});
-	const embedder = useRef<WorkerEmbedder | null>(null);
+	const { engine, indexState, meaning, progress, startMeaning } = useHybridSearch(open);
 
 	useEffect(() => {
 		const onKey = (event: KeyboardEvent) => {
@@ -46,43 +34,10 @@ export default function SearchCommand() {
 		return () => document.removeEventListener('keydown', onKey);
 	}, []);
 
-	// Load the name index (and chunk vectors, if the build produced them) the first time the palette opens.
-	useEffect(() => {
-		if (!open || indexState !== 'idle') return;
-		setIndexState('loading');
-		(async () => {
-			try {
-				const [docsResponse, vectorsResponse] = await Promise.all([fetch(withBase('search-index.json')), fetch(withBase('vectors.json'))]);
-				if (!docsResponse.ok) throw new Error(String(docsResponse.status));
-				const docs: SearchDocument[] = await docsResponse.json();
-				if (vectorsResponse.ok) options.current.index = loadVectorIndex((await vectorsResponse.json()) as VectorFile);
-				engine.current = await createHybridEngine(docs, options.current);
-				setIndexState('ready');
-			} catch {
-				setIndexState('error');
-			}
-		})();
-	}, [open, indexState]);
-
 	// Start the model only when someone actually searches.
 	useEffect(() => {
-		if (indexState !== 'ready' || meaning !== 'off' || !query.trim()) return;
-		if (!options.current.index || typeof WebAssembly === 'undefined') {
-			setMeaning('unavailable');
-			return;
-		}
-		setMeaning('loading');
-		const started = createWorkerEmbedder(setProgress);
-		embedder.current = started;
-		started.ready
-			.then(() => {
-				options.current.embed = started.embed;
-				setMeaning('ready');
-			})
-			.catch(() => setMeaning('unavailable'));
-	}, [indexState, meaning, query]);
-
-	useEffect(() => () => embedder.current?.dispose(), []);
+		if (indexState === 'ready' && query.trim()) void startMeaning();
+	}, [indexState, query, startMeaning]);
 
 	// Run the search (debounced). Re-runs when the model finishes loading.
 	useEffect(() => {
@@ -144,6 +99,18 @@ export default function SearchCommand() {
 						{indexState === 'ready' && query.trim() && results.length === 0 && <CommandEmpty>No matching terms.</CommandEmpty>}
 						{terms.length > 0 && <CommandGroup heading="Terms">{terms.map(row)}</CommandGroup>}
 						{oldNames.length > 0 && <CommandGroup heading="Old names">{oldNames.map(row)}</CommandGroup>}
+						{query.trim() && (
+							<CommandGroup heading="Ask Decoded365">
+								<CommandItem
+									value={`ask:${query}`}
+									onSelect={() => {
+										window.location.href = `${askPath()}?q=${encodeURIComponent(query.trim())}`;
+									}}
+								>
+									<MessageCircleQuestionIcon /> Ask: “{query.trim()}”
+								</CommandItem>
+							</CommandGroup>
+						)}
 					</CommandList>
 					<div className="border-t px-3 py-2 text-xs text-muted-foreground" aria-live="polite">
 						{meaning === 'loading' && (
