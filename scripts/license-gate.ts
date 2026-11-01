@@ -14,11 +14,7 @@ const readJson = async <T>(path: string): Promise<T> => JSON.parse(await readFil
 
 const lock = await readJson<{ packages: Record<string, LockPackage> }>('package-lock.json');
 const { exceptions } = await readJson<{ exceptions: Record<string, string> }>('config/licence-exceptions.json');
-const models = await readJson<{
-	embedding: { id: string; licence: string };
-	chat: { id: string; licence: string };
-	candidates: { id: string; licence: string }[];
-}>('config/models.json');
+const models = await readJson<{ embedding: { id: string; licence: string } }>('config/models.json');
 
 const failures: string[] = [];
 let checked = 0;
@@ -44,14 +40,8 @@ for (const [path, pkg] of Object.entries(lock.packages)) {
 	if (!licence || !isOsiApproved(licence)) failures.push(`${name}@${pkg.version}: ${licence ?? 'no licence declared'}`);
 }
 
-for (const [kind, model] of [
-	['embedding model', models.embedding],
-	['chat model', models.chat],
-	...models.candidates.map((m) => ['candidate model', m] as const),
-] as const) {
-	checked++;
-	if (!isOsiApproved(model.licence)) failures.push(`${kind} ${model.id}: ${model.licence}`);
-}
+checked++;
+if (!isOsiApproved(models.embedding.licence)) failures.push(`embedding model ${models.embedding.id}: ${models.embedding.licence}`);
 
 if (failures.length) {
 	console.error(`Licence gate failed. ${failures.length} item(s) are not under an OSI-approved licence:\n`);

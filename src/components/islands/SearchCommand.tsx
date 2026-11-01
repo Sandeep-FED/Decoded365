@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { MessageCircleQuestionIcon, SearchIcon } from 'lucide-react';
+import { SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -8,7 +8,7 @@ import { useHybridSearch } from '@/components/hooks/use-hybrid-search';
 import type { SearchResult } from '@/lib/search/engine';
 import { formatYearMonth } from '@/lib/format-date';
 import { STATUS_LABELS } from '@/lib/glossary/labels';
-import { askPath, termPath } from '@/lib/paths';
+import { termPath } from '@/lib/paths';
 
 const megabytes = (bytes: number) => (bytes / 1_000_000).toFixed(0);
 
@@ -99,18 +99,6 @@ export default function SearchCommand() {
 						{indexState === 'ready' && query.trim() && results.length === 0 && <CommandEmpty>No matching terms.</CommandEmpty>}
 						{terms.length > 0 && <CommandGroup heading="Terms">{terms.map(row)}</CommandGroup>}
 						{oldNames.length > 0 && <CommandGroup heading="Old names">{oldNames.map(row)}</CommandGroup>}
-						{query.trim() && (
-							<CommandGroup heading="Ask Decoded365">
-								<CommandItem
-									value={`ask:${query}`}
-									onSelect={() => {
-										window.location.href = `${askPath()}?q=${encodeURIComponent(query.trim())}`;
-									}}
-								>
-									<MessageCircleQuestionIcon /> Ask: “{query.trim()}”
-								</CommandItem>
-							</CommandGroup>
-						)}
 					</CommandList>
 					<div className="border-t px-3 py-2 text-xs text-muted-foreground" aria-live="polite">
 						{meaning === 'loading' && (

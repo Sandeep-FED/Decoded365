@@ -1,27 +1,9 @@
 {
-  "_note": "Registry of AI models the site may load. Every model must have an OSI-approved licence (BRD 8.4, 8.8). Confirm each licence and size in spikes S1 and S2 before launch.",
+  "_note": "Registry of AI models the site may load. Every model must have an OSI-approved licence (BRD 8.4, 8.8). Confirm each licence and size in spike S1 before launch.",
   "embedding": {
     "id": "Xenova/all-MiniLM-L6-v2",
     "licence": "Apache-2.0",
     "dimensions": 384,
     "dtype": "q8"
-  },
-  "chat": {
-    "id": "Qwen2.5-1.5B-Instruct-q4f16_1-MLC",
-    "licence": "Apache-2.0",
-    "downloadMB": 880,
-    "vramMB": 1630,
-    "host": "Hugging Face (weights) and GitHub (runtime library), fetched by WebLLM after the visitor consents",
-    "baseModelLicence": "Apache-2.0 (Qwen/Qwen2.5-1.5B-Instruct, verified on Hugging Face 2026-11-01). Confirm in spike S2."
-  },
-  "candidates": [
-    {
-      "id": "SmolLM2-1.7B-Instruct-q4f16_1-MLC",
-      "licence": "Apache-2.0"
-    },
-    {
-      "id": "Phi-3.5-mini-instruct-q4f16_1-MLC",
-      "licence": "MIT"
-    }
-  ]
+  }
 }

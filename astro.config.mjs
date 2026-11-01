@@ -36,7 +36,6 @@ export default defineConfig({
 				'cytoscape',
 				'@orama/orama',
 				'@huggingface/transformers',
-				'@mlc-ai/web-llm',
 			],
 		},
 		// Pin the bundler to this repo's tsconfig for the same reason.

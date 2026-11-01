@@ -3,7 +3,6 @@ import { join } from 'node:path';
 
 export interface ModelRegistry {
 	embedding: { id: string; licence: string; dimensions: number; dtype: string };
-	chat: { id: string; licence: string };
 }
 
 export const ROOT = process.cwd();
