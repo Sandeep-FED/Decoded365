@@ -1,0 +1,1 @@
+function e(e){return`${`/Decoded365`.replace(/\/$/,``)}/${e.replace(/^\//,``)}`}var t=t=>e(`terms/${t}/`);export{e as n,t};

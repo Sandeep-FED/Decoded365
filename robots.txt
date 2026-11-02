@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sandeep-fed.github.io/Decoded365/sitemap.xml
