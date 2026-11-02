@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import RenamedExplorer from '@/components/changes/RenamedExplorer';
+import { buildChangeLog } from '@/lib/glossary/changes';
+import { PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { getGlossary } from '@/lib/glossary/repository';
+import { termPath } from '@/lib/paths';
+import { PRODUCTS } from '@/schema/term';
+
+const terms = await getGlossary();
+const entries = buildChangeLog(terms).map((e) => ({
+	...e,
+	href: termPath(e.termId),
+	replacedByHref: e.replacedById ? termPath(e.replacedById) : undefined,
+}));
+// Cross-platform terms (Entra ID, Viva Engage) carry renames too, so every product can be filtered.
+const products = PRODUCTS.map((p) => ({ value: p, label: PRODUCT_LABELS[p] }));
+---
+
+<BaseLayout
+	title="Renamed and retired"
+	description="Every Microsoft 365 name change and retirement in the glossary, newest first, so an old name leads you to what it is called now."
+>
+	<div class="space-y-6">
+		<PageHeader
+			eyebrow="History"
+			title="Renamed and retired"
+			description="Microsoft renames products often and retires some outright. Search an old name to find what it is called now, or filter to see what changed."
+		/>
+		<RenamedExplorer client:load entries={entries} products={products} />
+	</div>
+</BaseLayout>

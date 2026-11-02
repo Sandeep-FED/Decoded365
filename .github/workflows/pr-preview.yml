@@ -19,6 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history: the What's new page reads when each term was added
       - uses: actions/setup-node@v4
         if: github.event.action != 'closed'
         with:

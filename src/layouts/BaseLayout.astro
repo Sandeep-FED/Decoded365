@@ -4,6 +4,7 @@ import SiteHeader from '@/components/SiteHeader.astro';
 import SiteFooter from '@/components/SiteFooter.astro';
 import SpotlightBackground from '@/components/SpotlightBackground';
 import BackToTop from '@/components/islands/BackToTop';
+import LinkPreviews from '@/components/islands/LinkPreviews';
 import { PREF_KEYS } from '@/lib/preferences';
 import { SITE } from '@/config/site';
 import { withBase } from '@/lib/paths';
@@ -60,5 +61,6 @@ const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.
 		</main>
 		<SiteFooter />
 		<BackToTop client:idle />
+		<LinkPreviews client:idle />
 	</body>
 </html>

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import ProductBadge from '@/components/ProductBadge.astro';
+import { formatDate } from '@/lib/format-date';
+import { getGlossary } from '@/lib/glossary/repository';
+import { readGitHistory, termChanges } from '@/lib/glossary/history';
+import { groupByDay } from '@/lib/glossary/whats-new';
+import { feedPath, termPath } from '@/lib/paths';
+
+const terms = await getGlossary();
+const days = groupByDay(termChanges(terms, readGitHistory()));
+---
+
+<BaseLayout title="What's new" description="Terms added to and changed in the Decoded365 glossary, newest first.">
+	<div class="space-y-8">
+		<PageHeader eyebrow="Glossary" title="What's new" description="Terms that were added or changed recently, newest first.">
+			<p class="text-sm">
+				<a class="underline underline-offset-4" href={feedPath()}>Follow with an Atom feed</a>
+			</p>
+		</PageHeader>
+
+		{
+			days.map((group) => (
+				<section aria-labelledby={`day-${group.day}`} class="space-y-4">
+					<h2 id={`day-${group.day}`} class="text-xl font-semibold">{formatDate(group.day)}</h2>
+					{group.added.length > 0 && (
+						<div class="space-y-2">
+							<h3 class="text-sm font-medium text-muted-foreground">
+								{group.added.length} new {group.added.length === 1 ? 'term' : 'terms'}
+							</h3>
+							<ul class="grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+								{group.added.map(({ term }) => (
+									<li class="flex items-center gap-2 text-sm">
+										<a class="underline underline-offset-4" href={termPath(term.id)}>{term.term}</a>
+										<ProductBadge product={term.product} />
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+					{group.updated.length > 0 && (
+						<div class="space-y-2">
+							<h3 class="text-sm font-medium text-muted-foreground">
+								{group.updated.length} updated {group.updated.length === 1 ? 'term' : 'terms'}
+							</h3>
+							<ul class="grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+								{group.updated.map(({ term }) => (
+									<li class="flex items-center gap-2 text-sm">
+										<a class="underline underline-offset-4" href={termPath(term.id)}>{term.term}</a>
+										<ProductBadge product={term.product} />
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+				</section>
+			))
+		}
+	</div>
+</BaseLayout>

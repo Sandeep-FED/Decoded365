@@ -1,8 +1,11 @@
 ---
-import { browsePath } from '@/lib/paths';
+import { browsePath, comparePath, newPath, renamedPath } from '@/lib/paths';
 
 const links = [
 	{ href: browsePath(), label: 'Browse A–Z' },
+	{ href: comparePath(), label: 'Compare' },
+	{ href: renamedPath(), label: 'Renamed' },
+	{ href: newPath(), label: 'What\'s new' },
 ];
 const current = Astro.url.pathname;
 ---
@@ -12,7 +15,7 @@ const current = Astro.url.pathname;
 		<a
 			href={link.href}
 			aria-current={current.startsWith(link.href) ? 'page' : undefined}
-			class="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-foreground aria-[current=page]:bg-primary aria-[current=page]:text-primary-foreground"
+			class="whitespace-nowrap rounded-full px-2 py-1.5 text-sm text-muted-foreground sm:px-3 transition-colors hover:bg-accent hover:text-foreground aria-[current=page]:bg-primary aria-[current=page]:text-primary-foreground"
 		>
 			{link.label}
 		</a>

@@ -11,7 +11,11 @@ The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with Sha
 - **Three levels per term**, remembered per visitor; without JavaScript all three show.
 - **A–Z browse** with live filter, product filter and a switch for legacy and Server-only terms.
 - **Search** (`/` or Ctrl/⌘ K) that understands aliases and old names ("app for SharePoint" finds SharePoint Add-in).
-- **Related terms**: a small diagram of each term's neighbours on its page.
+- **Related terms**: a small diagram of each term's neighbours on its page, and hover previews on links between terms.
+- **Renamed and retired**: a searchable timeline of product renames and retirements, so an old name leads to the current one.
+- **What's new**: terms added or changed recently (from git history), with an Atom feed.
+- **Compare**: pick any two terms and read them side by side at every level; the link is shareable.
+- **Downloads**: the glossary as CSV, Anki flashcards and JSON.
 - **Rename and retirement history** with dates.
 - **Open data** at `/glossary.json`.
 - **100% free to run**: static site, no server, no API keys, no tracking.

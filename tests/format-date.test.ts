@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatDate, formatYearMonth } from '@/lib/format-date';
+import { formatDate, formatShortDate, formatYearMonth } from '@/lib/format-date';
 
 describe('format-date', () => {
 	it('formats ISO dates without time zone drift', () => {
@@ -10,5 +10,11 @@ describe('format-date', () => {
 	it('formats year-month and unknown dates', () => {
 		expect(formatYearMonth('2025-10')).toBe('October 2025');
 		expect(formatYearMonth(null)).toBe('Date not stated');
+	});
+
+	it('formats the short timeline dates', () => {
+		expect(formatShortDate('2026-04-02')).toBe('2 Apr 2026');
+		expect(formatShortDate('2025-10')).toBe('Oct 2025');
+		expect(formatShortDate(null)).toBe('No date');
 	});
 });

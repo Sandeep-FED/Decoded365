@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import CompareExplorer from '@/components/compare/CompareExplorer';
+---
+
+<BaseLayout title="Compare terms" description="Pick any two Microsoft 365 terms and read them side by side at every level.">
+	<div class="space-y-6">
+		<PageHeader
+			eyebrow="Glossary"
+			title="Compare terms"
+			description="Pick any two terms to read them side by side, from the plain-words version to the technical detail. The link in your address bar can be shared."
+		/>
+		<CompareExplorer client:load />
+		<noscript><p class="text-sm text-muted-foreground">Comparing needs JavaScript. Each term page also lists the terms it is often confused with.</p></noscript>
+	</div>
+</BaseLayout>

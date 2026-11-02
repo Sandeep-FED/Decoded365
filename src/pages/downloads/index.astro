@@ -1,0 +1,69 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { buttonVariants } from '@/components/ui/button';
+import { SITE } from '@/config/site';
+import { getGlossary } from '@/lib/glossary/repository';
+import { downloadPath, feedPath, withBase } from '@/lib/paths';
+
+const count = (await getGlossary()).length;
+const formats = [
+	{
+		title: 'Spreadsheet (CSV)',
+		file: 'decoded365.csv',
+		href: downloadPath('decoded365.csv'),
+		text: 'One row per term with its aliases, product, status, all three levels as plain text, related terms and page address. Opens in Excel or Google Sheets.',
+	},
+	{
+		title: 'Flashcards (Anki)',
+		file: 'decoded365-anki.txt',
+		href: downloadPath('decoded365-anki.txt'),
+		text: 'A text file for Anki: the term on the front, the three levels on the back, tagged by product and status. In Anki choose File, then Import, and pick the file.',
+	},
+	{
+		title: 'Data (JSON)',
+		file: 'glossary.json',
+		href: withBase('glossary.json'),
+		text: 'Every term with its three levels as Markdown, for building your own tools.',
+	},
+	{
+		title: 'Feed (Atom)',
+		file: 'feed.xml',
+		href: feedPath(),
+		text: 'New and updated terms for a feed reader.',
+	},
+];
+---
+
+<BaseLayout title="Downloads" description="Download the Decoded365 glossary as a spreadsheet, Anki flashcards or JSON.">
+	<div class="space-y-6">
+		<PageHeader
+			eyebrow="Glossary"
+			title="Downloads"
+			description={`Take all ${count} terms with you. Everything is free to use, share and adapt.`}
+		/>
+
+		<div class="grid gap-4 sm:grid-cols-2">
+			{
+				formats.map((format) => (
+					<Card className="bg-card/70 backdrop-blur-sm">
+						<CardHeader>
+							<CardTitle>{format.title}</CardTitle>
+							<CardDescription>{format.text}</CardDescription>
+						</CardHeader>
+						<CardContent>
+							<a href={format.href} download={format.file !== 'feed.xml' ? format.file : undefined} class={buttonVariants({ variant: 'outline' })}>
+								{format.file}
+							</a>
+						</CardContent>
+					</Card>
+				))
+			}
+		</div>
+
+		<p class="text-sm text-muted-foreground">
+			The content is licensed {SITE.contentLicence}. If you share it or build on it, credit Decoded365 and say if you changed anything.
+		</p>
+	</div>
+</BaseLayout>

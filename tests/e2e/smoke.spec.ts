@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const PAGES = ['/', '/browse/', '/terms/recycle-bin/', '/terms/sharepoint-add-in/'];
+const PAGES = ['/', '/browse/', '/compare/', '/renamed/', '/new/', '/downloads/', '/terms/recycle-bin/', '/terms/sharepoint-add-in/'];
 
 for (const path of PAGES) {
 	test(`${path} loads without console errors`, async ({ page }, info) => {
