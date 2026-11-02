@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 // WCAG 2.2 AA (BRD non-functional requirements).
-const PAGES = ['/', '/browse/', '/map/', '/terms/recycle-bin/', '/terms/sharepoint-add-in/', '/terms/hub-site/'];
+const PAGES = ['/', '/browse/', '/terms/recycle-bin/', '/terms/sharepoint-add-in/', '/terms/hub-site/'];
 
 for (const path of PAGES) {
 	test(`${path} has no axe violations`, async ({ page }) => {

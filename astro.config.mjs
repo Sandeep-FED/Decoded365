@@ -33,7 +33,6 @@ export default defineConfig({
 				'sonner',
 				'lucide-react',
 				'motion/react',
-				'cytoscape',
 				'@orama/orama',
 				'@huggingface/transformers',
 			],

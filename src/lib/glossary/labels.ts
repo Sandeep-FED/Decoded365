@@ -37,7 +37,7 @@ export const STATUS_CLASSES: Record<StatusName, string> = {
 	retired: 'border-status-retired/40 text-status-retired',
 };
 
-/** Hex colours for the canvas graph, which cannot read CSS variables. */
+/** Hex colours for the related-terms diagram, which draws SVG with fixed fills. */
 export const PRODUCT_GRAPH_COLOURS: Record<ProductName, string> = {
 	sharepoint: '#0e7490',
 	'power-platform': '#7e22ce',

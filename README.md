@@ -2,7 +2,7 @@
 
 A free, open-source glossary for **SharePoint, Power Platform and Microsoft 365 Copilot**. Every term is written at three depths (Beginner, Maker, Architect), linked to related terms, and searchable by name, old name or meaning.
 
-The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with SharePoint the most complete. More terms are added by pull request, and the three products share one site, one search and one map.
+The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with SharePoint the most complete. More terms are added by pull request, and the three products share one site and one search.
 
 > Decoded365 is a community project and is not affiliated with or endorsed by Microsoft.
 
@@ -11,7 +11,7 @@ The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with Sha
 - **Three levels per term**, remembered per visitor; without JavaScript all three show.
 - **A–Z browse** with live filter, product filter and a switch for legacy and Server-only terms.
 - **Search** (`/` or Ctrl/⌘ K) that understands aliases and old names ("app for SharePoint" finds SharePoint Add-in).
-- **Related-terms map**: a 1-hop map on every term and a full explorer.
+- **Related terms**: a small diagram of each term's neighbours on its page.
 - **Rename and retirement history** with dates.
 - **Open data** at `/glossary.json`.
 - **100% free to run**: static site, no server, no API keys, no tracking.
@@ -47,7 +47,7 @@ config/                           AI model registry and licence exceptions
 src/schema/                       Zod schemas (Term, Source)
 src/lib/                          Pure, framework-free logic: content, glossary, graph, search, licensing
 src/components/                   Astro components, React islands and shadcn/ui primitives
-src/pages/                        Routes: home, terms, browse, map, JSON endpoints
+src/pages/                        Routes: home, terms, browse, JSON endpoints
 scripts/                          CI scripts (validate, licence gate, freshness, similarity)
 docs/                             Style guide and term template
 tests/                            Unit tests and Playwright end-to-end tests

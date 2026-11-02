@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const PAGES = ['/', '/browse/', '/map/', '/terms/recycle-bin/'];
+const PAGES = ['/', '/browse/', '/terms/recycle-bin/'];
 
 for (const path of PAGES) {
 	test(`${path} has no horizontal overflow on a phone`, async ({ page }) => {

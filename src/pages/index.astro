@@ -7,7 +7,7 @@ import FlipTitle from '@/components/islands/FlipTitle';
 import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
 import { getGlossary } from '@/lib/glossary/repository';
 import { PRODUCT_LABELS } from '@/lib/glossary/labels';
-import { browsePath, mapPath, termPath } from '@/lib/paths';
+import { browsePath, termPath } from '@/lib/paths';
 import { PRODUCTS } from '@/schema/term';
 import { SITE } from '@/config/site';
 import { FEATURED_TERM_IDS } from '@/config/featured';
@@ -41,7 +41,6 @@ const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 		</p>
 		<div class="flex flex-wrap gap-3">
 			<a href={browsePath()} class={buttonVariants()}>Browse A–Z</a>
-			<a href={mapPath()} class={buttonVariants({ variant: 'outline' })}>Explore the map</a>
 		</div>
 		<p class="text-sm text-muted-foreground">Press <kbd class="rounded border px-1.5">/</kbd> anywhere to search.</p>
 	</section>

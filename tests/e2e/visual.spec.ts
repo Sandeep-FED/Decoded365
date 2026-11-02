@@ -3,7 +3,6 @@ import { test } from '@playwright/test';
 // Not assertions: settled screenshots for eyeballing layout (see test-results/shots).
 const SHOTS: { name: string; path: string; wait: number; fullPage?: boolean }[] = [
 	{ name: 'home', path: '/', wait: 3500, fullPage: true },
-	{ name: 'map', path: '/map/', wait: 3000, fullPage: true },
 	{ name: 'term', path: '/terms/sharepoint-add-in/', wait: 800, fullPage: true },
 ];
 
