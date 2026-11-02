@@ -19,7 +19,7 @@ reviewers: [sandeepps]
 Copilot Credits are the units you spend when you use the more advanced, usage-billed parts of Copilot, a bit like top-up credit on a phone.
 
 ## Maker
-They pay for work that the user licence does not cover, such as [[cowork]], [[autopilot]] and agents built on the [[github-copilot-harness]]. They are separate from the Microsoft 365 Copilot [[licence]], which is why you can need both.
+They pay for work that the user licence does not cover, such as [[cowork]], [[autopilot]] and agents built on the [[microsoft-copilot-harness]]. They are separate from the Microsoft 365 Copilot [[licence]], which is why you can need both.
 
 ## Architect
 Credits are a consumption model under [[usage-based-billing]], so costs follow volume. Estimate usage, set budgets and monitor spend per workload. Pricing and what is covered change, so confirm current terms.

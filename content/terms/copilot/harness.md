@@ -7,7 +7,7 @@ category: agents
 status: ga
 related:
   - { id: copilot-studio, type: part-of }
-  - { id: github-copilot-harness, type: used-by }
+  - { id: microsoft-copilot-harness, type: used-by }
   - { id: standard-harness, type: used-by }
   - { id: customer-conversation-harness, type: used-by }
   - { id: orchestrator, type: often-confused-with }
@@ -22,7 +22,7 @@ reviewers: [sandeepps]
 A harness is the engine underneath an agent in Copilot Studio. The builder looks the same, but the engine decides how the agent behaves.
 
 ## Maker
-It sets how independently the agent reasons, which files it can touch, where you can publish it and, importantly, how it is billed and whether your existing licences cover it. Today there are three: the [[github-copilot-harness]], the [[standard-harness]] and the [[customer-conversation-harness]].
+It sets how independently the agent reasons, which files it can touch, where you can publish it and, importantly, how it is billed and whether your existing licences cover it. Today there are three: the [[microsoft-copilot-harness]], the [[standard-harness]] and the [[customer-conversation-harness]].
 
 ## Architect
-Choose the harness first, because it fixes the cost model and the publishing options. Do not confuse it with the [[orchestrator]], which is the component that coordinates steps inside an agent. The set of harnesses is evolving, so check the current harness overview.
+Choose the harness first, because it fixes the cost model and the publishing options, and an agent cannot be moved to a different harness after it is created. Do not confuse it with the [[orchestrator]], which is the component that coordinates steps inside an agent. The set of harnesses is evolving, so check the current harness overview.

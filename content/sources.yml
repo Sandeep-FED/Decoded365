@@ -62,6 +62,13 @@
   address: learn.microsoft.com/en-us/microsoft-copilot-studio
   release: v1.2
   use: Copilot Studio concepts; facts only until the licence is confirmed.
+- id: ms-copilot-harness-blog
+  title: Microsoft Copilot harness announcement and Copilot Studio rename post
+  owner: Microsoft
+  licence: Not stated
+  address: blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work
+  release: v1.2
+  use: Rename of the GitHub Copilot harness (28 October 2026) and what the harness is; facts only.
 - id: decoded365-authors
   title: Decoded365 authors
   owner: Decoded365 contributors
