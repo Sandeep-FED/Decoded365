@@ -1,7 +1,7 @@
 ---
 id: grounding
 term: "Grounding"
-aliases: ["grounded answers", "retrieval-augmented generation", "RAG"]
+aliases: ["grounded answers", "retrieval-augmented generation", "RAG", "data grounding", "knowledge grounding", "prompt grounding", "response grounding"]
 product: copilot
 category: ai-concepts
 status: ga

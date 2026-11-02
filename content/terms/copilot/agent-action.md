@@ -1,7 +1,7 @@
 ---
 id: agent-action
 term: "Action"
-aliases: ["agent action", "tool", "agent tool"]
+aliases: ["agent action", "tool", "agent tool", "action"]
 product: copilot
 category: agents
 status: ga
