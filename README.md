@@ -16,6 +16,7 @@ The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with Sha
 - **What's new**: terms added or changed recently (from git history), with an Atom feed.
 - **Compare**: pick any two terms and read them side by side at every level; the link is shareable.
 - **Downloads**: the glossary as CSV, Anki flashcards and JSON.
+- **Discovery**: a sitemap, canonical addresses, social link previews (an image per term, drawn at build time) and schema.org `DefinedTerm` data.
 - **Content quality** (`/quality/`, or `npm run quality`): which entries a person has reviewed and which are thin, unconnected or undated. Entries written with AI carry `review: drafted` until someone checks them.
 - **Rename and retirement history** with dates.
 - **Open data** at `/glossary.json`.

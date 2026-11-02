@@ -39,6 +39,21 @@ test('downloads are served', async ({ request }) => {
 	expect(await feed.text()).toContain('<feed xmlns="http://www.w3.org/2005/Atom">');
 });
 
+test('discovery files and page metadata are in place', async ({ page, request }) => {
+	const sitemap = await (await request.get('/sitemap.xml')).text();
+	expect(sitemap).toContain('/terms/host-web/');
+	expect(sitemap).not.toContain('/quality/');
+	expect(await (await request.get('/robots.txt')).text()).toContain('Sitemap:');
+	const image = await request.get('/og/host-web.png');
+	expect(image.headers()['content-type']).toBe('image/png');
+
+	await page.goto('/terms/host-web/');
+	await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/terms\/host-web\/$/);
+	await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\/host-web\.png$/);
+	const data = JSON.parse((await page.locator('script[type="application/ld+json"]').first().textContent()) ?? '{}');
+	expect(data['@type']).toBe('DefinedTerm');
+});
+
 test('the quality dashboard filters terms and stays out of search results', async ({ page }) => {
 	await page.goto('/quality/');
 	await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');

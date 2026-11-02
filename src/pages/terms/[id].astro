@@ -20,7 +20,8 @@ import { APPLIES_TO_LABELS, PRODUCT_LABELS } from '@/lib/glossary/labels';
 import { makeLinkResolver } from '@/lib/glossary/link-resolver';
 import { getGlossary, getGraph, getSources } from '@/lib/glossary/repository';
 import { neighbourhood } from '@/lib/graph/neighbourhood';
-import { browsePath } from '@/lib/paths';
+import { browsePath, termPath, withBase } from '@/lib/paths';
+import { breadcrumbLd, definedTermLd } from '@/lib/seo/structured-data';
 
 export async function getStaticPaths() {
 	const terms = await getGlossary();
@@ -37,10 +38,20 @@ const confusedWith = neighbours
 	.filter((n) => n.type === 'often-confused-with')
 	.flatMap((n) => byId.get(n.node.id) ?? []);
 const labelOf = (id: string) => byId.get(id)?.term;
+const origin = Astro.site ?? new URL('http://localhost:4321');
+const absolute = (path: string) => new URL(path, origin).href;
+const jsonLd = [
+	definedTermLd({ id: term.id, term: term.term, aliases: term.aliases, summary: term.summary, url: absolute(termPath(term.id)), setUrl: absolute(browsePath()) }),
+	breadcrumbLd([
+		{ name: 'Browse A–Z', url: absolute(browsePath()) },
+		{ name: PRODUCT_LABELS[term.product], url: absolute(`${browsePath()}?product=${term.product}`) },
+		{ name: term.term, url: absolute(termPath(term.id)) },
+	]),
+];
 const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedBy)?.label : undefined;
 ---
 
-<BaseLayout title={term.term} description={term.summary}>
+<BaseLayout title={term.term} description={term.summary} image={withBase(`og/${term.id}.png`)} type="article" jsonLd={jsonLd}>
 	<article class="space-y-6">
 		<Breadcrumbs items={[{ label: 'Browse', href: browsePath() }, { label: PRODUCT_LABELS[term.product] }, { label: term.term }]} />
 

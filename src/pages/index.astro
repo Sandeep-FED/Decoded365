@@ -7,9 +7,10 @@ import FlipTitle from '@/components/islands/FlipTitle';
 import { LEVELS, LEVEL_LABELS } from '@/lib/content/levels';
 import { getGlossary } from '@/lib/glossary/repository';
 import { PRODUCT_LABELS } from '@/lib/glossary/labels';
-import { browsePath, termPath } from '@/lib/paths';
+import { browsePath, termPath, withBase } from '@/lib/paths';
 import { PRODUCTS } from '@/schema/term';
 import { SITE } from '@/config/site';
+import { websiteLd } from '@/lib/seo/structured-data';
 import { FEATURED_TERM_IDS } from '@/config/featured';
 
 const terms = await getGlossary();
@@ -26,7 +27,7 @@ const levelBlurbs = {
 const roadmap = PRODUCTS.filter((p) => p !== 'cross-platform');
 ---
 
-<BaseLayout>
+<BaseLayout jsonLd={[websiteLd(new URL(withBase('/'), Astro.site ?? 'http://localhost:4321').href)]}>
 	<section class="space-y-4 py-10">
 		<h1 class="text-4xl font-semibold tracking-tight sm:text-6xl">{SITE.name}</h1>
 		<p class="font-heading text-2xl font-medium sm:text-4xl">

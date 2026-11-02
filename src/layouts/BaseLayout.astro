@@ -7,15 +7,28 @@ import BackToTop from '@/components/islands/BackToTop';
 import LinkPreviews from '@/components/islands/LinkPreviews';
 import { PREF_KEYS } from '@/lib/preferences';
 import { SITE } from '@/config/site';
-import { withBase } from '@/lib/paths';
+import { feedPath, withBase } from '@/lib/paths';
+import { jsonLdText } from '@/lib/seo/structured-data';
 
 interface Props {
 	title?: string;
 	description?: string;
+	/** Path of the link-preview image; defaults to the site-wide card. */
+	image?: string;
+	/** `article` for a term page, `website` for everything else. */
+	type?: 'website' | 'article';
+	/** schema.org data for the page, written as JSON-LD. */
+	jsonLd?: object[];
+	/** Keep the page out of search results (for maintenance pages). */
+	noindex?: boolean;
 }
 
-const { title, description = SITE.tagline } = Astro.props;
+const { title, description = SITE.tagline, image = withBase('og/default.png'), type = 'website', jsonLd = [], noindex = false } = Astro.props;
 const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+// Absolute addresses for sharing; Astro.site comes from the SITE_URL the deploy workflow sets.
+const origin = Astro.site ?? new URL('http://localhost:4321');
+const canonical = new URL(Astro.url.pathname, origin).href;
+const imageUrl = new URL(image, origin).href;
 ---
 
 <!doctype html>
@@ -35,6 +48,23 @@ const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.
 			href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
 		/>
 		<title>{pageTitle}</title>
+		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex" />}
+		<link rel="sitemap" type="application/xml" href={withBase('sitemap.xml')} />
+		<link rel="alternate" type="application/atom+xml" title={`${SITE.name}: new and updated terms`} href={feedPath()} />
+		<meta property="og:site_name" content={SITE.name} />
+		<meta property="og:type" content={type} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
+		{jsonLd.map((data) => <script type="application/ld+json" set:html={jsonLdText(data)} />)}
 		<!-- Applies remembered preferences before first paint. Without JavaScript nothing is hidden. -->
 		<script is:inline define:vars={{ keys: PREF_KEYS }}>
 			(function () {
