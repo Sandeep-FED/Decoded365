@@ -61,10 +61,17 @@ export const Term = z.object({
 		.min(1),
 	/** `partial` lets an entry ship before all three levels are written. */
 	levels: z.enum(['complete', 'partial']).default('complete'),
+	/**
+	 * Where the text stands: `drafted` = written with AI and not yet read by a person, `reviewed` = a person has
+	 * checked it (BRD 8.6.1). Left out for entries nobody has marked yet.
+	 */
+	review: z.enum(['drafted', 'reviewed']).optional(),
 	lastReviewed: z.coerce.date(),
 	reviewers: z.array(z.string()).min(1),
 });
 
+export const REVIEW_STATES = ['reviewed', 'drafted'] as const;
+export type ReviewState = (typeof REVIEW_STATES)[number];
 export type TermData = z.infer<typeof Term>;
 export type RelationTypeName = z.infer<typeof RelationType>;
 export type ProductName = z.infer<typeof Product>;

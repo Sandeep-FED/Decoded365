@@ -11,6 +11,7 @@ related:
   - { id: microsoft-365-copilot, type: often-confused-with }
 origins:
   - { source: decoded365-authors, use: facts-only }
+review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]
 ---

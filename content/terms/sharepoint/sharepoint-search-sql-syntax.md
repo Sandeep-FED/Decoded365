@@ -10,6 +10,7 @@ related:
   - { id: crawled-property, type: often-confused-with }
 origins:
   - { source: ms-sharepoint-glossary, use: adapted }
+review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]
 ---

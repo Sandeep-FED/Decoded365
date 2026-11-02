@@ -12,3 +12,4 @@ export const newPath = () => withBase('new/');
 export const downloadsPath = () => withBase('downloads/');
 export const feedPath = () => withBase('feed.xml');
 export const downloadPath = (file: string) => withBase(`downloads/${file}`);
+export const qualityPath = () => withBase('quality/');

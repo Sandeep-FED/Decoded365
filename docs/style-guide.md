@@ -24,4 +24,4 @@ Write for a busy person who has never seen the term before.
 
 ## Review
 
-AI-drafted text must be read and corrected by a person before it is merged. Put your handle in `reviewers` and set `lastReviewed` to the day you checked it.
+AI-drafted text must be read and corrected by a person before it is merged. Mark unchecked AI text with `review: drafted` (term pages then show a Draft notice). Once you have checked it, set `review: reviewed`, put your handle in `reviewers` and set `lastReviewed` to the day you checked it. The content quality page tracks the split.

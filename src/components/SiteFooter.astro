@@ -1,7 +1,7 @@
 ---
 import { SITE } from '@/config/site';
 import { suggestTermUrl } from '@/lib/contribute/issue-links';
-import { downloadsPath, feedPath } from '@/lib/paths';
+import { downloadsPath, feedPath, qualityPath } from '@/lib/paths';
 ---
 
 <footer class="border-t text-sm text-muted-foreground">
@@ -14,6 +14,7 @@ import { downloadsPath, feedPath } from '@/lib/paths';
 			<a class="underline underline-offset-4" href={suggestTermUrl(SITE.repoUrl)}>Suggest a term</a>
 			<a class="underline underline-offset-4" href={downloadsPath()}>Downloads</a>
 			<a class="underline underline-offset-4" href={feedPath()}>Atom feed</a>
+			<a class="underline underline-offset-4" href={qualityPath()}>Content quality</a>
 			<a class="underline underline-offset-4" href={SITE.repoUrl}>Source on GitHub</a>
 		</p>
 	</div>

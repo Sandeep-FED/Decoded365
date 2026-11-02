@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import QualityExplorer from '@/components/quality/QualityExplorer';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { SITE } from '@/config/site';
+import { editTermUrl } from '@/lib/contribute/issue-links';
+import { PRODUCT_LABELS } from '@/lib/glossary/labels';
+import { ISSUES, MIN_WORDS, assessTerms, byPriority, summarise, type IssueKey } from '@/lib/glossary/quality';
+import { getGlossary } from '@/lib/glossary/repository';
+import { termPath } from '@/lib/paths';
+import { PRODUCTS } from '@/schema/term';
+
+const terms = await getGlossary();
+const assessed = assessTerms(terms);
+const summary = summarise(assessed);
+const rows = byPriority(assessed).map((r) => ({
+	...r,
+	href: termPath(r.id),
+	editHref: editTermUrl(SITE.repoUrl, r.product, r.id),
+}));
+const products = PRODUCTS.map((p) => ({ value: p, label: PRODUCT_LABELS[p] }));
+const share = (n: number, of: number) => (of === 0 ? 0 : Math.round((n / of) * 100));
+
+const states = [
+	{ key: 'reviewed', label: 'Reviewed by a person', hint: 'A person has read and corrected the entry.', bar: 'bg-status-ga' },
+	{ key: 'drafted', label: 'AI-drafted', hint: 'Written with AI and not yet read by a person.', bar: 'bg-status-preview' },
+	{ key: 'unmarked', label: 'Not marked', hint: 'Nobody has recorded its review state yet.', bar: 'bg-muted-foreground/50' },
+] as const;
+---
+
+<BaseLayout title="Content quality" description="How much of the glossary a person has reviewed, and where entries are thin, unconnected or undated." noindex>
+	<div class="space-y-8">
+		<PageHeader
+			eyebrow="Maintainers"
+			title="Content quality"
+			description="Where the glossary stands: which entries a person has checked and which still need work. This page is for contributors and is kept out of search results."
+		/>
+
+		<section aria-label="Review state" class="grid gap-4 sm:grid-cols-3">
+			{
+				states.map((state) => (
+					<Card className="bg-card/70 backdrop-blur-sm">
+						<CardHeader>
+							<CardDescription>{state.label}</CardDescription>
+							<CardTitle className="text-3xl">
+								{summary.review[state.key]} <span class="text-base font-normal text-muted-foreground">{share(summary.review[state.key], summary.total)}%</span>
+							</CardTitle>
+						</CardHeader>
+						<CardContent className="text-sm text-muted-foreground">{state.hint}</CardContent>
+					</Card>
+				))
+			}
+		</section>
+
+		<section aria-labelledby="by-product" class="space-y-3">
+			<h2 id="by-product" class="text-xl font-semibold">By product</h2>
+			<ul class="space-y-3">
+				{
+					summary.byProduct.map((p) => (
+						<li class="space-y-1">
+							<p class="flex justify-between text-sm">
+								<span class="font-medium">{PRODUCT_LABELS[p.product]}</span>
+								<span class="text-muted-foreground">
+									{p.review.reviewed} reviewed · {p.review.drafted} drafted · {p.review.unmarked} not marked · {p.total} total
+								</span>
+							</p>
+							<div class="flex h-2.5 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${PRODUCT_LABELS[p.product]}: ${share(p.review.reviewed, p.total)}% reviewed`}>
+								{states.map((s) => <span class={s.bar} style={`width:${share(p.review[s.key], p.total)}%`} />)}
+							</div>
+						</li>
+					))
+				}
+			</ul>
+			<p class="flex flex-wrap gap-x-4 text-xs text-muted-foreground">
+				{states.map((s) => (
+					<span class="flex items-center gap-1.5"><span class={`size-2 rounded-full ${s.bar}`} />{s.label}</span>
+				))}
+			</p>
+		</section>
+
+		<section aria-labelledby="issues" class="space-y-3">
+			<h2 id="issues" class="text-xl font-semibold">What needs attention</h2>
+			<p class="text-sm text-muted-foreground">{summary.clean} of {summary.total} terms have none of these issues. A term can have several.</p>
+			<dl class="grid gap-x-8 gap-y-2 text-sm sm:grid-cols-2">
+				{
+					(Object.keys(ISSUES) as IssueKey[]).map((key) => (
+						<div class="flex justify-between border-b py-1.5">
+							<dt>{ISSUES[key]}</dt>
+							<dd class="font-medium">{summary.issues[key]}</dd>
+						</div>
+					))
+				}
+			</dl>
+			<p class="text-xs text-muted-foreground">
+				Thin text means a level under {MIN_WORDS.beginner} (Beginner), {MIN_WORDS.maker} (Maker) or {MIN_WORDS.architect} (Architect) words. No related terms means the term neither
+				declares nor receives a relation.
+			</p>
+		</section>
+
+		<section aria-labelledby="how" class="space-y-2 text-sm">
+			<h2 id="how" class="text-xl font-semibold">How to mark an entry reviewed</h2>
+			<p class="text-muted-foreground">
+				Read the entry against its sources and fix anything wrong. Then set <code>review: reviewed</code> in its front matter, put your handle in
+				<code>reviewers</code> and update <code>lastReviewed</code>. Term pages show a "Draft" notice until then.
+			</p>
+		</section>
+
+		<section aria-labelledby="all" class="space-y-3">
+			<h2 id="all" class="text-xl font-semibold">All terms</h2>
+			<QualityExplorer client:load rows={rows} products={products} />
+		</section>
+	</div>
+</BaseLayout>

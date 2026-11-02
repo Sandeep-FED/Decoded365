@@ -14,6 +14,7 @@ related:
 origins:
   - { source: ms-sharepoint-glossary, use: terms-only }   # adapted | facts-only | terms-only
 # levels: partial           # only while an entry is still being written
+review: reviewed            # reviewed | drafted. Use drafted for text written with AI that nobody has checked yet
 lastReviewed: 2026-11-01
 reviewers: [your-github-handle]
 ---

@@ -17,6 +17,7 @@ origins:
   - { source: decoded365-authors, use: facts-only }
   - { source: ms-copilot-studio-docs, use: facts-only }
   - { source: ms-copilot-harness-blog, use: facts-only }
+review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]
 ---

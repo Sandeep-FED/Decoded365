@@ -14,6 +14,7 @@ related:
   - { id: usage-based-billing, type: requires }
 origins:
   - { source: decoded365-authors, use: facts-only }
+review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]
 ---

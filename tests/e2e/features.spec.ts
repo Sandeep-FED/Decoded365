@@ -38,3 +38,11 @@ test('downloads are served', async ({ request }) => {
 	const feed = await request.get('/feed.xml');
 	expect(await feed.text()).toContain('<feed xmlns="http://www.w3.org/2005/Atom">');
 });
+
+test('the quality dashboard filters terms and stays out of search results', async ({ page }) => {
+	await page.goto('/quality/');
+	await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
+	await page.getByRole('radio', { name: 'Not marked' }).click();
+	await page.getByRole('radio', { name: 'Power Platform' }).click();
+	await expect(page.getByText('26 terms')).toBeVisible();
+});

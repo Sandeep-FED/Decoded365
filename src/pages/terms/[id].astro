@@ -49,6 +49,7 @@ const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedB
 			<div class="flex flex-wrap items-center gap-2">
 				<ProductBadge product={term.product} />
 				<StatusBadge status={term.status} />
+				{term.review === 'drafted' && <Badge variant="outline">Draft</Badge>}
 				{term.appliesTo?.map((a) => <Badge variant="secondary">{APPLIES_TO_LABELS[a]}</Badge>)}
 				<Badge variant="secondary" className="capitalize">{term.category}</Badge>
 			</div>
@@ -60,6 +61,15 @@ const replacedByName = term.retired?.replacedBy ? resolve(term.retired.replacedB
 		</header>
 
 		<RetirementNotice term={term} replacedByName={replacedByName} />
+
+		{
+			term.review === 'drafted' && (
+				<p class="rounded-lg border border-dashed px-4 py-3 text-sm text-muted-foreground">
+					<strong class="font-medium text-foreground">Draft.</strong> This entry was written with AI and has not yet been checked by a person. Treat it as a
+					starting point, and use "Edit this term" below to improve it.
+				</p>
+			)
+		}
 
 		<div data-js-only class="items-center gap-3">
 			<LevelSwitch client:load />

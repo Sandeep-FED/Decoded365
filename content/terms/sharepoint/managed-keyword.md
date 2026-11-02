@@ -9,6 +9,7 @@ related:
   - { id: term-store, type: requires }
 origins:
   - { source: ms-sharepoint-glossary, use: adapted }
+review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]
 ---

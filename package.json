@@ -21,7 +21,8 @@
     "eval:search": "tsx scripts/eval-search.ts",
     "assets": "tsx scripts/fetch-models.ts && tsx scripts/copy-ort-assets.ts",
     "embed": "tsx scripts/embed.ts",
-    "eval:search:hybrid": "tsx scripts/eval-search.ts --hybrid"
+    "eval:search:hybrid": "tsx scripts/eval-search.ts --hybrid",
+    "quality": "tsx scripts/quality-report.ts"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.0",
