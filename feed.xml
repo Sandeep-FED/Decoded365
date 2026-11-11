@@ -1,359 +1,359 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://sandeep-fed.github.io/Decoded365/feed.xml</id>
-  <title>Decoded365: new and updated terms</title>
+  <title>Whatsitcalled: new and updated terms</title>
   <subtitle>A community glossary for Microsoft 365: SharePoint, Power Platform and Copilot.</subtitle>
   <link rel="self" href="https://sandeep-fed.github.io/Decoded365/feed.xml"/>
   <link href="https://sandeep-fed.github.io/Decoded365/"/>
-  <updated>2026-11-02T00:00:00Z</updated>
+  <updated>2026-11-11T00:00:00Z</updated>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/access-control-entry/#new-2026-11-02</id>
-    <title>New: Access control entry</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/access-control-entry/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An access control entry is one line on a guest list: it names a person or group and says what they may or may not do with something.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/access-control-list/#new-2026-11-02</id>
-    <title>New: Access control list</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/access-control-list/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An access control list is the full guest list for a door: every person or group and what each is allowed to do.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/access-url/#new-2026-11-02</id>
-    <title>New: Access URL</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/access-url/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An access URL is the address the search robot uses to reach a file or page when it collects information for search.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/activity-feed/#new-2026-11-02</id>
-    <title>New: Activity feed</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/activity-feed/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An activity feed is like a news ticker of what the people, documents and topics you follow have been up to.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/activity-flow/#new-2026-11-02</id>
-    <title>New: Activity flow</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/activity-flow/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An activity flow is a recipe being followed right now, one step after another.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/activity-model/#new-2026-11-02</id>
-    <title>New: Activity model</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/activity-model/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An activity model is a ready-made routine, like a saved checklist of steps that you can reuse.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/adaptive-card/#new-2026-11-02</id>
-    <title>New: Adaptive Card</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/adaptive-card/#updated-2026-11-11</id>
+    <title>Updated: Adaptive Card</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/adaptive-card/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>An Adaptive Card is a small, tidy panel with text, pictures and buttons that appears inside a chat, like a mini form.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/after-event/#new-2026-11-02</id>
-    <title>New: After event</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/after-event/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An after event is like a thank-you note sent once a job has finished.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/agent-365/#new-2026-11-02</id>
-    <title>New: Agent 365</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/agent-365/#updated-2026-11-11</id>
+    <title>Updated: Agent 365</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/agent-365/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Agent 365 is a control panel for the AI agents an organisation uses, so someone can see them and keep them in check.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/agentic-ai/#new-2026-11-02</id>
-    <title>New: Agentic AI</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/agentic-ai/#updated-2026-11-11</id>
+    <title>Updated: Agentic AI</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/agentic-ai/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Agentic AI is AI that can work through several steps to reach a goal, instead of just answering one question.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-model/#new-2026-11-02</id>
-    <title>New: AI model</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-builder/#updated-2026-11-11</id>
+    <title>Updated: AI Builder</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/ai-builder/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>AI Builder lets you add ready-made AI skills, such as reading text from a form, to apps and flows without needing data science knowledge.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-model/#updated-2026-11-11</id>
+    <title>Updated: AI model</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/ai-model/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>An AI model is the trained &quot;brain&quot; inside an AI tool: it has learned patterns from lots of examples and uses them to produce an answer.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-safety/#new-2026-11-02</id>
-    <title>New: AI safety</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-safety/#updated-2026-11-11</id>
+    <title>Updated: AI safety</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/ai-safety/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>AI safety is the set of habits and controls that stop an AI from causing harm or doing something unexpected.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-generated-content/#new-2026-11-02</id>
-    <title>New: AI-generated content</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/ai-generated-content/#updated-2026-11-11</id>
+    <title>Updated: AI-generated content</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/ai-generated-content/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>AI-generated content is anything an AI wrote or made for you: text, images, summaries, code and so on.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/alert-subscription/#new-2026-11-02</id>
-    <title>New: Alert subscription</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/alert-subscription/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An alert subscription is a request that says: tell me by message whenever this thing changes.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/alternate-account/#new-2026-11-02</id>
-    <title>New: Alternate account</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/alternate-account/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An alternate account is a second login for the same person, kept in a different place from their main one.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/analyst/#new-2026-11-02</id>
-    <title>New: Analyst</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/analyst/#updated-2026-11-11</id>
+    <title>Updated: Analyst</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/analyst/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Analyst is a ready-made Copilot helper that is good at working with numbers and data.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/app-context/#new-2026-11-02</id>
-    <title>New: App context</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/app-context/#updated-2026-11-11</id>
+    <title>Updated: App context</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/app-context/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>App context is what Copilot can see about the thing you have open, such as the current document or email.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/app-custom-action/#new-2026-11-02</id>
-    <title>New: App custom action</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/app-custom-action/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An app custom action is an extra button added to a site by an add-in, and it leads to more of that add-in&apos;s features.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/app-part/#new-2026-11-02</id>
-    <title>New: App part</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/app-part/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An app part is a window on a page that shows a small piece of an add-in.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/application-directory/#new-2026-11-02</id>
-    <title>New: Application directory</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/application-directory/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>The application directory is a folder on a search server where its working files for search are kept.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/application-session/#new-2026-11-02</id>
-    <title>New: Application session</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/application-session/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An application session is the time an application is open: it starts when you open it and ends when you close it.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/audience-identifier/#new-2026-11-02</id>
-    <title>New: Audience identifier</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/audience-identifier/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An audience identifier is the unique name tag that tells SharePoint which audience you mean.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/audience-rule/#new-2026-11-02</id>
-    <title>New: Audience rule</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/audience-rule/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An audience rule is the entry test for a club: if you meet the conditions, you are in.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/authentication/#new-2026-11-02</id>
-    <title>New: Authentication</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/authentication/#updated-2026-11-11</id>
+    <title>Updated: Authentication</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/authentication/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Authentication is proving who you are, like showing your pass at the entrance.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/authorisation/#new-2026-11-02</id>
-    <title>New: Authorisation</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/authorisation/#updated-2026-11-11</id>
+    <title>Updated: Authorisation</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/authorisation/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Authorisation decides what a person, Copilot or an agent is allowed to do once it is known who they are.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/authoritative-page/#new-2026-11-02</id>
-    <title>New: Authoritative page</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/authoritative-page/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An authoritative page is a web page an administrator has marked as especially trustworthy, so search shows it nearer the top.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/authority-level/#new-2026-11-02</id>
-    <title>New: Authority level</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/authority-level/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>The authority level is a score that says how important a page is: 0 is the best.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/autohost/#new-2026-11-02</id>
-    <title>New: Autohost</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/autohost/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>Autohost means the system puts the pieces of an add-in in the right places for you.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/autopilot/#new-2026-11-02</id>
-    <title>New: Autopilot</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/autopilot/#updated-2026-11-11</id>
+    <title>Updated: Autopilot</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/autopilot/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Autopilot is an AI helper that lives in your organisation and keeps working on its own between your requests, like a colleague with a standing job.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/available-site-template/#new-2026-11-02</id>
-    <title>New: Available site template</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/available-site-template/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>An available site template is a layout you are allowed to pick when you create a new site.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/azure-ai-foundry/#new-2026-11-02</id>
-    <title>New: Azure AI Foundry</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/azure-ai-foundry/#updated-2026-11-11</id>
+    <title>Updated: Azure AI Foundry</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/azure-ai-foundry/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Azure AI Foundry is Microsoft&apos;s workshop in the cloud for building, testing and running AI applications and agents.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/background-task/#new-2026-11-02</id>
-    <title>New: Background task</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/background-task/#updated-2026-11-11</id>
+    <title>Updated: Background task</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/background-task/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>A background task is work an agent keeps doing while you get on with something else.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/backward-signing/#new-2026-11-02</id>
-    <title>New: Backward signing</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/backward-signing/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>Backward signing describes how a handwritten signature runs: from left to right, or the other way round.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/base-view-identifier/#new-2026-11-02</id>
-    <title>New: Base view identifier</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/base-view-identifier/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>The base view identifier is the number that picks out one saved way of looking at a list.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/basic-page/#new-2026-11-02</id>
-    <title>New: Basic page</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/basic-page/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>A basic page is a simple, plain page where one area can hold a piece of content.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/bcs-solution-deployment/#new-2026-11-02</id>
-    <title>New: BCS solution deployment</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/bcs-solution-deployment/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>BCS solution deployment is the process of getting a business-data solution from the server onto people&apos;s computers.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/before-event/#new-2026-11-02</id>
-    <title>New: Before event</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/before-event/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>A before event is a checkpoint that you must pass before the action can go ahead.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/blank-site/#new-2026-11-02</id>
-    <title>New: Blank site</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/blank-site/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>A blank site is an empty room: a new site with nothing set up in it yet.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/bring-your-own-data/#new-2026-11-02</id>
-    <title>New: Bring your own data</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/bring-your-own-data/#updated-2026-11-11</id>
+    <title>Updated: Bring your own data</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/bring-your-own-data/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Bring your own data means plugging your organisation&apos;s own information into an AI tool so its answers fit your business.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/browser-context/#new-2026-11-02</id>
-    <title>New: Browser context</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/browser-context/#updated-2026-11-11</id>
+    <title>Updated: Browser context</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/browser-context/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Browser context is the web page you are looking at, shared with an AI helper when you allow it.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/business-chat/#new-2026-11-02</id>
-    <title>New: Business Chat</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/business-chat/#updated-2026-11-11</id>
+    <title>Updated: Business Chat</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/business-chat/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Business Chat is an older name for the Copilot chat that could draw on your work information across apps.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/business-connectivity-services/#new-2026-11-02</id>
-    <title>New: Business Connectivity Services</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/business-connectivity-services/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>Business Connectivity Services lets you bring data from other business systems into SharePoint and Office, so people can use it without leaving those tools.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/business-data/#new-2026-11-02</id>
-    <title>New: Business data</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/business-data/#updated-2026-11-11</id>
+    <title>Updated: Business data</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/business-data/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>Business data is the information a company holds about its work: documents, emails, meetings, reports and records.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/business-process/#new-2026-11-02</id>
-    <title>New: Business process</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/business-process/#updated-2026-11-11</id>
+    <title>Updated: Business process</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/business-process/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>A business process is a repeatable set of steps that gets a job done, like approving an expense.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/business-system/#new-2026-11-02</id>
-    <title>New: Business system</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/business-system/#updated-2026-11-11</id>
+    <title>Updated: Business system</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/business-system/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>A business system is a company&apos;s main working software, such as customer, finance or HR systems.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/caml/#new-2026-11-02</id>
-    <title>New: CAML</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/caml/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>CAML is a small XML language SharePoint uses to describe things like queries and views, a bit like a form with fixed boxes to fill in.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/central-administration-site/#new-2026-11-02</id>
-    <title>New: Central Administration site</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/central-administration-site/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>Central Administration is the control room of a SharePoint installation, where an administrator manages everything from one place.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/chrome-control/#new-2026-11-02</id>
-    <title>New: Chrome control</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/chrome-control/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>The chrome control draws the top bar of a page so that an add-in looks like it belongs inside SharePoint.</summary>
-  </entry>
-  <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/citation/#new-2026-11-02</id>
-    <title>New: Citation</title>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/citation/#updated-2026-11-11</id>
+    <title>Updated: Citation</title>
     <link href="https://sandeep-fed.github.io/Decoded365/terms/citation/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
+    <updated>2026-11-11T00:00:00Z</updated>
     <summary>A citation is a pointer in an answer that shows where a statement came from, like a footnote.</summary>
   </entry>
   <entry>
-    <id>https://sandeep-fed.github.io/Decoded365/terms/content-migration-package/#new-2026-11-02</id>
-    <title>New: Content migration package</title>
-    <link href="https://sandeep-fed.github.io/Decoded365/terms/content-migration-package/"/>
-    <updated>2026-11-02T00:00:00Z</updated>
-    <summary>A content migration package is a box of files used to move content from one place to another.</summary>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/context/#updated-2026-11-11</id>
+    <title>Updated: Context</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/context/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Context is the background information given to an AI along with your question, so it can answer sensibly.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/context-window/#updated-2026-11-11</id>
+    <title>Updated: Context window</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/context-window/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>The context window is how much an AI can keep in mind at once, like the size of its desk.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/conversation-history/#updated-2026-11-11</id>
+    <title>Updated: Conversation history</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/conversation-history/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Conversation history is the earlier part of a chat, which the AI reads so follow-up questions make sense.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot/#updated-2026-11-11</id>
+    <title>Updated: Copilot</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot is Microsoft&apos;s name for the AI helpers built into its products, from Word and Teams to Windows and Azure.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-control-system/#updated-2026-11-11</id>
+    <title>Updated: Copilot Control System</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-control-system/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>The Copilot Control System is the collection of admin tools for keeping Copilot and agents safe, managed and measured.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-credits/#updated-2026-11-11</id>
+    <title>Updated: Copilot Credits</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-credits/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot Credits are the units you spend when you use the more advanced, usage-billed parts of Copilot, a bit like top-up credit on a phone.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-dashboard/#updated-2026-11-11</id>
+    <title>Updated: Copilot Dashboard</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-dashboard/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>The Copilot Dashboard is a report that shows how much Copilot is being used and what difference it makes.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-in-excel/#updated-2026-11-11</id>
+    <title>Updated: Copilot in Excel</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-in-excel/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot in Excel is an AI helper inside spreadsheets that can explain numbers and write formulas for you.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-in-outlook/#updated-2026-11-11</id>
+    <title>Updated: Copilot in Outlook</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-in-outlook/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot in Outlook is an AI helper in your email that can draft replies and summarise long threads.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-in-powerpoint/#updated-2026-11-11</id>
+    <title>Updated: Copilot in PowerPoint</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-in-powerpoint/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot in PowerPoint is an AI helper that can build and polish slide decks from your ideas or documents.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-in-teams/#updated-2026-11-11</id>
+    <title>Updated: Copilot in Teams</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-in-teams/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot in Teams is an AI helper for meetings and chats that can summarise what was said and list actions.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-in-word/#updated-2026-11-11</id>
+    <title>Updated: Copilot in Word</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-in-word/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot in Word is an AI writing helper that can draft, rewrite and summarise documents for you.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-notebooks/#updated-2026-11-11</id>
+    <title>Updated: Copilot Notebooks</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-notebooks/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>A Copilot Notebook is a place where you collect the files and notes for one topic so the AI can focus only on them.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/copilot-pages/#updated-2026-11-11</id>
+    <title>Updated: Copilot Pages</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/copilot-pages/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Copilot Pages are shared pages where you keep the good bits of an AI chat and keep working on them with others.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/cowork/#updated-2026-11-11</id>
+    <title>Updated: Cowork</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/cowork/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Cowork is a Copilot mode where you describe a whole job and the AI plans it, does the steps across your tools and hands back a finished result.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/customer-conversation-harness/#updated-2026-11-11</id>
+    <title>Updated: Customer Conversation harness</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/customer-conversation-harness/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>The Customer Conversation harness is the engine for agents that talk to your customers, not your staff.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/data-boundary/#updated-2026-11-11</id>
+    <title>Updated: Data boundary</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/data-boundary/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>A data boundary is a line around where your organisation&apos;s data may be stored and processed, like a country border for information.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/data-loss-prevention/#updated-2026-11-11</id>
+    <title>Updated: Data loss prevention</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/data-loss-prevention/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Data loss prevention is a set of rules that stop sensitive information being shared where it should not be.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/data-minimisation/#updated-2026-11-11</id>
+    <title>Updated: Data minimisation</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/data-minimisation/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Data minimisation means using only the information you really need for the job, and no more.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/data-source/#updated-2026-11-11</id>
+    <title>Updated: Data source</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/data-source/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>A data source is any place an AI helper can look things up, such as SharePoint, email or a database.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/deep-research/#updated-2026-11-11</id>
+    <title>Updated: Deep research</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/deep-research/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Deep research is when an AI spends longer digging through many sources and then writes a thorough report, instead of giving a quick reply.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/desktop-flow/#updated-2026-11-11</id>
+    <title>Updated: Desktop flow</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/desktop-flow/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>A desktop flow copies the clicks and typing a person would do on a computer, so a repetitive task, like copying details between two old programs, can run on its own.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/draft/#updated-2026-11-11</id>
+    <title>Updated: Draft</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/draft/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>A draft is a first version written by AI that you are meant to read and improve.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/dynamic-grounding/#updated-2026-11-11</id>
+    <title>Updated: Dynamic grounding</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/dynamic-grounding/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Dynamic grounding means the AI looks up the latest facts at the moment you ask, instead of using only what it already knew.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/ediscovery/#updated-2026-11-11</id>
+    <title>Updated: eDiscovery</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/ediscovery/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>eDiscovery is how organisations find and collect electronic information for legal or investigation needs.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/embedding/#updated-2026-11-11</id>
+    <title>Updated: Embedding</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/embedding/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>An embedding is a list of numbers that captures the meaning of some text, so a computer can tell what is similar.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/enterprise-data-protection/#updated-2026-11-11</id>
+    <title>Updated: Enterprise data protection</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/enterprise-data-protection/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Enterprise data protection is the set of safeguards that keeps your prompts and answers within your organisation&apos;s protections.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/evaluation/#updated-2026-11-11</id>
+    <title>Updated: Evaluation</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/evaluation/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Evaluation is testing an AI helper to see whether its answers are good enough.</summary>
+  </entry>
+  <entry>
+    <id>https://sandeep-fed.github.io/Decoded365/terms/everyday-ai-and-advanced-ai/#updated-2026-11-11</id>
+    <title>Updated: Everyday AI and advanced AI</title>
+    <link href="https://sandeep-fed.github.io/Decoded365/terms/everyday-ai-and-advanced-ai/"/>
+    <updated>2026-11-11T00:00:00Z</updated>
+    <summary>Microsoft splits Copilot into two kinds of work: everyday AI, which your licence already pays for, and advanced AI, which you pay for as you use it.</summary>
   </entry>
 </feed>

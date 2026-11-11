@@ -1,0 +1,1 @@
+var e={level:`whatsitcalled:level`,legacy:`whatsitcalled:show-legacy`};function t(e){try{return localStorage.getItem(e)}catch{return null}}function n(e,t){try{localStorage.setItem(e,t)}catch{}}function r(e){document.documentElement.dataset.level=e}function i(e){document.documentElement.dataset.legacy=e?`show`:`hide`}export{n as a,t as i,i as n,r,e as t};
