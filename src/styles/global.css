@@ -24,7 +24,7 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.55 0.15 240);
 
-  /* Product colours (BRD 8.2) */
+  /* Product colours */
   --sharepoint: oklch(0.52 0.12 205);
   --power-platform: oklch(0.5 0.2 305);
   --copilot: oklch(0.55 0.17 260);

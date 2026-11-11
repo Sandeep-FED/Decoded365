@@ -46,7 +46,7 @@ export function exactNameMatches(docs: SearchDocument[], query: string): string[
 		.map((d) => d.id);
 }
 
-/** Keyword search over term names, aliases, old names, summaries and body text (BRD F4). */
+/** Keyword search over term names, aliases, old names, summaries and body text. */
 export async function createSearchEngine(docs: SearchDocument[]): Promise<SearchEngine> {
 	const byId = new Map(docs.map((d) => [d.id, d]));
 	const db: AnyOrama = create({

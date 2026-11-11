@@ -10,7 +10,7 @@ export interface StaleTerm extends Reviewable {
 	monthsSince: number;
 }
 
-/** Terms not reviewed within `months` months (BRD UC-7: 12), oldest first. */
+/** Terms not reviewed within `months` months, oldest first. */
 export function staleTerms(terms: Reviewable[], now: Date, months = 12): StaleTerm[] {
 	const monthsBetween = (from: Date) =>
 		(now.getUTCFullYear() - from.getUTCFullYear()) * 12 +

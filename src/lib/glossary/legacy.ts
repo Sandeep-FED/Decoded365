@@ -1,6 +1,6 @@
 import type { TermData } from '@/schema/term';
 
-/** Legacy = legacy or retired, or applies to SharePoint Server only (BRD F19). */
+/** Legacy = legacy or retired, or applies to SharePoint Server only. */
 export function isLegacy(term: Pick<TermData, 'status' | 'appliesTo'>): boolean {
 	if (term.status === 'legacy' || term.status === 'retired') return true;
 	const applies = term.appliesTo;

@@ -15,7 +15,7 @@ const appliesTo = (term: GlossaryTerm) => {
 	return term.product === 'sharepoint' ? 'SharePoint Online and Server' : '';
 };
 
-/** Side-by-side facts for two terms people mix up (BRD F12). Rows with nothing to say for either term are left out. */
+/** Side-by-side facts for two terms people mix up. Rows with nothing to say for either term are left out. */
 export function comparisonRows(a: GlossaryTerm, b: GlossaryTerm, labelOf?: LabelOf): ComparisonRow[] {
 	const rows: ComparisonRow[] = [
 		{ label: 'In plain words', left: firstParagraph(a.levelSections.beginner, labelOf), right: firstParagraph(b.levelSections.beginner, labelOf) },

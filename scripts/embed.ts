@@ -7,7 +7,7 @@ import type { VectorFile } from '../src/lib/search/semantic';
 import { encodeVector } from '../src/lib/search/vectors';
 import { createNodeEmbedder } from './lib/node-embedder';
 
-// Build-time embeddings on a free CI runner: no API, no cost (BRD 8.3).
+// Build-time embeddings on a free CI runner: no API, no cost.
 const { entries } = await loadTermFiles(process.cwd());
 const names = new Map(entries.map((e) => [e.data.id, e.data.term]));
 const labelOf = (id: string) => names.get(id);

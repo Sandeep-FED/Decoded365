@@ -14,7 +14,7 @@ const megabytes = (bytes: number) => (bytes / 1_000_000).toFixed(0);
 
 /**
  * Search bar (`/` or Ctrl/⌘ K). Name matches are instant. The first time someone types, a small
- * embedding model downloads in a Web Worker so results can also match by meaning (BRD F4).
+ * embedding model downloads in a Web Worker so results can also match by meaning.
  */
 export default function SearchCommand() {
 	const [open, setOpen] = useState(false);

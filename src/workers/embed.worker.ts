@@ -1,6 +1,6 @@
 import { env, pipeline } from '@huggingface/transformers';
 
-// Runs the embedding model off the main thread (BRD 8.3). Messages in: init, embed. Messages out: progress, ready, error, result.
+// Runs the embedding model off the main thread. Messages in: init, embed. Messages out: progress, ready, error, result.
 interface Scope {
 	postMessage(message: unknown): void;
 	onmessage: ((event: MessageEvent) => void) | null;

@@ -10,7 +10,7 @@ export function shingles(text: string, size = 6): Set<string> {
 
 /**
  * Share of the entry's word runs that also appear in the source (0 to 1).
- * High values mean the entry reuses the source's wording (BRD 8.6.1: similarity check).
+ * High values mean the entry reuses the source's wording (similarity check).
  */
 export function containment(entry: string, source: string, size = 6): number {
 	const mine = shingles(entry, size);

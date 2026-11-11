@@ -21,7 +21,7 @@ export const AppliesTo = z.enum(APPLIES_TO);
 
 export const ORIGIN_USES = ['adapted', 'terms-only', 'facts-only'] as const;
 
-/** Front matter of one term file: `content/terms/<product>/<slug>.md` (BRD 8.1). */
+/** Front matter of one term file: `content/terms/<product>/<slug>.md`. */
 export const Term = z.object({
 	id: z.string().regex(/^[a-z0-9-]+$/),
 	term: z.string().min(2),
@@ -63,7 +63,7 @@ export const Term = z.object({
 	levels: z.enum(['complete', 'partial']).default('complete'),
 	/**
 	 * Where the text stands: `drafted` = written with AI and not yet read by a person, `reviewed` = a person has
-	 * checked it (BRD 8.6.1). Left out for entries nobody has marked yet.
+	 * checked it. Left out for entries nobody has marked yet.
 	 */
 	review: z.enum(['drafted', 'reviewed']).optional(),
 	lastReviewed: z.coerce.date(),

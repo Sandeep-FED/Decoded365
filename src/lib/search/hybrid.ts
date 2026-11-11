@@ -13,7 +13,7 @@ export interface HybridEngine extends SearchEngine {
 	keyword: SearchEngine['search'];
 }
 
-/** Hybrid search: keyword and meaning rankings fused with reciprocal rank fusion (BRD F4), exact names first. */
+/** Hybrid search: keyword and meaning rankings fused with reciprocal rank fusion, exact names first. */
 export async function createHybridEngine(docs: SearchDocument[], options: HybridOptions = {}): Promise<HybridEngine> {
 	const keywordEngine = await createSearchEngine(docs);
 	const byId = new Map(docs.map((d) => [d.id, d]));

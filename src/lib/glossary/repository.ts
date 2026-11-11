@@ -6,7 +6,7 @@ import { toGlossaryTerm, type GlossaryTerm } from './term-model';
 
 let cache: Promise<GlossaryTerm[]> | undefined;
 
-/** Load every term, failing the build if the corpus breaks a rule (BRD 8.1). Sorted A–Z. */
+/** Load every term, failing the build if the corpus breaks a rule. Sorted A–Z. */
 export function getGlossary(): Promise<GlossaryTerm[]> {
 	cache ??= load();
 	return cache;

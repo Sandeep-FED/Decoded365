@@ -1,4 +1,4 @@
-# Source registry (BRD 8.1 / 8.6). Used by the importer and the Credits page only.
+# Source registry. Used by the importer and the Credits page only.
 # Addresses are for maintainers and are never rendered inside entries.
 - id: ms-sharepoint-glossary
   title: SharePoint glossary

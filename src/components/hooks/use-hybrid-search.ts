@@ -10,7 +10,7 @@ export type Meaning = 'off' | 'loading' | 'ready' | 'unavailable';
 
 /**
  * Loads the name index when `enabled`, and starts the on-device embedding model only when
- * `startMeaning()` is called (BRD: models download only when a feature needs them).
+ * `startMeaning()` is called (models download only when a feature needs them).
  * `version` changes whenever the engine gains meaning search, so callers can re-run a search.
  */
 export function useHybridSearch(enabled: boolean) {

@@ -11,7 +11,7 @@ export interface EvalResult {
 	misses: { q: string; expected: string[]; got: string[] }[];
 }
 
-/** Share of questions whose expected term appears in the top `k` results (BRD goal: ≥ 80% at k = 5). */
+/** Share of questions whose expected term appears in the top `k` results (goal: ≥ 80% at k = 5). */
 export async function evaluateSearch(
 	questions: EvalQuestion[],
 	search: (query: string, limit: number) => Promise<string[]>,

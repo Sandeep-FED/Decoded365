@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getGlossary } from '@/lib/glossary/repository';
 
-/** The glossary as open data (BRD F16, UC-9): every term with its three levels as Markdown. */
+/** The glossary as open data: every term with its three levels as Markdown. */
 export const GET: APIRoute = async () => {
 	const terms = await getGlossary();
 	return Response.json({

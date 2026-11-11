@@ -1,4 +1,4 @@
-// Entries are self-contained: no hyperlinks to other sites (BRD 8.1).
+// Entries are self-contained: no hyperlinks to other sites.
 const PATTERNS: RegExp[] = [
 	/https?:\/\/\S+/i, // http(s) links and bare addresses
 	/\bwww\.[a-z0-9-]+\.[a-z]{2,}/i, // bare www addresses

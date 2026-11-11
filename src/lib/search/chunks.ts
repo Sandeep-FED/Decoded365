@@ -12,7 +12,7 @@ export interface Chunk {
 
 /**
  * One chunk per term per level, plus one for the names a term goes by (aliases and old names),
- * so "Flow" or "PVA" land on the current term (BRD 8.3).
+ * so "Flow" or "PVA" land on the current term.
  */
 export function buildChunks(term: GlossaryTerm, labelOf?: LabelOf): Chunk[] {
 	const chunks: Chunk[] = [];

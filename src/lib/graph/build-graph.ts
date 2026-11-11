@@ -26,7 +26,7 @@ export interface Graph {
 	edges: GraphEdge[];
 }
 
-/** Build the typed related-terms graph from each term's `related` field (BRD F5). Unknown targets are dropped. */
+/** Build the typed related-terms graph from each term's `related` field. Unknown targets are dropped. */
 export function buildGraph(terms: GraphTermInput[]): Graph {
 	const known = new Set(terms.map((t) => t.id));
 	return {

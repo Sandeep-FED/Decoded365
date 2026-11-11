@@ -8,7 +8,7 @@ export interface Neighbour {
 	direction: Direction;
 }
 
-/** The 1-hop neighbours of a term: outgoing and incoming relations (BRD UC-4). */
+/** The 1-hop neighbours of a term: outgoing and incoming relations. */
 export function neighbourhood(graph: Graph, id: string): Neighbour[] {
 	const nodes = new Map(graph.nodes.map((n) => [n.id, n]));
 	const seen = new Set<string>();

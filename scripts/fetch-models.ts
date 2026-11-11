@@ -2,7 +2,7 @@ import { mkdir, stat, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { ROOT, readModels } from './lib/models';
 
-// Self-host the embedding model so visitors never contact a third party for it (BRD 8.4, spike S3).
+// Self-host the embedding model so visitors never contact a third party for it (spike S3).
 // Files are downloaded once into public/models (git-ignored) and published with the site.
 const FILES = ['config.json', 'tokenizer.json', 'tokenizer_config.json', 'special_tokens_map.json'];
 const WEIGHTS: Record<string, string> = { q8: 'onnx/model_quantized.onnx', fp32: 'onnx/model.onnx', fp16: 'onnx/model_fp16.onnx' };

@@ -1,5 +1,5 @@
 {
-  "_note": "Registry of AI models the site may load. Every model must have an OSI-approved licence (BRD 8.4, 8.8). Confirm each licence and size in spike S1 before launch.",
+  "_note": "Registry of AI models the site may load. Every model must have an OSI-approved licence. Confirm each licence and size in spike S1 before launch.",
   "embedding": {
     "id": "Xenova/all-MiniLM-L6-v2",
     "licence": "Apache-2.0",

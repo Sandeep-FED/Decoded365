@@ -1,4 +1,4 @@
-/** Prefilled repository links for contributing (BRD UC-6). Site-level only, never part of entry content. */
+/** Prefilled repository links for contributing. Site-level only, never part of entry content. */
 export function editTermUrl(repoUrl: string, product: string, id: string): string {
 	return `${repoUrl}/edit/main/content/terms/${product}/${id}.md`;
 }

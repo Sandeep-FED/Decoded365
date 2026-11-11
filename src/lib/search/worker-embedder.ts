@@ -14,7 +14,7 @@ export interface WorkerEmbedder {
 	dispose(): void;
 }
 
-/** Starts the model in a Web Worker. Call it only when the visitor first needs meaning search (BRD NFR: lazy models). */
+/** Starts the model in a Web Worker. Call it only when the visitor first needs meaning search. */
 export function createWorkerEmbedder(onProgress: (progress: DownloadProgress) => void): WorkerEmbedder {
 	const worker = new Worker(new URL('../../workers/embed.worker.ts', import.meta.url), { type: 'module' });
 	const pending = new Map<number, { resolve: (v: Float32Array) => void; reject: (e: Error) => void }>();
