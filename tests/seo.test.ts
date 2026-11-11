@@ -6,11 +6,11 @@ import { breadcrumbLd, definedTermLd, jsonLdText, websiteLd } from '@/lib/seo/st
 describe('structured data', () => {
 	const ld = definedTermLd({ id: 'hub-site', term: 'Hub site', aliases: ['hub'], summary: 'Ties sites together.', url: 'https://x.test/terms/hub-site/', setUrl: 'https://x.test/browse/' });
 
-	it('describes a term as a schema.org DefinedTerm in the Decoded365 term set', () => {
+	it('describes a term as a schema.org DefinedTerm in the Whatsitcalled term set', () => {
 		expect(ld['@type']).toBe('DefinedTerm');
 		expect(ld.name).toBe('Hub site');
 		expect(ld.alternateName).toEqual(['hub']);
-		expect(ld.inDefinedTermSet).toMatchObject({ '@type': 'DefinedTermSet', name: 'Decoded365', url: 'https://x.test/browse/' });
+		expect(ld.inDefinedTermSet).toMatchObject({ '@type': 'DefinedTermSet', name: 'Whatsitcalled', url: 'https://x.test/browse/' });
 	});
 
 	it('leaves out alternateName when there are no aliases', () => {

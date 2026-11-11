@@ -9,7 +9,7 @@ related:
   - { id: least-privilege, type: often-confused-with }
   - { id: authorisation, type: part-of }
 origins:
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

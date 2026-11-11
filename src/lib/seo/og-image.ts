@@ -44,7 +44,7 @@ export async function renderOgImage({ title, summary, product }: OgCard): Promis
 		div({ width: 18, height: HEIGHT, background: accent }, ''),
 		div({ flexDirection: 'column', justifyContent: 'space-between', flex: 1, padding: '56px 72px 52px 64px' }, [
 			div({ alignItems: 'center', justifyContent: 'space-between' }, [
-				div({ fontSize: 32, fontWeight: 700, letterSpacing: -0.5 }, 'Decoded365'),
+				div({ fontSize: 32, fontWeight: 700, letterSpacing: -0.5 }, 'Whatsitcalled'),
 				product ? div({ fontSize: 26, color: accent, border: `2px solid ${accent}`, borderRadius: 999, padding: '6px 22px' }, PRODUCT_LABELS[product]) : div({}, ''),
 			]),
 			div({ flexDirection: 'column' }, [

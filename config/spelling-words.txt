@@ -1,5 +1,5 @@
 # Words the spell-checker should accept (one per line, case-insensitive). Product names and jargon only.
-decoded365
+whatsitcalled
 sharepoint
 onedrive
 appsource

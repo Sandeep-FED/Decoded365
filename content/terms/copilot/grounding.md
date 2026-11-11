@@ -8,7 +8,7 @@ status: ga
 related:
   - { id: large-language-model, type: used-by }
 origins:
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 lastReviewed: 2026-11-01
 reviewers: [sandeepps]
 ---

@@ -35,7 +35,7 @@ const html = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 /** Anki's text import splits on tabs and rows, so neither may appear inside a field. */
 const flat = (text: string) => text.replace(/[\t\r\n]+/g, ' ').trim();
 
-const CREDIT = 'Decoded365, CC BY 4.0';
+const CREDIT = 'Whatsitcalled, CC BY 4.0';
 
 /**
  * Flashcards for Anki's "Import File" (tab-separated, HTML on). Front: the term; back: its three levels.
@@ -44,7 +44,7 @@ const CREDIT = 'Decoded365, CC BY 4.0';
 export function toAnki(terms: GlossaryTerm[], urlFor: (id: string) => string): string {
 	const names = new Map(terms.map((t) => [t.id, t.term]));
 	const labelOf = (id: string) => names.get(id);
-	const header = ['#separator:tab', '#html:true', '#tags column:3', '#notetype:Basic', '#deck:Decoded365'];
+	const header = ['#separator:tab', '#html:true', '#tags column:3', '#notetype:Basic', '#deck:Whatsitcalled'];
 
 	const cards = terms.map((t) => {
 		const front = `<b>${html(t.term)}</b><br><i>${html(PRODUCT_LABELS[t.product])}</i>`;
@@ -52,7 +52,7 @@ export function toAnki(terms: GlossaryTerm[], urlFor: (id: string) => string): s
 			(l) => `<b>${LEVEL_LABELS[l]}</b><br>${html(stripMarkdown(t.levelSections[l] ?? '', labelOf))}`,
 		);
 		const back = `${levels.join('<br><br>')}<br><br><small>${CREDIT}. ${html(urlFor(t.id))}</small>`;
-		const tags = `decoded365 ${t.product} ${t.status}`;
+		const tags = `whatsitcalled ${t.product} ${t.status}`;
 		return [front, back, tags].map(flat).join('\t');
 	});
 	return [...header, ...cards].join('\n') + '\n';

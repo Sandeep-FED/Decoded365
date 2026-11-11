@@ -12,7 +12,7 @@ related:
   - { id: everyday-ai-and-advanced-ai, type: part-of }
   - { id: autopilot, type: often-confused-with }
 origins:
-  - { source: decoded365-authors, use: facts-only }
+  - { source: whatsitcalled-authors, use: facts-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

@@ -2,8 +2,8 @@ import type { Level } from '@/lib/content/levels';
 
 /** localStorage keys, shared by the page script and the islands. Nothing leaves the device. */
 export const PREF_KEYS = {
-	level: 'decoded365:level',
-	legacy: 'decoded365:show-legacy',
+	level: 'whatsitcalled:level',
+	legacy: 'whatsitcalled:show-legacy',
 } as const;
 
 export function readPref(key: string): string | null {

@@ -14,7 +14,7 @@ export interface TermLd {
 	setUrl: string;
 }
 
-/** schema.org `DefinedTerm`: lets search engines read a term page as a definition within the Decoded365 glossary. */
+/** schema.org `DefinedTerm`: lets search engines read a term page as a definition within the Whatsitcalled glossary. */
 export function definedTermLd(t: TermLd) {
 	return {
 		'@context': 'https://schema.org',

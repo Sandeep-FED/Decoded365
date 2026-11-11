@@ -10,7 +10,7 @@ related:
   - { id: quota, type: often-confused-with }
   - { id: copilot-credits, type: used-by }
 origins:
-  - { source: decoded365-authors, use: facts-only }
+  - { source: whatsitcalled-authors, use: facts-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

@@ -14,7 +14,7 @@ related:
   - { id: standard-harness, type: often-confused-with }
   - { id: copilot-studio, type: part-of }
 origins:
-  - { source: decoded365-authors, use: facts-only }
+  - { source: whatsitcalled-authors, use: facts-only }
   - { source: ms-copilot-studio-docs, use: facts-only }
   - { source: ms-copilot-harness-blog, use: facts-only }
 review: drafted

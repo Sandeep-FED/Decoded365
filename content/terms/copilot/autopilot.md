@@ -15,7 +15,7 @@ related:
   - { id: usage-based-billing, type: requires }
   - { id: agent, type: often-confused-with }
 origins:
-  - { source: decoded365-authors, use: facts-only }
+  - { source: whatsitcalled-authors, use: facts-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

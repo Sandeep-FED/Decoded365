@@ -11,14 +11,14 @@ const count = (await getGlossary()).length;
 const formats = [
 	{
 		title: 'Spreadsheet (CSV)',
-		file: 'decoded365.csv',
-		href: downloadPath('decoded365.csv'),
+		file: 'whatsitcalled.csv',
+		href: downloadPath('whatsitcalled.csv'),
 		text: 'One row per term with its aliases, product, status, all three levels as plain text, related terms and page address. Opens in Excel or Google Sheets.',
 	},
 	{
 		title: 'Flashcards (Anki)',
-		file: 'decoded365-anki.txt',
-		href: downloadPath('decoded365-anki.txt'),
+		file: 'whatsitcalled-anki.txt',
+		href: downloadPath('whatsitcalled-anki.txt'),
 		text: 'A text file for Anki: the term on the front, the three levels on the back, tagged by product and status. In Anki choose File, then Import, and pick the file.',
 	},
 	{
@@ -36,7 +36,7 @@ const formats = [
 ];
 ---
 
-<BaseLayout title="Downloads" description="Download the Decoded365 glossary as a spreadsheet, Anki flashcards or JSON.">
+<BaseLayout title="Downloads" description="Download the Whatsitcalled glossary as a spreadsheet, Anki flashcards or JSON.">
 	<div class="space-y-6">
 		<PageHeader
 			eyebrow="Glossary"
@@ -63,7 +63,7 @@ const formats = [
 		</div>
 
 		<p class="text-sm text-muted-foreground">
-			The content is licensed {SITE.contentLicence}. If you share it or build on it, credit Decoded365 and say if you changed anything.
+			The content is licensed {SITE.contentLicence}. If you share it or build on it, credit Whatsitcalled and say if you changed anything.
 		</p>
 	</div>
 </BaseLayout>

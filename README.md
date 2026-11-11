@@ -1,10 +1,10 @@
-# Decoded365
+# Whatsitcalled
 
 A free, open-source glossary for **SharePoint, Power Platform and Microsoft 365 Copilot**. Every term is written at three depths (Beginner, Maker, Architect), linked to related terms, and searchable by name, old name or meaning.
 
 The glossary covers **SharePoint**, **Power Platform** and **Copilot**, with SharePoint the most complete. More terms are added by pull request, and the three products share one site and one search.
 
-> Decoded365 is a community project and is not affiliated with or endorsed by Microsoft.
+> Whatsitcalled is a community project and is not affiliated with or endorsed by Microsoft.
 
 ## What it does
 

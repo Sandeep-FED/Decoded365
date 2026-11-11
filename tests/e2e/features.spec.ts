@@ -30,10 +30,10 @@ test('the renamed page finds an old name', async ({ page }) => {
 });
 
 test('downloads are served', async ({ request }) => {
-	const csv = await request.get('/downloads/decoded365.csv');
+	const csv = await request.get('/downloads/whatsitcalled.csv');
 	expect(csv.ok()).toBe(true);
 	expect(await csv.text()).toContain('id,term,aliases');
-	const anki = await request.get('/downloads/decoded365-anki.txt');
+	const anki = await request.get('/downloads/whatsitcalled-anki.txt');
 	expect((await anki.text()).startsWith('#separator:tab')).toBe(true);
 	const feed = await request.get('/feed.xml');
 	expect(await feed.text()).toContain('<feed xmlns="http://www.w3.org/2005/Atom">');

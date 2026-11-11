@@ -9,7 +9,7 @@ related:
   - { id: copilot-studio, type: part-of }
 origins:
   - { source: ms-copilot-studio-docs, use: facts-only }
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 lastReviewed: 2026-11-01
 reviewers: [sandeepps]
 ---

@@ -1,5 +1,5 @@
 {
-  "name": "decoded365",
+  "name": "whatsitcalled",
   "type": "module",
   "version": "0.1.0",
   "engines": {
@@ -62,6 +62,6 @@
     "typescript": "^6.0.3",
     "vitest": "^5.0.5"
   },
-  "description": "Decoded365 — a free, open-source, AI-navigable glossary for SharePoint, Power Platform and Microsoft 365 Copilot",
+  "description": "Whatsitcalled — a free, open-source, AI-navigable glossary for SharePoint, Power Platform and Microsoft 365 Copilot",
   "license": "MIT"
 }

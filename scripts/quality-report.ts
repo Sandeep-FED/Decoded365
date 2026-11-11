@@ -9,7 +9,7 @@ const rows = assessTerms(entries.map((e) => toGlossaryTerm(e.data, e.body, (id) 
 const s = summarise(rows);
 const pct = (n: number) => `${Math.round((n / s.total) * 100)}%`;
 
-console.log(`Decoded365 content quality: ${s.total} terms\n`);
+console.log(`Whatsitcalled content quality: ${s.total} terms\n`);
 console.log(`Reviewed by a person  ${String(s.review.reviewed).padStart(4)}  ${pct(s.review.reviewed)}`);
 console.log(`AI-drafted            ${String(s.review.drafted).padStart(4)}  ${pct(s.review.drafted)}`);
 console.log(`Not marked            ${String(s.review.unmarked).padStart(4)}  ${pct(s.review.unmarked)}`);

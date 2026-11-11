@@ -8,7 +8,7 @@ status: ga
 related:
   - { id: copilot-pages, type: often-confused-with }
 origins:
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

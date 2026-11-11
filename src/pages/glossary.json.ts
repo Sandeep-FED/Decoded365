@@ -5,7 +5,7 @@ import { getGlossary } from '@/lib/glossary/repository';
 export const GET: APIRoute = async () => {
 	const terms = await getGlossary();
 	return Response.json({
-		name: 'Decoded365',
+		name: 'Whatsitcalled',
 		licence: 'CC BY 4.0',
 		terms: terms.map(({ levelSections, legacy, ...data }) => ({ ...data, legacy, levels: levelSections })),
 	});

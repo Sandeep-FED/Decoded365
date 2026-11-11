@@ -10,7 +10,7 @@ related:
   - { id: spfx, type: used-by }
 origins:
   - { source: ms-declarative-vs-custom-agents, use: facts-only }
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 lastReviewed: 2026-11-01
 reviewers: [sandeepps]
 ---

@@ -9,7 +9,7 @@ related:
   - { id: microsoft-365-copilot-chat, type: used-by }
   - { id: data-boundary, type: often-confused-with }
 origins:
-  - { source: decoded365-authors, use: terms-only }
+  - { source: whatsitcalled-authors, use: terms-only }
 review: drafted
 lastReviewed: 2026-11-02
 reviewers: [sandeepps]

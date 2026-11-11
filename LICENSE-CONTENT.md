@@ -4,8 +4,8 @@ The glossary entries in `content/` are licensed under the Creative Commons
 Attribution 4.0 International licence (CC BY 4.0). The website code is licensed
 separately under the MIT licence (see `LICENSE`).
 
-Copyright (c) 2026 Decoded365 contributors. Credit "Decoded365" and say if you
-changed the text. Sources that Decoded365 builds on are listed in `NOTICE`.
+Copyright (c) 2026 Whatsitcalled contributors. Credit "Whatsitcalled" and say if you
+changed the text. Sources that Whatsitcalled builds on are listed in `NOTICE`.
 
 The full licence text follows.
 

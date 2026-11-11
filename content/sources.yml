@@ -69,9 +69,9 @@
   address: blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work
   release: v1.2
   use: Rename of the GitHub Copilot harness (28 October 2026) and what the harness is; facts only.
-- id: decoded365-authors
-  title: Decoded365 authors
-  owner: Decoded365 contributors
+- id: whatsitcalled-authors
+  title: Whatsitcalled authors
+  owner: Whatsitcalled contributors
   licence: CC BY 4.0
   release: v1
   use: Original explanations written for this glossary, for general concepts that have no single source.

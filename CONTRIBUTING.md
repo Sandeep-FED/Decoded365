@@ -1,6 +1,6 @@
-# Contributing to Decoded365
+# Contributing to Whatsitcalled
 
-Thank you for helping. Decoded365 is a free, open glossary and anyone can improve it.
+Thank you for helping. Whatsitcalled is a free, open glossary and anyone can improve it.
 
 ## Ways to help
 

@@ -8,7 +8,7 @@ export function firstParagraph(markdown: string | undefined, labelOf?: LabelOf):
 }
 
 /**
- * Remove the Markdown syntax Decoded365 entries use, keeping the readable text.
+ * Remove the Markdown syntax Whatsitcalled entries use, keeping the readable text.
  * `[[term-id]]` becomes the term's name when `labelOf` can resolve it.
  */
 export function stripMarkdown(markdown: string, labelOf?: LabelOf): string {

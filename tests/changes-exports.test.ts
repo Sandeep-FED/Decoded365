@@ -89,9 +89,9 @@ describe('csv and Anki exports', () => {
 		expect(out.slice(0, 2)).toEqual(['#separator:tab', '#html:true']);
 		const card = out.find((l) => l.startsWith('<b>Hub site</b>'))!;
 		expect(card.split('\t')).toHaveLength(3);
-		expect(card).toContain('decoded365 sharepoint ga');
+		expect(card).toContain('whatsitcalled sharepoint ga');
 		expect(card).not.toContain('\n');
-		expect(card).toContain('Decoded365, CC BY 4.0');
+		expect(card).toContain('Whatsitcalled, CC BY 4.0');
 	});
 });
 
@@ -114,7 +114,7 @@ describe('git history', () => {
 
 describe('buildAtom', () => {
 	const xml = buildAtom(
-		{ title: 'Decoded365 <new>', subtitle: 'sub', homeUrl: 'https://x.test/', feedUrl: 'https://x.test/feed.xml' },
+		{ title: 'Whatsitcalled <new>', subtitle: 'sub', homeUrl: 'https://x.test/', feedUrl: 'https://x.test/feed.xml' },
 		[
 			{ id: 'https://x.test/terms/a/', title: 'New: A & B', url: 'https://x.test/terms/a/', updated: '2026-11-01', summary: 'It\'s "fine"' },
 			{ id: 'https://x.test/terms/b/', title: 'Updated: B', url: 'https://x.test/terms/b/', updated: '2026-11-03', summary: '' },
@@ -123,7 +123,7 @@ describe('buildAtom', () => {
 
 	it('escapes text and dates entries as midnight UTC', () => {
 		expect(xmlEscape('<a & "b">')).toBe('&lt;a &amp; &quot;b&quot;&gt;');
-		expect(xml).toContain('<title>Decoded365 &lt;new&gt;</title>');
+		expect(xml).toContain('<title>Whatsitcalled &lt;new&gt;</title>');
 		expect(xml).toContain('New: A &amp; B');
 		expect(xml).toContain('<updated>2026-11-01T00:00:00Z</updated>');
 	});
